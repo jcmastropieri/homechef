@@ -81,20 +81,20 @@ hr{
 
 
 /*---------- Olex's CSS Section in progress --------------*/
-.dropdown {
+/* .dropdown {
     position: absolute;
 
-    /* top: 50%;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); */
-}
+    transform: translate(-50%, -50%);
+} */
 
-.row {
+/* .row {
     justify-content: center;
 }
 
 button {
-    /* position: relative; */
+    position: relative;
     width: 146px;
     background-color:   hsla(9, 78%, 55%, 1);
     border-radius: 10px;
@@ -134,9 +134,9 @@ ul.disable{
 
 ul li {
     list-style: none;
-}
+} */
 
-ul li a {
+/* ul li a {
     display: block;
     padding: 10px;
     text-align: center;
@@ -146,20 +146,20 @@ ul li a {
     border-bottom: 1px solid rgba(0,0,0,.2);
     font-family: 'Courgette', cursive;
     width: 146px;
-    /* border-radius: 5px; */
+    border-radius: 5px;
 }
 
 ul li a:hover {
     background-color: hsla(0, 50%, 49%, 1);
     color: #fff;
-}
+} */
 
 /* .nav-item {
     margin-right: 0 !important;
 } */
 
 
-.nav-item.nav-link{
+/* .nav-item.nav-link{
     margin: auto 100px auto 100px;
 }
 
@@ -170,6 +170,6 @@ h4 {
 h4:hover{
     color: hsla(0, 50%, 49%, 1);
     font-size: 25px;
-}
+} */
 
 /*---------- End of Olex's CSS Section --------------*/

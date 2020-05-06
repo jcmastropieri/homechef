@@ -31,156 +31,92 @@
 
   <div class="container">
       <!-- DropDown buttons -->
-      <div class="dropdown1" id="monday">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Monday
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Breakfast:</a>
-            <a class="dropdown-item" href="#">Lunch:</a>
-            <a class="dropdown-item" href="#">Dinner:</a>
-        </div>
-      </div>
-      <!-- tuesday -->
-      <div class="dropdown2" id="tuesday">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Tuesday
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Breakfast:</a>
-            <a class="dropdown-item" href="#">Lunch:</a>
-            <a class="dropdown-item" href="#">Dinner:</a>
-        </div>
-      </div>
-      <!-- wednesday -->
-      <div class="dropdown3" id="wednesday">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Wednesday
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Breakfast:</a>
-            <a class="dropdown-item" href="#">Lunch:</a>
-            <a class="dropdown-item" href="#">Dinner:</a>
-        </div>
-      </div>
-      <!-- thursday -->
-      <div class="dropdown4" id="thursday">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Thursday
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Breakfast:</a>
-            <a class="dropdown-item" href="#">Lunch:</a>
-            <a class="dropdown-item" href="#">Dinner:</a>
-        </div>
-      </div>
-      <!-- friday -->
-      <div class="dropdown5" id="friday">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Friday
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Breakfast:</a>
-            <a class="dropdown-item" href="#">Lunch:</a>
-            <a class="dropdown-item" href="#">Dinner:</a>
-        </div>
-      </div>
-      <!-- saturday -->
-      <div class="dropdown6" id="saturday">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Saturday
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Breakfast:</a>
-            <a class="dropdown-item" href="#">Lunch:</a>
-            <a class="dropdown-item" href="#">Dinner:</a>
-        </div>
-      </div>
-      <!-- sunday -->
-      <div class="dropdown7" id="sunday">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Sunday
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Breakfast:</a>
-            <a class="dropdown-item" href="#">Lunch:</a>
-            <a class="dropdown-item" href="#">Dinner:</a>
-        </div>
-      </div>
-
-      <br>
-      <br>
-
-      <div class="row">
-        <div class="col-md-12">
-            <h2 id="dateEl"> &nbsp; Today's Lunch</h2>
-        </div>
-    </div>
-
-    <hr>
-
-
-    <div class="row">
-      <div class="col-md-1"></div>
-      <div class="col-md-5"> 
-        <h3 id="dishName"></h3>
-      </div>
-      <div class="col-md-2"></div>
-      <div class="col-md-3">
-        <h3>Chef: &nbsp;<span id="chefName"></span></h3>
-      </div>
-      <div class="col-md-1"></div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-1"></div>
-      <div class="col-md-5" id="images"> </div>
-      <div class="col-md-2"></div>
-      <div class="col-md-3" id="chefImg">
-        <img class="chef" src="assets/TT Images/chef.png">
-        <div style="position: relative">
-          <img src="assets/TT Images/ratatouille carrot.png" alt="ratatouille" id="rat">
-          <div id="tomato" class="confetti">
-            <img class="d-block w-100" src="assets/TT Images/tomato.png">
+      <div class="row" id="weekdays">
+        <!-- monday -->
+        <div class="dropdown1" id="monday">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Monday
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Breakfast:</a>
+                <a class="dropdown-item" href="#">Lunch:</a>
+                <a class="dropdown-item" href="#">Dinner:</a>
+            </div>
           </div>
-          <div id="lettuce" class="confetti">
-            <img class="d-block w-100" src="assets/TT Images/lettuce.png">
+          <!-- tuesday -->
+          <div class="dropdown2" id="tuesday">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Tuesday
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Breakfast:</a>
+                <a class="dropdown-item" href="#">Lunch:</a>
+                <a class="dropdown-item" href="#">Dinner:</a>
+            </div>
           </div>
-          <div id="eggplant" class="confetti">
-            <img class="d-block w-100" src="assets/TT Images/eggplant.png">
+          <!-- wednesday -->
+          <div class="dropdown3" id="wednesday">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Wednesday
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Breakfast:</a>
+                <a class="dropdown-item" href="#">Lunch:</a>
+                <a class="dropdown-item" href="#">Dinner:</a>
+            </div>
           </div>
-          <div id="banana" class="confetti">
-            <img class="d-block w-100" src="assets/TT Images/banana.png">
+          <!-- thursday -->
+          <div class="dropdown4" id="thursday">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Thursday
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Breakfast:</a>
+                <a class="dropdown-item" href="#">Lunch:</a>
+                <a class="dropdown-item" href="#">Dinner:</a>
+            </div>
           </div>
-          <div id="milk" class="confetti">
-            <img class="d-block w-100" src="assets/TT Images/milk.png">
+          <!-- friday -->
+          <div class="dropdown5" id="friday">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Friday
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Breakfast:</a>
+                <a class="dropdown-item" href="#">Lunch:</a>
+                <a class="dropdown-item" href="#">Dinner:</a>
+            </div>
           </div>
-          <div id="wine" class="confetti">
-            <img class="d-block w-100" src="assets/TT Images/wine.png">
+          <!-- saturday -->
+          <div class="dropdown6" id="saturday">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Saturday
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Breakfast:</a>
+                <a class="dropdown-item" href="#">Lunch:</a>
+                <a class="dropdown-item" href="#">Dinner:</a>
+            </div>
           </div>
-          <div id="squid" class="confetti">
-            <img class="d-block w-100" src="assets/TT Images/squid.png">
+          <!-- sunday -->
+          <div class="dropdown7" id="sunday">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Sunday
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Breakfast:</a>
+                <a class="dropdown-item" href="#">Lunch:</a>
+                <a class="dropdown-item" href="#">Dinner:</a>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="col-md-1"></div>
-    </div>
-
-    <br>
-    <hr>
-    
-    <div class="row" style="height: 200px">
-        <div class = "col-12 ingredientsList">
-
-        </div>
-        <div class = "col-12 instructionsList">
-
-        </div>
     </div>
 
     </article>
   </div>
       <!-- Script section -->
+      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
       <script src="TTscript.js"></script>
       <script src="script.js"></script>
 </body>
