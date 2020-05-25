@@ -20,7 +20,7 @@ h5, h2 {
 
 body{
     background-color: rgb(252, 252, 252);
-    background-image: url("TT Images/wood.jpg");
+    background-image: url("../TT Images/wood.jpg");
     background-size: cover;
     font-family: 'Arima Madurai', cursive;
  }

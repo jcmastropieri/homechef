@@ -32,7 +32,7 @@ height: 24px;
 /* Font and background */
 body{
 background-color: rgb(252, 252, 252);
-background-image: url("assets/TT Images/wood.jpg");
+background-image: url("../TT Images/wood.jpg");
 background-size: cover;
 font-family: 'Arima Madurai', cursive;
 }
