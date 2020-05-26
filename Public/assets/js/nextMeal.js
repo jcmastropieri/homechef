@@ -246,6 +246,19 @@ var chef = ""
 var ingredsP = $("<p>");
 var instructP = $("<p>");
 
+//This takes the ingredients and puts them into a list form
+function listIngredients(takenList) {
+    var useArray = takenList.split(",");
+    var newUL = $("<ul>");
+    for (i = 0; i < useArray.length; i++) {
+        var newListItem = $("<li>").text(useArray[i]);
+        newUL.append(newListItem);
+    }
+    ingredsP.append(newUL);
+};
+   
+
+
 
 //If statements determining what recipe to use corresponding to the day and time
 if (day === "Monday" && time <= 9) {
@@ -278,7 +291,7 @@ if (day === "Monday" && time <= 15 && time > 9) {
         $("#dishName").html("");
     }
     ingredsP.text(MondayLunchIngredients);
-    instructP.text(MondayLunchInstructions[0].steps);
+    listIngredients(MondayLunchIngredients);
     $(".mealText").html("&nbsp;" + MondayLunchTitle);
     $("#chefName").text("Chef: " + MondayLunchChef);
     if (MondayLunchChef === "Joe"){
@@ -327,7 +340,7 @@ if (day === "Tuesday" && time <= 9) {
         $("#dishName").html("");
     }
     ingredsP.text(TuesdayBreakfastIngredients);
-    instructP.text(TuesdayBreakfastInstructions[0].steps); 
+    listIngredients(TuesdayBreakfastIngredients);
     $(".mealText").html("&nbsp;" + TuesdayBreakfastTitle);
     $("#chefName").text("Chef: " + TuesdayBreakfastChef);
     if (TuesdayBreakfastChef === "Joe"){
@@ -350,7 +363,7 @@ if (day === "Tuesday" && time <= 15 && time > 9) {
             
         $("#dishName").html("");
     }
-    ingredsP.text(TuesdayLunchIngredients);
+    listIngredients(TuesdayLunchIngredients);
     instructP.text(TuesdayLunchInstructions[0].steps);
     $(".mealText").html("&nbsp;" + TuesdayLunchTitle);    
     $("#chefName").text("Chef: " + TuesdayLunchChef);
