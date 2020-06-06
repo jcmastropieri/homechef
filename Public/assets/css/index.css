@@ -39,7 +39,7 @@ body{
 
 .beige{
     background-color: hsla(60, 20%, 99%, 0.9);
-    border-radius: 10px;
+    border-radius: 0px 0px 10px 10px;
 }
 
 .padding25{
@@ -284,6 +284,12 @@ h2:hover {
 }
 
 /* Fonts */
+
+h1 {
+    font-family: 'Arima Madurai', cursive;
+    color: red;
+    margin: auto;
+}
 
 h2 {
     

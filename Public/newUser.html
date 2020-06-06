@@ -3,19 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>New User SignUp Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+      <link rel="stylesheet" href="assets/css/index.css">
+      <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Arima+Madurai&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
-          </div>
-        </div>
-      </nav>
+  <nav class="navbar">
+    <h1>Welcome!</h1>
+  </nav>
+
+
       <div class="container">
-        <div class="row">
+        <article class="beige padding25">  
+        <div class="row justify-content-center">
           <div class="col-md-6 col-md-offset-3">
-            <h2>New Chef for Team (This will be the team name from the table/model)</h2>
+            <h3>New Chef</h3>
             <form class="signup">
               <div class="form-group">
                 <label for="exampleInputEmail1">Email:</label>
@@ -27,18 +34,18 @@
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">Chef's Name</label>
-                <input type="password" class="form-control" id="password-input" placeholder="Your name!">
+                <input type="password" class="form-control" id="name-input" placeholder="Your name!">
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">Chef's Picture</label>
-                <input type="password" class="form-control" id="password-input" placeholder="This will be an upload form so help me god">
+                <input type="password" class="form-control" id="picture-input" placeholder="This will be an upload form so help me god">
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">
                     <h3>Chef's Dietary Restrictions:</h3>
                     <p>Are you kosher? Vegan? Any allergies? Let the other members of your household know!</p>
                 </label>
-                <input type="password" class="form-control" id="password-input" placeholder="Dietary Restrictions">
+                <input type="password" class="form-control" id="food-input" placeholder="Dietary Restrictions">
               </div>
               <div style="display: none" id="alert" class="alert alert-danger" role="alert">
                 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
