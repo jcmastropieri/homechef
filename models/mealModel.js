@@ -14,12 +14,13 @@ module.exports = function(sequelize, DataTypes) {
     })
 
     Meal.associate = function(models) {
-        Meal.belongsTo(models.User, {
+        Meal.belongsTo(models.Team, {
             foreignKey: {
                 allowNull: false
             }
         })
     }
+    return Meal;
 }
 
 
