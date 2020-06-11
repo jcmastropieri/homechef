@@ -4,8 +4,10 @@ $(document).ready(function () {
     const passwordInput = $("#password-input");
     const newChef = $("#name-input");
     const newFood = $("#food-input");
-    const newChefImage = $("#custom-file")
+    const newChefImage = $("#customFile")
    
+    console.log(newChefImage);
+    console.log(newFood);
    
     var users =[];
     var indexNum;
@@ -51,8 +53,8 @@ $(document).ready(function () {
     
         
        
-        createUserandChef(userData.email, userData.password, newChefData.name, newChefData.chefImage, newChefData.chefFood);
-        alert("Welcome Chef " + newChef.name + "!")
+        createUserandChef(userData.email, userData.password, newChefData.chefName, newChefData.chefImage, newChefData.chefFood);
+        alert("Welcome Chef " + newChefData.chefName + "!")
     });
   
   
@@ -74,7 +76,7 @@ $(document).ready(function () {
             UserId: users[indexNum].id
         }).then(function () {
                     console.log("added chef");
-                    window.location.replace("/index");
+                    // window.location.replace("/index");
             });
     }
   
