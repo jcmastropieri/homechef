@@ -22,10 +22,11 @@ module.exports = function(sequelize, DataTypes) {
 
 
   User.associate = function(models) {
+
     User.belongsTo(models.Team, {
       foreignKey: {
-        allowNull: false
-      }
+        allowNull: true
+    }
     })
 
     User.hasOne(models.Chef, {

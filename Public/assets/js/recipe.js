@@ -67,6 +67,9 @@ $(".urlBtn").on("click", function(event) {
     
     $.ajax(settings).done(function (response) {
 
+        //is this where I put in my sequelize insert into? I think so
+        //oh wait no save button, but when do I use these?
+        //Down there
         recipeTitle = response[0].name
         recipeIngredients = response[0].ingredients
         recipeInstructions = JSON.stringify(response[0].instructions)
@@ -84,8 +87,6 @@ $(".urlBtn").on("click", function(event) {
 
 
 
-
-
 //The save changes button in the modal
 $("#saveBtn").on("click", function(event) {
     event.preventDefault();
@@ -96,6 +97,8 @@ $("#saveBtn").on("click", function(event) {
 
 
     //If/then statements for modal options
+
+    //This is where we will be putting the insert into ajax call
 
     if (newDay === "Monday" && newMeal === "Breakfast") {
         localStorage.setItem("MondayBreakfast", recipeTitle);
