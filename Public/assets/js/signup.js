@@ -6,9 +6,6 @@ $(document).ready(function () {
     const newFood = $("#food-input");
     const newChefImage = $("#customFile")
    
-    console.log(newChefImage);
-    console.log(newFood);
-   
     var users =[];
     var indexNum;
   
@@ -76,7 +73,7 @@ $(document).ready(function () {
             UserId: users[indexNum].id
         }).then(function () {
                     console.log("added chef");
-                    // window.location.replace("/index");
+                    window.location.replace("/index");
             });
     }
   

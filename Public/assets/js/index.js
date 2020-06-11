@@ -1,414 +1,426 @@
-    var MondayBreakfastTitle = localStorage.getItem("MondayBreakfast");
+$(document).ready(() => {
+ 
+    $.get("/api/user_data").then((data) => {
+        if (data.TeamId === undefined) {
+            $("#noTeamModal").modal("show");
+        }
+    });
 
-    var MondayLunchTitle = localStorage.getItem("MondayLunch");
-
-    var MondayDinnerTitle = localStorage.getItem("MondayDinner");
-
-    var TuesdayBreakfastTitle = localStorage.getItem("TuesdayBreakfast");
-
-    var TuesdayLunchTitle = localStorage.getItem("TuesdayLunch");
-
-    var TuesdayDinnerTitle = localStorage.getItem("TuesdayDinner");
-
-    var WednesdayBreakfastTitle = localStorage.getItem("WednesdayBreakfast");
-
-    var WednesdayLunchTitle = localStorage.getItem("WednesdayLunch");
-
-    var WednesdayDinnerTitle = localStorage.getItem("WednesdayDinner");
-
-    var ThursdayBreakfastTitle = localStorage.getItem("ThursdayBreakfast");
-
-    var ThursdayLunchTitle = localStorage.getItem("ThursdayLunch");
-
-    var ThursdayDinnerTitle = localStorage.getItem("ThursdayDinner");
-
-    var FridayBreakfastTitle = localStorage.getItem("FridayBreakfast");
-
-    var FridayLunchTitle = localStorage.getItem("FridayLunch");
-
-    var FridayDinnerTitle = localStorage.getItem("FridayDinner");
-
-    var SaturdayBreakfastTitle = localStorage.getItem("SaturdayBreakfast");
-
-    var SaturdayLunchTitle = localStorage.getItem("SaturdayLunch");
-
-    var SaturdayDinnerTitle = localStorage.getItem("SaturdayDinner");
-
-    var SundayBreakfastTitle = localStorage.getItem("SundayBreakfast");
-
-    var SundayLunchTitle = localStorage.getItem("SundayLunch");
-
-    var SundayDinnerTitle = localStorage.getItem("SundayDinner");
-
-    console.log(MondayBreakfastTitle);
-
-
-
-    // Monday Breakfast
-    var inputMonBId = $("#inputMonB")
-    inputMonBId.attr("placeholder", MondayBreakfastTitle);
-
-
-$("#btn-MB").on("click", function(event){
-    event.preventDefault();
-    var newChoiceMonBre = $(".inputMB").val();
-    // var inputMonBId = $("#inputMonB")
-    // inputMonBId.attr("placeholder", MondayBreakfastTitle);
-
-    $(".inputMB").attr("id", "monBre");
-    localStorage.setItem("Mon-Breakfast", newChoiceMonBre);
-    
+    // data-toggle="modal" data-target ="optionsModal"
+    // "noTeamModal" = id
 });
+    
+//     var MondayBreakfastTitle = localStorage.getItem("MondayBreakfast");
+
+//     var MondayLunchTitle = localStorage.getItem("MondayLunch");
+
+//     var MondayDinnerTitle = localStorage.getItem("MondayDinner");
+
+//     var TuesdayBreakfastTitle = localStorage.getItem("TuesdayBreakfast");
+
+//     var TuesdayLunchTitle = localStorage.getItem("TuesdayLunch");
+
+//     var TuesdayDinnerTitle = localStorage.getItem("TuesdayDinner");
+
+//     var WednesdayBreakfastTitle = localStorage.getItem("WednesdayBreakfast");
+
+//     var WednesdayLunchTitle = localStorage.getItem("WednesdayLunch");
+
+//     var WednesdayDinnerTitle = localStorage.getItem("WednesdayDinner");
+
+//     var ThursdayBreakfastTitle = localStorage.getItem("ThursdayBreakfast");
+
+//     var ThursdayLunchTitle = localStorage.getItem("ThursdayLunch");
+
+//     var ThursdayDinnerTitle = localStorage.getItem("ThursdayDinner");
+
+//     var FridayBreakfastTitle = localStorage.getItem("FridayBreakfast");
+
+//     var FridayLunchTitle = localStorage.getItem("FridayLunch");
+
+//     var FridayDinnerTitle = localStorage.getItem("FridayDinner");
+
+//     var SaturdayBreakfastTitle = localStorage.getItem("SaturdayBreakfast");
+
+//     var SaturdayLunchTitle = localStorage.getItem("SaturdayLunch");
+
+//     var SaturdayDinnerTitle = localStorage.getItem("SaturdayDinner");
+
+//     var SundayBreakfastTitle = localStorage.getItem("SundayBreakfast");
+
+//     var SundayLunchTitle = localStorage.getItem("SundayLunch");
+
+//     var SundayDinnerTitle = localStorage.getItem("SundayDinner");
+
+//     console.log(MondayBreakfastTitle);
 
 
-    // Monday Lunch
 
-    var inputMonLId = $("#inputMonL")
-    inputMonLId.attr("placeholder", MondayLunchTitle);
+//     // Monday Breakfast
+//     var inputMonBId = $("#inputMonB")
+//     inputMonBId.attr("placeholder", MondayBreakfastTitle);
 
 
-$("#btn-ML").on("click", function(){
-    event.preventDefault();
-    var newChoiceMonLun = $(".inputML").val();
+// $("#btn-MB").on("click", function(event){
+//     event.preventDefault();
+//     var newChoiceMonBre = $(".inputMB").val();
+//     // var inputMonBId = $("#inputMonB")
+//     // inputMonBId.attr("placeholder", MondayBreakfastTitle);
+
+//     $(".inputMB").attr("id", "monBre");
+//     localStorage.setItem("Mon-Breakfast", newChoiceMonBre);
+    
+// });
+
+
+//     // Monday Lunch
+
+//     var inputMonLId = $("#inputMonL")
+//     inputMonLId.attr("placeholder", MondayLunchTitle);
+
+
+// $("#btn-ML").on("click", function(){
+//     event.preventDefault();
+//     var newChoiceMonLun = $(".inputML").val();
     
 
-    $("#btn-ML").attr("id", "monLun");
-    localStorage.setItem("Mon-Lunch", newChoiceMonLun);
+//     $("#btn-ML").attr("id", "monLun");
+//     localStorage.setItem("Mon-Lunch", newChoiceMonLun);
     
-});
+// });
 
 
-    // Monday Dinner
-    var inputMonDId = $("#inputMonD")
-    inputMonDId.attr("placeholder", MondayDinnerTitle);
+//     // Monday Dinner
+//     var inputMonDId = $("#inputMonD")
+//     inputMonDId.attr("placeholder", MondayDinnerTitle);
 
 
-$("#btn-MD").on("click", function(){
-    event.preventDefault();
-    var newChoiceMonDin = $(".inputMD").val();
-    
-
-    $("#btn-MD").attr("id", "monDin");
-    localStorage.setItem("Mon-Dinner", newChoiceMonDin)
-    
-});
-
-
-
-
-
-
-// Tuesday Buttons
-
-
-// Tueday Breakfast
-
-var inputTueBId = $("#inputTueB")
-inputTueBId.attr("placeholder", TuesdayBreakfastTitle)
-
-$("#btn-TB").on("click", function(){
-    event.preventDefault();
-    var newChoiceTueBre = $(".inputTB").val();
+// $("#btn-MD").on("click", function(){
+//     event.preventDefault();
+//     var newChoiceMonDin = $(".inputMD").val();
     
 
-    $("#btn-TB").attr("id", "tueBre");
-    localStorage.setItem("Tue-Breakfast", newChoiceTueBre);
-});
+//     $("#btn-MD").attr("id", "monDin");
+//     localStorage.setItem("Mon-Dinner", newChoiceMonDin)
+    
+// });
 
 
 
 
-// Tuesday Lunch
-
-var inputTueLId = $("#inputTueL")
-inputTueLId.attr("placeholder", TuesdayLunchTitle )
 
 
-$("#btn-TL").on("click", function(){
-    event.preventDefault();
-    var newChoiceTueBre = $(".inputTL").val();
+// // Tuesday Buttons
+
+
+// // Tueday Breakfast
+
+// var inputTueBId = $("#inputTueB")
+// inputTueBId.attr("placeholder", TuesdayBreakfastTitle)
+
+// $("#btn-TB").on("click", function(){
+//     event.preventDefault();
+//     var newChoiceTueBre = $(".inputTB").val();
     
 
-    $("#btn-TL").attr("id", "tueLun");
-    localStorage.setItem("Tue-Lunch", newChoiceTueBre);
-});
+//     $("#btn-TB").attr("id", "tueBre");
+//     localStorage.setItem("Tue-Breakfast", newChoiceTueBre);
+// });
 
 
 
-// Tuesday Dinner 
 
-var inputTueDId = $("#inputTueD")
-inputTueDId.attr("placeholder", TuesdayDinnerTitle )
+// // Tuesday Lunch
+
+// var inputTueLId = $("#inputTueL")
+// inputTueLId.attr("placeholder", TuesdayLunchTitle )
 
 
-$("#btn-TD").on("click", function(){
-    event.preventDefault();
-    var newChoiceTueBre = $(".inputTD").val();
+// $("#btn-TL").on("click", function(){
+//     event.preventDefault();
+//     var newChoiceTueBre = $(".inputTL").val();
     
 
-    $("#btn-TD").attr("id", "tueDin");
-    localStorage.setItem("Tue-Dinner", newChoiceTueBre);
-});
+//     $("#btn-TL").attr("id", "tueLun");
+//     localStorage.setItem("Tue-Lunch", newChoiceTueBre);
+// });
 
 
 
+// // Tuesday Dinner 
 
-// Wednesday Buttons
-
-
-// Wednesday Breakfast
-
-
-var inputWedBId = $("#inputWedB")
-inputWedBId.attr("placeholder", WednesdayBreakfastTitle )
+// var inputTueDId = $("#inputTueD")
+// inputTueDId.attr("placeholder", TuesdayDinnerTitle )
 
 
-$("#btn-WD").on("click", function(){
-    event.preventDefault();
-    var newChoiceWedBre = $(".inputWD").val();
+// $("#btn-TD").on("click", function(){
+//     event.preventDefault();
+//     var newChoiceTueBre = $(".inputTD").val();
     
 
-    $("#btn-WD").attr("id", "wedBre");
-    localStorage.setItem("Wed-Breakfast", newChoiceWedBre);
-});
+//     $("#btn-TD").attr("id", "tueDin");
+//     localStorage.setItem("Tue-Dinner", newChoiceTueBre);
+// });
 
 
-// Wednesday Lunch
-var inputWedLId = $("#inputWedL")
-inputWedLId.attr("placeholder", WednesdayLunchTitle )
 
 
-$("#btn-WL").on("click", function(){
-    event.preventDefault();
-    var newChoiceWedLun = $(".inputWL").val();
+// // Wednesday Buttons
+
+
+// // Wednesday Breakfast
+
+
+// var inputWedBId = $("#inputWedB")
+// inputWedBId.attr("placeholder", WednesdayBreakfastTitle )
+
+
+// $("#btn-WD").on("click", function(){
+//     event.preventDefault();
+//     var newChoiceWedBre = $(".inputWD").val();
     
 
-    $("#btn-WL").attr("id", "wedLun");
-    localStorage.setItem("Wed-Lunch", newChoiceWedLun);
-});
+//     $("#btn-WD").attr("id", "wedBre");
+//     localStorage.setItem("Wed-Breakfast", newChoiceWedBre);
+// });
 
 
-// Wednesday Dinner
+// // Wednesday Lunch
+// var inputWedLId = $("#inputWedL")
+// inputWedLId.attr("placeholder", WednesdayLunchTitle )
 
-var inputWedDId = $("#inputWedD")
-inputWedDId.attr("placeholder", WednesdayDinnerTitle )
 
-
-$("#btn-WD").on("click", function(){
-    event.preventDefault();
-    var newChoiceWedDin = $(".inputWD").val();
+// $("#btn-WL").on("click", function(){
+//     event.preventDefault();
+//     var newChoiceWedLun = $(".inputWL").val();
     
 
-    $("#btn-WD").attr("id", "wedLun");
-    localStorage.setItem("Wed-Dinner", newChoiceWedDin);
-});
+//     $("#btn-WL").attr("id", "wedLun");
+//     localStorage.setItem("Wed-Lunch", newChoiceWedLun);
+// });
 
 
-// Thursday buttons
+// // Wednesday Dinner
+
+// var inputWedDId = $("#inputWedD")
+// inputWedDId.attr("placeholder", WednesdayDinnerTitle )
 
 
-// Thursday Breakfast
-
-var inputThuBId = $("#inputThuB")
-inputThuBId.attr("placeholder", ThursdayBreakfastTitle )
-
-
-$("#btn-WD").on("click", function(){
-    event.preventDefault();
-    var newChoiceThuBre = $(".inputThD").val();
+// $("#btn-WD").on("click", function(){
+//     event.preventDefault();
+//     var newChoiceWedDin = $(".inputWD").val();
     
 
-    $("#btn-WD").attr("id", "wedBre");
-    localStorage.setItem("Wed-Breakfast", newChoiceThuBre);
-});
+//     $("#btn-WD").attr("id", "wedLun");
+//     localStorage.setItem("Wed-Dinner", newChoiceWedDin);
+// });
 
 
-// Thursday Lunch
-
-var inputThuLId = $("#inputThuL")
-inputThuLId.attr("placeholder", ThursdayLunchTitle )
+// // Thursday buttons
 
 
-$("#btn-ThL").on("click", function(){
-    event.preventDefault();
-    var newChoiceThuLun = $(".inputThL").val();
+// // Thursday Breakfast
+
+// var inputThuBId = $("#inputThuB")
+// inputThuBId.attr("placeholder", ThursdayBreakfastTitle )
+
+
+// $("#btn-WD").on("click", function(){
+//     event.preventDefault();
+//     var newChoiceThuBre = $(".inputThD").val();
     
 
-    $("#btn-WD").attr("id", "wedBre");
-    localStorage.setItem("Wed-Breakfast", newChoiceThuLun);
-});
+//     $("#btn-WD").attr("id", "wedBre");
+//     localStorage.setItem("Wed-Breakfast", newChoiceThuBre);
+// });
 
 
-//  Thursday Dinner 
+// // Thursday Lunch
 
-var inputThuDId = $("#inputThuD")
-inputThuDId.attr("placeholder", ThursdayDinnerTitle )
+// var inputThuLId = $("#inputThuL")
+// inputThuLId.attr("placeholder", ThursdayLunchTitle )
 
 
-$("#btn-ThD").on("click", function(){
-    event.preventDefault();
-    var newChoiceThuDin = $(".inputThD").val();
+// $("#btn-ThL").on("click", function(){
+//     event.preventDefault();
+//     var newChoiceThuLun = $(".inputThL").val();
     
 
-    $("#btn-ThD").attr("id", "thuBre");
-    localStorage.setItem("Thu-Dinner", newChoiceThuDin);
-});
+//     $("#btn-WD").attr("id", "wedBre");
+//     localStorage.setItem("Wed-Breakfast", newChoiceThuLun);
+// });
 
 
+// //  Thursday Dinner 
 
-// Friday Buttons
-
-// Friday Breakfast
-
-
-var inputFriBId = $("#inputFriB")
-inputFriBId.attr("placeholder", FridayBreakfastTitle )
+// var inputThuDId = $("#inputThuD")
+// inputThuDId.attr("placeholder", ThursdayDinnerTitle )
 
 
-$("#btn-FB").on("click", function(){
-    event.preventDefault();
-    var newChoiceFriBre = $(".inputFD").val();
+// $("#btn-ThD").on("click", function(){
+//     event.preventDefault();
+//     var newChoiceThuDin = $(".inputThD").val();
     
 
-    $("#btn-FB").attr("id", "friBre");
-    localStorage.setItem("Fri-Breakfast", newChoiceFriBre);
-});
-
-// Friday Lunch
-var inputFriLId = $("#inputFriL")
-inputFriLId.attr("placeholder", FridayLunchTitle )
+//     $("#btn-ThD").attr("id", "thuBre");
+//     localStorage.setItem("Thu-Dinner", newChoiceThuDin);
+// });
 
 
-$("#btn-FL").on("click", function(){
-    event.preventDefault();
-    var newChoiceFriLun = $(".inputFL").val();
+
+// // Friday Buttons
+
+// // Friday Breakfast
+
+
+// var inputFriBId = $("#inputFriB")
+// inputFriBId.attr("placeholder", FridayBreakfastTitle )
+
+
+// $("#btn-FB").on("click", function(){
+//     event.preventDefault();
+//     var newChoiceFriBre = $(".inputFD").val();
     
 
-    $("#btn-FL").attr("id", "friLun");
-    localStorage.setItem("Fri-Lunch", newChoiceFriLun);
-});
+//     $("#btn-FB").attr("id", "friBre");
+//     localStorage.setItem("Fri-Breakfast", newChoiceFriBre);
+// });
+
+// // Friday Lunch
+// var inputFriLId = $("#inputFriL")
+// inputFriLId.attr("placeholder", FridayLunchTitle )
 
 
-// Friday Dinner
-var inputFriDId = $("#inputFriD")
-inputFriDId.attr("placeholder", FridayDinnerTitle )
-
-
-$("#btn-FD").on("click", function(){
-    event.preventDefault();
-    var newChoiceFriDin = $(".inputFD").val();
+// $("#btn-FL").on("click", function(){
+//     event.preventDefault();
+//     var newChoiceFriLun = $(".inputFL").val();
     
 
-    $("#btn-FD").attr("id", "friDin");
-    localStorage.setItem("Fri-Dinner", newChoiceFriDin);
-});
+//     $("#btn-FL").attr("id", "friLun");
+//     localStorage.setItem("Fri-Lunch", newChoiceFriLun);
+// });
 
 
-
-// Saturday Buttons
-
-// Saturday Breakfast
-
-var inputSatBId = $("#inputSatB")
-inputSatBId.attr("placeholder", SaturdayBreakfastTitle )
+// // Friday Dinner
+// var inputFriDId = $("#inputFriD")
+// inputFriDId.attr("placeholder", FridayDinnerTitle )
 
 
-$("#btn-SaB").on("click", function(){
-    event.preventDefault();
-    var newChoiceSatBre = $(".inputSTD").val();
+// $("#btn-FD").on("click", function(){
+//     event.preventDefault();
+//     var newChoiceFriDin = $(".inputFD").val();
     
 
-    $("#btn-FB").attr("id", "friBre");
-    localStorage.setItem("Sat-Breakfast", newChoiceSatBre);
-});
-
-// Saturday Lunch
+//     $("#btn-FD").attr("id", "friDin");
+//     localStorage.setItem("Fri-Dinner", newChoiceFriDin);
+// });
 
 
-var inputSatLId = $("#inputSatL")
-inputSatLId.attr("placeholder", SaturdayLunchTitle )
+
+// // Saturday Buttons
+
+// // Saturday Breakfast
+
+// var inputSatBId = $("#inputSatB")
+// inputSatBId.attr("placeholder", SaturdayBreakfastTitle )
 
 
-$("#btn-SaL").on("click", function(){
-    event.preventDefault();
-    var newChoiceSatLun = $(".inputSTL").val();
+// $("#btn-SaB").on("click", function(){
+//     event.preventDefault();
+//     var newChoiceSatBre = $(".inputSTD").val();
     
 
-    $("#btn-SaL").attr("id", "satLun");
-    localStorage.setItem("Sat-Lunch", newChoiceSatLun);
-});
+//     $("#btn-FB").attr("id", "friBre");
+//     localStorage.setItem("Sat-Breakfast", newChoiceSatBre);
+// });
+
+// // Saturday Lunch
 
 
-// Saturday Dinner
+// var inputSatLId = $("#inputSatL")
+// inputSatLId.attr("placeholder", SaturdayLunchTitle )
 
 
-var inputSatDId = $("#inputSatD")
-inputSatDId.attr("placeholder", SaturdayDinnerTitle )
-
-
-$("#btn-SaD").on("click", function(){
-    event.preventDefault();
-    var newChoiceSatDin = $(".inputSTD").val();
+// $("#btn-SaL").on("click", function(){
+//     event.preventDefault();
+//     var newChoiceSatLun = $(".inputSTL").val();
     
 
-    $("#btn-SaD").attr("id", "satLDin");
-    localStorage.setItem("Sat-Dinner", newChoiceSatDin);
-});
+//     $("#btn-SaL").attr("id", "satLun");
+//     localStorage.setItem("Sat-Lunch", newChoiceSatLun);
+// });
 
 
-
-// Sunday Buttons
-
-
-// Sunday Breakfast
-
-var inputSunBId = $("#inputSunB")
-inputSunBId.attr("placeholder", SundayBreakfastTitle )
+// // Saturday Dinner
 
 
-$("#btn-SuB").on("click", function(){
-    event.preventDefault();
-    var newChoiceSunBre = $(".inputSUB").val();
+// var inputSatDId = $("#inputSatD")
+// inputSatDId.attr("placeholder", SaturdayDinnerTitle )
+
+
+// $("#btn-SaD").on("click", function(){
+//     event.preventDefault();
+//     var newChoiceSatDin = $(".inputSTD").val();
     
 
-    $("#btn-SuB").attr("id", "sunBre");
-    localStorage.setItem("Sun-Breakfast", newChoiceSunBre);
-});
+//     $("#btn-SaD").attr("id", "satLDin");
+//     localStorage.setItem("Sat-Dinner", newChoiceSatDin);
+// });
 
 
-// Sunday Lunch
+
+// // Sunday Buttons
 
 
-var inputSunLId = $("#inputSunL")
-inputSunLId.attr("placeholder", SundayLunchTitle )
+// // Sunday Breakfast
+
+// var inputSunBId = $("#inputSunB")
+// inputSunBId.attr("placeholder", SundayBreakfastTitle )
 
 
-$("#btn-SuL").on("click", function(){
-    event.preventDefault();
-    var newChoiceSunLun = $(".inputSUL").val();
+// $("#btn-SuB").on("click", function(){
+//     event.preventDefault();
+//     var newChoiceSunBre = $(".inputSUB").val();
     
 
-    $("#btn-SuL").attr("id", "sunLun");
-    localStorage.setItem("Sun-Lunch", newChoiceSunLun);
-});
+//     $("#btn-SuB").attr("id", "sunBre");
+//     localStorage.setItem("Sun-Breakfast", newChoiceSunBre);
+// });
 
 
-
-// Sunday Dinner
-
-var inputSunDId = $("#inputSunD")
-inputSunDId.attr("placeholder", SundayDinnerTitle )
+// // Sunday Lunch
 
 
-$("#btn-SuD").on("click", function(){
-    event.preventDefault();
-    var newChoiceSunDin = $(".inputSUD").val();
+// var inputSunLId = $("#inputSunL")
+// inputSunLId.attr("placeholder", SundayLunchTitle )
+
+
+// $("#btn-SuL").on("click", function(){
+//     event.preventDefault();
+//     var newChoiceSunLun = $(".inputSUL").val();
     
 
-    $("#btn-SuD").attr("id", "sunDin");
-    localStorage.setItem("Sun-Dinner", newChoiceSunDin);
+//     $("#btn-SuL").attr("id", "sunLun");
+//     localStorage.setItem("Sun-Lunch", newChoiceSunLun);
+// });
+
+
+
+// // Sunday Dinner
+
+// var inputSunDId = $("#inputSunD")
+// inputSunDId.attr("placeholder", SundayDinnerTitle )
+
+
+// $("#btn-SuD").on("click", function(){
+//     event.preventDefault();
+//     var newChoiceSunDin = $(".inputSUD").val();
     
-});
+
+//     $("#btn-SuD").attr("id", "sunDin");
+//     localStorage.setItem("Sun-Dinner", newChoiceSunDin);
+    
+// });
 
 
 
