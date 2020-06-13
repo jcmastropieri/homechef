@@ -47,4 +47,27 @@ console.log(teamInput.val().trim())
         $(".email-forms").append(newDiv);
         console.log("party?")
     });
+
+    //Need to do code
+    $("#sendBtn").on("click", function (event) {
+        event.preventDefault();
+        console.log("save working?");
+        var emailForm = $(".inviteEmails").val().trim();
+        var emails = {
+            email: emailForm
+        }
+        console.log(emails)
+
+        $.post("/email", emails, function() {
+            console.log("Server received our data");
+        });
+
+  
+
+
+        $("#saveBtn").attr("data-dimiss", "modal");
+        
+    })
+
+
 });
