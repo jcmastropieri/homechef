@@ -8,6 +8,11 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       unique: true,
     },
+    key: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      unique: true
+    }
     
   });
 

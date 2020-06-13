@@ -31,13 +31,13 @@ module.exports = function(app) {
   });
 
   app.get("/newTeam", function(req, res) {
-    if (req.user) {
-      res.redirect("/index");
-    }
+    // if (req.user) {
+    //   res.redirect("/index");
+    // }
     res.sendFile(path.join(__dirname, "../Public/newTeam.html"))
   })
 
-  app.get("/team.html", function(req, res) {
+  app.get("/team", function(req, res) {
     if (req.user) {
       res.redirect("/index");
     }

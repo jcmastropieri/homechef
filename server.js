@@ -28,6 +28,7 @@ app.use(passport.session());
 require("./routes/login-api-routes.js")(app);
 require("./routes/chef-api-routes.js")(app);
 require("./routes/html-routes.js")(app);
+require("./routes/team-api-routes.js")(app);
 
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync({ force: true }).then(() => {

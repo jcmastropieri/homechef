@@ -6,8 +6,11 @@ $(document).ready(() => {
         }
     });
 
-    // data-toggle="modal" data-target ="optionsModal"
-    // "noTeamModal" = id
+    $(".btn-newTeam").on("click", () => {
+        window.location.replace("/newTeam");
+    })
+
+    
 });
     
 //     var MondayBreakfastTitle = localStorage.getItem("MondayBreakfast");
