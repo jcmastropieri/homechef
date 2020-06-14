@@ -11,6 +11,13 @@ $(document).ready(function () {
   
     bsCustomFileInput.init()
 
+    $.get("/activation/:key", function(res) {
+        console.log("this is res")
+        console.log(res);
+      });
+
+    //   $.get("/api/genre/" + genreSearched, function(data) {
+
     signupForm.on("submit", event => {
         event.preventDefault();
         // let sidekickImage = $('input[name="Choice"]:checked').val();

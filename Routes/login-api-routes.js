@@ -42,6 +42,20 @@ module.exports = function(app) {
     res.redirect("/");
   });
 
+  app.put("/api/users/:thisId", (req, res) => {
+    console.log('hi')
+    console.log("this is req.body")
+    console.log(req.body);
+    console.log(req.body.TeamId)
+    db.User.update({ TeamId: req.body.TeamId}, {
+      where: {
+        id: req.params.thisId
+      }
+    }).then(function(result) {
+      return res.status(204).end();
+    })
+  })
+
   // Route for getting some data about our user to be used client side
   app.get("/api/user_data", (req, res) => {
     if (!req.user) {
@@ -52,7 +66,8 @@ module.exports = function(app) {
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
         email: req.user.email,
-        id: req.user.id
+        id: req.user.id,
+        teamId: req.user.teamId
       });
     }
   });
