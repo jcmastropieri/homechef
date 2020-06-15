@@ -6,15 +6,22 @@ $(document).ready(function () {
     const newFood = $("#food-input");
     const newChefImage = $("#customFile")
    
+    var useTeamId;
+    var activationTeamId = localStorage.getItem("TeamId");
+    console.log(activationTeamId)
+    if (activationTeamId === null) {
+        useTeamId = 0;
+    }
+    else {
+        useTeamId = parseInt(activationTeamId);
+    }
+    console.log(useTeamId)
+
     var users =[];
     var indexNum;
   
     bsCustomFileInput.init()
 
-    $.get("/activation/:key", function(res) {
-        console.log("this is res")
-        console.log(res);
-      });
 
     //   $.get("/api/genre/" + genreSearched, function(data) {
 
@@ -31,7 +38,8 @@ $(document).ready(function () {
   
         const userData = {
             email: emailInput.val().trim(),
-            password: passwordInput.val().trim()
+            password: passwordInput.val().trim(),
+            TeamId: useTeamId
         };
   
         if (!userData.email || !userData.password) {
@@ -54,21 +62,25 @@ $(document).ready(function () {
             alert("Please enter any dietary restrictions, or say 'none'")
             return;
         }
-    
         
-       
-        createUserandChef(userData.email, userData.password, newChefData.chefName, newChefData.chefImage, newChefData.chefFood);
+        if (useTeamId === 0) {
+            createUserandChef(userData.email, userData.password, newChefData.chefName, newChefData.chefImage, newChefData.chefFood);
+        }
+        else {
+            teamCreateUserandChef(userData.email, userData.password, newChefData.chefName, newChefData.chefImage, newChefData.chefFood, userData.TeamId,);
+        }
         alert("Welcome Chef " + newChefData.chefName + "!")
     });
   
   
-    async function createUserandChef(email, password, name, image, food) {
+    async function createUserandChef(email, password, name, image, food, teamId) {
         await $.post("/api/signup", {
             email: email,
             password: password
         }).then(function () {
                 console.log("new user added");
-            });  
+        });
+          
         await $.get("/api/users", function(data) {
             users = data;
             indexNum = (users.length - 1)
@@ -82,6 +94,46 @@ $(document).ready(function () {
                     console.log("added chef");
                     window.location.replace("/index");
             });
+    }
+
+    async function teamCreateUserandChef(email, password, name, image, food, teamId) {
+        await $.post("/api/signup", {
+            email: email,
+            password: password
+        }).then(function () {
+            console.log("new user added");
+        });
+             
+            
+        await $.get("/api/users", function(data) {
+            users = data;
+            console.log(users)
+            indexNum = (users.length - 1)
+
+        });
+
+
+        await $.post("/api/chef", {
+            chefName: name,
+            chefImage: image,
+            chefFoodConsiderations: food,
+            UserId: users[indexNum].id
+        }).then(function () {
+                    console.log("added chef");
+                    // window.location.replace("/index");
+            });
+
+         let id = users[indexNum].id
+        await $.ajax({
+            method: "PUT",
+            url: "/api/users/" + id,
+            data: {
+                TeamId: teamId,
+            }
+            }).then( () => {
+            console.log("id updated")
+            window.location.replace("/index");
+            })
     }
   
 });

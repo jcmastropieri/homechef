@@ -16,9 +16,13 @@ module.exports = function(app) {
           }
         }).then(function(results) {
           console.log("***This is results from activation key")
-          console.log(results)
-          res.render(results);
-          res.json(results)    
+          console.log(results[0].id)
+          res.send(`
+          <h1>party</h1>
+          <script>
+          console.log("hi") 
+          localStorage.setItem("TeamId", ${results[0].id})
+          </script>`)    
         });
         
       });

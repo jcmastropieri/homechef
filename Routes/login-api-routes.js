@@ -24,9 +24,11 @@ module.exports = function(app) {
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
   app.post("/api/signup", (req, res) => {
+    console.log(req.body)
     db.User.create({
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
+      // TeamId: req.body.TeamId
     })
       .then(() => {
         res.redirect(307, "/api/login");
@@ -42,19 +44,57 @@ module.exports = function(app) {
     res.redirect("/");
   });
 
-  app.put("/api/users/:thisId", (req, res) => {
-    console.log('hi')
-    console.log("this is req.body")
-    console.log(req.body);
-    console.log(req.body.TeamId)
+  app.put("/api/user_data", (req, res) => {
     db.User.update({ TeamId: req.body.TeamId}, {
       where: {
-        id: req.params.thisId
+        id: req.body.id
+      }
+    }).then(function(result) {
+      // app.get("/api/user_data", (req, res) => {
+      //   console.log(req.user);
+      //   if (!req.user) {
+      //     // The user is not logged in, send back an empty object
+      //     res.json({});
+      //   } else {
+      //     // Otherwise send back the user's email and id
+      //     // Sending back a password, even a hashed password, isn't a good idea
+      //     res.json({
+      //       email: req.user.email,
+      //       id: req.user.id,
+      //       TeamId: req.user.TeamId
+      //     });
+      //   }
+      // });
+
+      return res.status(204).end();
+    })
+  })
+
+  app.put("/api/users/:id", (req, res) => {
+    db.User.update({ TeamId: req.body.TeamId}, {
+      where: {
+        id: req.params.id
       }
     }).then(function(result) {
       return res.status(204).end();
     })
   })
+
+  // app.put("/api/users/:thisId", (req, res) => {
+  //   console.log('hi')
+  //   console.log("this is req.body")
+  //   console.log(req.body);
+  //   console.log(req.body.TeamId)
+  //   db.User.update({ TeamId: req.body.TeamId}, {
+  //     where: {
+  //       id: req.params.thisId
+  //     }
+  //   }).then(function(result) {
+  //     return res.status(204).end();
+  //   })
+  // })
+
+
 
   // Route for getting some data about our user to be used client side
   app.get("/api/user_data", (req, res) => {
@@ -67,7 +107,7 @@ module.exports = function(app) {
       res.json({
         email: req.user.email,
         id: req.user.id,
-        teamId: req.user.teamId
+        TeamId: req.user.TeamId
       });
     }
   });

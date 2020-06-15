@@ -51,13 +51,24 @@ console.log(teamInput.val().trim())
 
             $.ajax({
                 method: "PUT",
-                url: "/api/users/" + thisId,
+                url: "/api/user_data",
                 data: {
-                    TeamId: teams[indexNum].id
+                    TeamId: teams[indexNum].id,
+                    id: thisId
                 }
             }).then( () => {
                 console.log("id updated")
             })
+
+            // $.ajax({
+            //     method: "PUT",
+            //     url: "/api/users/" + thisId,
+            //     data: {
+            //         TeamId: teams[indexNum].id
+            //     }
+            // }).then( () => {
+            //     console.log("id updated")
+            // })
 
         }
         makeNewTeam();

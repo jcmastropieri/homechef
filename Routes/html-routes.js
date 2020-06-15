@@ -11,24 +11,24 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     // If the user already has an account send them to the members page
     if (req.user) {
-      res.redirect("/index");
+      res.redirect("/login");
     }
     res.sendFile(path.join(__dirname, "../Public/login-page.html"));
   });
 
   app.get("/newUser", function(req, res) {
     // If the user already has an account send them to the members page
-    if (req.user) {
-      res.redirect("/index");
-    }
+    // if (req.user) {
+    //   res.redirect("/index");
+    // }
     res.sendFile(path.join(__dirname, "../Public/newUser.html"));
   });
 
   app.get("/login", function(req, res) {
     // If the user already has an account send them to the members page
-    if (req.user) {
-      res.redirect("/index");
-    }
+    // if (req.user) {
+    //   res.redirect("/index");
+    // }
     res.sendFile(path.join(__dirname, "../Public/login-page.html"));
   });
 
@@ -40,24 +40,15 @@ module.exports = function(app) {
   })
 
   app.get("/team", function(req, res) {
-    if (req.user) {
-      res.redirect("/index");
-    }
+    // if (req.user) {
+    //   res.redirect("/index");
+    // }
     res.sendFile(path.join(__dirname, "../Public/team.html"));
   })
 
   // app.get("/activation/:key", function(req, res) {
-  //   db.Team.findAll({
-  //     where: {
-  //       key: req.params.key
-  //     }
-  //   }).then(function(results) {
-  //     console.log("***This is results from activation key")
-  //     console.log(results)
-  //     res.render(results);
-  //     res.sendFile(path.join(__dirname, "../Public/activation.html"));
 
-  //   });
+  //     res.sendFile(path.join(__dirname, "../Public/activation.html"));
     
   // });
 
