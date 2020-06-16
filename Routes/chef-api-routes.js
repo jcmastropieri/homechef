@@ -10,8 +10,10 @@ module.exports = function(app) {
     })
 
     app.get("/api/chef/:id", function(req, res) {
-        db.User.findAll({
-            include: [db.Chef]
+        db.Chef.findAll({
+            where: {
+                UserId: req.params.id
+            }
         }).then(function(chefGetResults) {
             res.json(chefGetResults)
         })

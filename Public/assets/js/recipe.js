@@ -4,16 +4,17 @@ var recipeIngredients = "";
 var recipeInstructions = "";
 var mealInput = "";
 var newChef = "";
-var TeamId
+var TeamId;
+var id;
 
 $.get("/api/user_data").then((data) => {
     console.log(data);
-    let userId = data.id
+    id = data.id
     $.get("api/users").then((results) => {
         for (i = 0; i < results.length; i ++) {
             console.log(results[i].id)
-            if (results[i].id === userId)
-                console.log(results[i].id + " break " + userId)
+            if (results[i].id === id)
+                console.log(results[i].id + " break " + id)
                     console.log(results[i].TeamId)
                     TeamId = results[i].TeamId
 
@@ -27,10 +28,6 @@ $(".mealBtn").on("click", function(event) {
    
 
     mealInput = $(".inputMeal").val()
-
-    console.log(mealInput);
-    // localStorage.setItem("Meal choice", mealInput)
-    
 
 
     var settings = {
@@ -82,18 +79,20 @@ $(".urlBtn").on("click", function(event) {
     
     $.ajax(settings).done(function (response) {
 
-        //is this where I put in my sequelize insert into? I think so
-        //oh wait no save button, but when do I use these?
-        //Down there
         recipeTitle = response[0].name
-        console.log(recipeTitle)
         recipeIngredients = JSON.stringify(response[0].ingredients)
-        console.log(recipeIngredients)
         recipeInstructions = JSON.stringify(response[0].instructions)
-        // recipeStringInstructions = JSON.stringify(recipeInstructions)
-        console.log(recipeInstructions)
-
         
+    });
+
+    $.get("/api/chef/" + id).then((data) => {
+        console.log(data);
+        console.log(data[0].chefName)
+        for (i = 0; i < data.length; i++) {
+            var newOption = $("<option></option>");
+            newOption.text(data[i].chefName)
+            $(".add-chef").append(newOption)
+        }
     });
 
 
