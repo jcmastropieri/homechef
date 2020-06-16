@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "cogsworth",
+    "password": "rootroot",
     "database": "mealplanner_db",
     "host": "127.0.0.1",
     "dialect": "mysql",
