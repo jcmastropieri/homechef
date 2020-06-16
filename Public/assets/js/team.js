@@ -1,7 +1,7 @@
 $(document).ready(function () {
     const fs = require("fs");
     
-    var Teamid;
+    var TeamId;
     var userId
     
 
@@ -18,7 +18,7 @@ $(document).ready(function () {
                 if (results[i].id === userId)
                     console.log(results[i].id + " break " + thisId)
                         console.log(results[i].TeamId)
-                        id = results[i].TeamId
+                        TeamId = results[i].TeamId
 
                 }
         })
@@ -26,7 +26,7 @@ $(document).ready(function () {
 
     // C:\\fakepath\\IMG_3663.jpg",
     
-    $.get("api/chef/" + Teamid, function(data) {
+    $.get("api/chef/" + TeamId, function(data) {
         console.log(data);
         for (i = 0; i < data.length; i++ ) {
            

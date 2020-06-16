@@ -44,12 +44,12 @@ module.exports = function(app) {
     res.redirect("/");
   });
 
-  app.put("/api/user_data", (req, res) => {
-    db.User.update({ TeamId: req.body.TeamId}, {
-      where: {
-        id: req.body.id
-      }
-    }).then(function(result) {
+  // app.put("/api/user_data", (req, res) => {
+  //   db.User.update({ TeamId: req.body.TeamId}, {
+  //     where: {
+  //       id: req.body.id
+  //     }
+  //   }).then(function(result) {
       // app.get("/api/user_data", (req, res) => {
       //   console.log(req.user);
       //   if (!req.user) {
@@ -66,14 +66,14 @@ module.exports = function(app) {
       //   }
       // });
 
-      return res.status(204).end();
-    })
-  })
+  //     return res.status(204).end();
+  //   })
+  // })
 
-  app.put("/api/users/:id", (req, res) => {
+  app.put("/api/users/:thisId", (req, res) => {
     db.User.update({ TeamId: req.body.TeamId}, {
       where: {
-        id: req.params.id
+        id: req.params.thisId
       }
     }).then(function(result) {
       return res.status(204).end();

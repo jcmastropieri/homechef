@@ -5,10 +5,8 @@ module.exports = function(sequelize, DataTypes) {
         //This mealSearched is what giphy uses
         mealSearched: DataTypes.STRING,
         recipeTitle: DataTypes.STRING,
-        recipeIngredients: DataTypes.STRING,
-        //This needs to tie into the Chef table, may need to be an integer
-        //Or I may need some code that checks this string to the chef id integer
-        //May not need to do that here
+        recipeIngredients: DataTypes.BLOB,
+        recipeInstructions: DataTypes.BLOB,
         mealChef: DataTypes.STRING
 
     })
