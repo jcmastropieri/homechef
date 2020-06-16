@@ -42,7 +42,72 @@ $.get("/api/meal/" + day + "/" + time, (data) => {
         whichRecipe.text(data[i].mealSearched)
         $(".choose-recipe").append(whichRecipe);
     }
+    
+
+    renderMeal(0, data);
+
+
 });
+
+
+var renderMeal = (indexNum, data) => {
+    let instructP = $("<p>");
+    let ingredients = JSON.parse(data[indexNum].recipeIngredients);
+    let instructions = JSON.parse(data[indexNum].recipeInstructions);
+    console.log(instructions)
+    dish = data[0].mealSearched
+    if (dish === null){
+            
+        $("#dishName").html("");
+    }
+    // listIngredients(ingredients);
+    instructP.text(instructions);
+    $(".mealText").html("&nbsp;" + data[indexNum].recipeTitle);
+    $("#chefName").text("Chef: " + data[indexNum].mealChef);
+    $(".chef").attr("src", "assets/TT Images/joechef.png")
+    //ajax call for getting image from name
+    $(".instructionsList").html(instructP)
+
+  
+}
+
+//this takes the ingredients and puts them into list form
+function listIngredients(takenList) {
+    let ingredsP = $("<p>");
+    var useArray = takenList.split(",");
+    var newUL = $("<ul>");
+    for (i = 0; i < useArray.length; i++) {
+        var newListItem = $("<li>").text(useArray[i]);
+        newUL.append(newListItem);
+    }
+    ingredsP.append(newUL);
+    $(".ingredientsList").html(ingredsP);
+};
+
+// if (day === "Monday" && time <= 15 && time > 9) {
+    //     dish = MondayLunchMealChoice; 
+    //     if (dish === null){
+                
+    //         $("#dishName").html("");
+    //     }
+    //     ingredsP.text(MondayLunchIngredients);
+    //     listIngredients(MondayLunchIngredients);
+    //     $(".mealText").html("&nbsp;" + MondayLunchTitle);
+    //     $("#chefName").text("Chef: " + MondayLunchChef);
+    //     if (MondayLunchChef === "Joe"){
+    //         $(".chef").attr("src", "assets/TT Images/joechef.png")
+    //     }
+    //     if (MondayLunchChef === "Anna"){
+    //         $(".chef").attr("src", "assets/TT Images/annachef.png")
+    //     }
+    //     if (MondayLunchChef === "Oleksandr"){
+    //         $(".chef").attr("src", "assets/TT Images/alexchef.png")
+    //     }
+    //     if (MondayLunchChef === "Tingting"){
+    //         $(".chef").attr("src", "assets/TT Images/ttchef.png")
+    //     }
+    
+    // }
 
 // if (day === "Monday" && time <= 9) {
 //     dish = MondayBreakfastMealChoice; 
