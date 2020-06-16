@@ -1,3 +1,4 @@
+$(document).ready(() => {
 
 var recipeTitle = "";
 var recipeIngredients = "";
@@ -280,5 +281,7 @@ $("#saveBtn").on("click", function(event) {
     // }
 
     $("#saveBtn").attr("data-dismiss", "modal")
+
+});
 
 });

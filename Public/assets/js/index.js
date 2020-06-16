@@ -3,16 +3,10 @@ $(document).ready(() => {
     var thisId;
 
     $.get("/api/user_data").then((data) => {
-        console.log(data);
         thisId = data.id
-        console.log(thisId)
         $.get("api/users").then((results) => {
-            console.log(results)
             for (i = 0; i < results.length; i ++) {
-                console.log(results[i].id)
                 if (results[i].id === thisId)
-                    console.log(results[i].id + " break " + thisId)
-                    console.log(results[i].TeamId)
                     if (results[i].TeamId === null) {
                         $("#noTeamModal").modal("show");
                     }

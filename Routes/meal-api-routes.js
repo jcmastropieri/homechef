@@ -9,6 +9,17 @@ module.exports = function(app) {
         })
     })
 
+    app.get("/api/meal/:day/:time", function(req, res) {
+        db.Meal.findAll({
+            where: {
+                mealDay: req.params.day,
+                mealTime: req.params.time
+            }
+        }).then(function(dayTime) {
+            res.json(dayTime)
+        })
+    })
+
     // app.get("/api/chef/:id", function(req, res) {
     //     db.User.findAll({
     //         include: [db.Chef]

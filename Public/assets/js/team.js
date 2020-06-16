@@ -18,7 +18,7 @@ $(document).ready(function () {
                 if (results[i].id === userId)
                     console.log(results[i].id + " break " + thisId)
                         console.log(results[i].TeamId)
-                        TeamId = results[i].TeamId
+                        id = results[i].TeamId
 
                 }
         })
@@ -26,7 +26,7 @@ $(document).ready(function () {
 
     // C:\\fakepath\\IMG_3663.jpg",
     
-    $.get("api/chef/" + TeamId, function(data) {
+    $.get("api/chef/" + Teamd, function(data) {
         console.log(data);
         for (i = 0; i < data.length; i++ ) {
            
@@ -49,6 +49,6 @@ $(document).ready(function () {
             console.log(data[i].Chef.chefName)
             console.log(data[i].Chef.chefFoodConsiderations)
         }
-    })
+    });
 
 });

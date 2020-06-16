@@ -5,8 +5,8 @@ module.exports = function(sequelize, DataTypes) {
         //This mealSearched is what giphy uses
         mealSearched: DataTypes.STRING,
         recipeTitle: DataTypes.STRING,
-        recipeIngredients: DataTypes.BLOB,
-        recipeInstructions: DataTypes.BLOB,
+        recipeIngredients: DataTypes.TEXT,
+        recipeInstructions: DataTypes.TEXT,
         mealChef: DataTypes.STRING
 
     })
