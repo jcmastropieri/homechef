@@ -16,6 +16,7 @@ module.exports = function(app) {
                 mealTime: req.params.time
             }
         }).then(function(dayTime) {
+            console.log("sending?")
             res.json(dayTime)
         })
     })

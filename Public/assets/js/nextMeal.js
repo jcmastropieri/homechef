@@ -21,15 +21,17 @@ var time = parseFloat(hourString);
 var dish = ""
 var chef = ""
 
+
 if (time <= 9) {
     time = "Breakfast";
 }
-if(time <= 15 && time > 9) {
+if (time <= 15 && time > 9) {
     time = "Lunch";
 }
-else {
+if (time > 15) {
     time = "Dinner";
 }
+console.log(day)
 console.log(time)
 
 
@@ -54,19 +56,53 @@ var renderMeal = (indexNum, data) => {
     let instructP = $("<p>");
     let ingredients = JSON.parse(data[indexNum].recipeIngredients);
     let instructions = JSON.parse(data[indexNum].recipeInstructions);
-    console.log(instructions)
-    dish = data[0].mealSearched
-    if (dish === null){
-            
-        $("#dishName").html("");
-    }
-    // listIngredients(ingredients);
-    instructP.text(instructions);
+    dish = data[indexNum].mealSearched
+    $("#dishName").html("Click to Change the Gif");
+    listIngredients(ingredients);
+    instructP.text(instructions[0].steps);
+    $("#dateEl").html(new Date().toLocaleDateString());
     $(".mealText").html("&nbsp;" + data[indexNum].recipeTitle);
     $("#chefName").text("Chef: " + data[indexNum].mealChef);
     $(".chef").attr("src", "assets/TT Images/joechef.png")
     //ajax call for getting image from name
     $(".instructionsList").html(instructP)
+
+    // //This section determines the giphy image using the dish variable defined above. It makes it so that a new gif is picked everytime you click on the image
+var i = 0;
+function showGif(){
+  var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=uvWJQHwlb6r71Lm84qIcFqwpq2o3xdKX&q=" + dish;
+  $.ajax({
+  url: queryURL,
+  method: "GET"
+  }).then(function(response) {
+  var imageUrl = response.data[i].images.fixed_height.url;
+        var gif = $("<img>");
+        gif.attr("src", imageUrl);
+        gif.attr("alt", "Meal Image");
+        gif.attr("class", "giphy");
+        $("#images").html(gif);
+  });
+}
+
+showGif();
+
+$("#images").on("click", function(event){
+    event.preventDefault();
+
+    var newI = i++;
+    var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=uvWJQHwlb6r71Lm84qIcFqwpq2o3xdKX&q=" + dish;
+  
+    $.ajax({
+  url: queryURL,
+  method: "GET"
+  }).then(function(response) {
+  var imageUrl = response.data[newI].images.fixed_height.url;
+        var gif = $("<img>");
+        gif.attr("src", imageUrl);
+        gif.attr("alt", "Meal Image");
+        $("#images").html(gif);
+  });
+});
 
   
 }
@@ -74,10 +110,10 @@ var renderMeal = (indexNum, data) => {
 //this takes the ingredients and puts them into list form
 function listIngredients(takenList) {
     let ingredsP = $("<p>");
-    var useArray = takenList.split(",");
+    // var useArray = takenList.split(",");
     var newUL = $("<ul>");
-    for (i = 0; i < useArray.length; i++) {
-        var newListItem = $("<li>").text(useArray[i]);
+    for (i = 0; i < takenList.length; i++) {
+        var newListItem = $("<li>").text(takenList[i]);
         newUL.append(newListItem);
     }
     ingredsP.append(newUL);
@@ -891,7 +927,8 @@ function listIngredients(takenList) {
 // $(".instructionsList").html(instructP)
 
 // //This section determines the giphy image using the dish variable defined above. It makes it so that a new gif is picked everytime you click on the image
-// var i = 0;   
+// var i = 0;
+// console.log(dish)   
 // function showGif(){
 //   var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=uvWJQHwlb6r71Lm84qIcFqwpq2o3xdKX&q=" + dish;
 //   $.ajax({
