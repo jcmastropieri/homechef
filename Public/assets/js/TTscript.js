@@ -7,6 +7,7 @@ $(document).ready(function() {
   var rat = $("#rat");
 
 // ----------------------------- settings ---------------------------------
+// This brings up log-in forms on log-in page
   $("#who").on("click", function(event){
     event.preventDefault();
     $("#selectavatar").attr("style", "display: block");

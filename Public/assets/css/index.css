@@ -21,6 +21,26 @@
     } 
 }
 
+/* For Log-in page */
+a {
+    color: hsla(9, 78%, 55%, 1);
+}
+
+a:hover {
+    color: hsla(9, 78%, 55%, 1);
+}
+
+.btn-login {
+    background-color: hsla(9, 78%, 55%, 1) !important;
+    border-color: hsla(9, 78%, 55%, 1) !important;;
+}
+
+.btn-login:hover {
+    background-color: hsla(9, 78%, 55%, 1);
+    border-color: hsla(9, 78%, 55%, 1);
+}
+
+/* *********** */
 
 body{
     background-color: rgb(252, 252, 252);

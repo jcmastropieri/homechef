@@ -7,7 +7,6 @@ const db = require("../models");
 passport.use(
   new LocalStrategy(
     // Our user will sign in using an email, rather than a "username"
-    
     {
       usernameField: "email"
     },
@@ -17,7 +16,6 @@ passport.use(
             where: {
                 email: email
             }
-      
       }).then(dbUser => {
         // If there's no user with the given email
         if (!dbUser) {
