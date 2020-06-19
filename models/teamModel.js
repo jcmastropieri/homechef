@@ -10,6 +10,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     key: {
       type: DataTypes.INTEGER,
+      max: 15,
       allowNull: false,
       unique: true
     }

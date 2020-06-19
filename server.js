@@ -4,6 +4,10 @@ const session = require("express-session");
 // Requiring passport as we've configured it
 const passport = require("./config/passport");
 
+const fileUpload = require('express-fileupload');
+
+
+
 
 // Setting up port and requiring models for syncing
 const PORT = process.env.PORT || 8080;
@@ -23,6 +27,23 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(fileUpload())
+
+app.post('/upload', function(req, res) {
+  if (!req.files || Object.keys(req.files).length === 0) {
+      return res.status(400).send('No files were uploaded.');
+    }
+  console.log(req.files.chef); // the uploaded file object
+  let chefFile = req.files.chef
+  chefFile.mv("./Public/assets/TT Images/chefs/" + chefFile, function(err) {
+      if (err) {
+          return res.status(500).send(err);
+      }
+      else {
+          res.send("File uploaded!");
+      }
+  })
+});
 
 // Requiring our routes
 require("./routes/login-api-routes.js")(app);

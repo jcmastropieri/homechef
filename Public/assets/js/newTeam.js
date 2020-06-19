@@ -4,6 +4,7 @@ const teamInput = $("#teamname-input");
 
 var thisId;
 var thisTeamId;
+var indexNum
 
 var teams = [];
 
@@ -23,11 +24,18 @@ console.log(teamInput.val().trim())
     $(".signup").on("submit", function(event) {
         event.preventDefault();
 
-        console.log(teamInput.val().trim())
+        const arrayKey = []
+
+        for (i = 0; i < 5; i ++) {
+            let randomKey = Math.floor(Math.random() * 10);
+            arrayKey.push(randomKey)
+        }
+        const finalKey = arrayKey.join("");
+    
 
         const newTeam = {
             newUsername: teamInput.val().trim(),
-            key: 12345
+            key: finalKey
         }
 
         async function makeNewTeam () {
@@ -79,22 +87,25 @@ console.log(teamInput.val().trim())
     $(".addEmailForm").on("click", function (event) {
         event.preventDefault();
         var newDiv = $("<div></div>")
-        newDiv.html(' <label for = "inviteEmail" id = "emailHelp"></label> <input type = "email" class="form-control inviteEmails" id="InputEmail1" aria-describedby="#emailHelp"> ');
+        newDiv.html(' <label for = "#team-email" id = "emailHelp"></label> <input type = "email" class="form-control inviteEmails" id="InputEmail1" aria-describedby="#emailHelp"> ');
         $(".email-forms").append(newDiv);
         console.log("party?")
     });
 
     //Need to do code
-    $("#sendBtn").on("click", function (event) {
-        event.preventDefault();
-        console.log("save working?");
-        var emailForm = $(".inviteEmails").val().trim();
-        var emails = {
-            email: emailForm
-        }
-        console.log(emails)
+    $("#send-btn").on("click", function (event) {
 
-        $.post("/email", emails, function() {
+        event.preventDefault();
+
+        console.log("save working?");
+        var emailForm = $("#team-email").val().trim();
+        var nodemail = {
+            email: emailForm,
+            key: teams[indexNum].key
+        }
+        console.log(nodemail)
+
+        $.post("/email", nodemail, function() {
             console.log("Server received our data");
         });
 

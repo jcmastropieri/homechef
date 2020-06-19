@@ -3,18 +3,21 @@ const nodemailer = require("nodemailer")
 var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'anna.grace.conover@gmail.com',
-        pass: 'cogsworth'
+        user: 'cookingtogetherofficial@gmail.com',
+        pass: 'HomeChef2020'
     }
 });
 module.exports = function(app) {
     app.post("/email", (req,res) => {   
         console.log("Data ", req.body);
-        const { email } = req.body
-        console.log(email);
+        let sendEmail = req.body.email
+        let sendKey = req.body.key
+        
+        // console.log(sendKey);
+        console.log(sendEmail);
 
 
-        sendMail(email, function(err, data) {
+        sendMail(sendEmail, sendKey, function(err, data) {
             if (err) {
             res.status(500).json({message: "Internal error"});
             }
@@ -26,12 +29,12 @@ module.exports = function(app) {
     });
 }
 
-const sendMail = (email, cb) => {
+const sendMail = (email, key, cb) => {
     var mailOptions = {
         from: 'anna.grace.conover@gmail.com',
         to: email,
         subject: "A friend is inviting you to their team!",
-        html: "Make your own Self-Care Sidekick! <img src='image url here'/> <h1>Click here to sign-up!</h1><p><a href = http://personal-pet.herokuapp.com/>Self-Care Sidekick</a></p>",
+        html: "Cooking Together makes Meal Planning easy! <img src='image url here'/> <h1>Click here to sign-up!</h1><p><a href = 'http://localhost:8080/activation/" + key + "'>Join here!</a></p>",
     };
     
     transporter.sendMail(mailOptions, function(error, data) {

@@ -29,7 +29,6 @@ $(document).ready(function () {
         event.preventDefault();
         // let sidekickImage = $('input[name="Choice"]:checked').val();
   
-  
         const newChefData = {
             chefName: newChef.val().trim(),
             chefImage: newChefImage.val().trim(),
@@ -92,7 +91,8 @@ $(document).ready(function () {
             UserId: users[indexNum].id
         }).then(function () {
                     console.log("added chef");
-                    window.location.replace("/index");
+                    localStorage.clear();
+                    window.location.replace("/members");
             });
     }
 
@@ -132,7 +132,8 @@ $(document).ready(function () {
             }
             }).then( () => {
             console.log("id updated")
-            window.location.replace("/index");
+            localStorage.clear();
+            window.location.replace("/members");
             })
     }
   

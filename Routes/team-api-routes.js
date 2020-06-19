@@ -18,10 +18,10 @@ module.exports = function(app) {
           console.log("***This is results from activation key")
           console.log(results[0].id)
           res.send(`
-          <h1>party</h1>
           <script>
           console.log("hi") 
           localStorage.setItem("TeamId", ${results[0].id})
+          window.location.replace("/newUser");
           </script>`)    
         });
         
