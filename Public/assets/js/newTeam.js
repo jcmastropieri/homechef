@@ -104,8 +104,13 @@ console.log(teamInput.val().trim())
   
         $("#team-email").val("");
 
-        // $("#saveBtn").attr("data-dimiss", "modal");
+        alert("Your email has been sent!");
+
         
+    });
+
+    $("#later-btn").on("click", function() {
+        window.location.replace("/members");
     })
 
 

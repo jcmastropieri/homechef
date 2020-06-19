@@ -10,13 +10,24 @@ $(document).ready(function () {
     renderTeamMembers();
 
     async function renderTeamMembers() {
-        await $.get("/api/user_data").then((data) => {
+
+        await $.get("/api/user_data").then( data => {
             console.log(data);
-            id = data.id
-            console.log(id)
+            let thisId = data.id
+            $.get("api/users").then( results => {
+                console.log(results)
+                for (i = 0; i < results.length; i ++) {
+                    if (results[i].id === thisId)
+                    console.log("hi?")
+                    console.log(results[i].id + "break" + thisId);
+                        id = results[i].TeamId
+                        console.log(id);
+                    }
+            })
         });
 
-        $.get("/api/chef/" + id, function(data) {
+
+        $.get("/api/chef/" + id).then( data => {
             // if (data[1].chef.chefName === undefined) {
             console.log(data);
                 for (i = 0; i < data.length; i++ ) {
@@ -55,7 +66,33 @@ $(document).ready(function () {
         });
 
 
+
     }
+
+    $("#send-btn").on("click", function (event) {
+
+        event.preventDefault();
+
+        console.log("save working?");
+        var emailForm = $("#team-email").val().trim();
+        console.log(emailForm)
+        var nodemail = {
+            email: emailForm,
+            key: teams[indexNum].key
+        }
+        console.log(nodemail)
+
+        $.post("/email", nodemail, function() {
+            console.log("Server received our data");
+        });
+
+  
+        $("#team-email").val("");
+
+        alert("Your email has been sent!");
+
+        
+    });
 
     // $.get("/api/user_data").then((data) => {
     //     console.log(data);

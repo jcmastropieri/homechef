@@ -5,19 +5,18 @@ var recipeIngredients = "";
 var recipeInstructions = "";
 var mealInput = "";
 var newChef = "";
-var TeamId;
+// var TeamId;
 var id;
 
-$.get("/api/user_data").then((data) => {
+$.get("/api/user_data").then( data => {
     console.log(data);
-    id = data.id
-    $.get("api/users").then((results) => {
+    let ThisId = data.id
+    $.get("api/users").then( results => {
         for (i = 0; i < results.length; i ++) {
-            console.log(results[i].id)
-            if (results[i].id === id)
+            if (results[i].id === ThisId)
                 console.log(results[i].id + " break " + id)
                     console.log(results[i].TeamId)
-                    TeamId = results[i].TeamId
+                    id = results[i].TeamId
 
             }
     })
@@ -86,12 +85,11 @@ $(".urlBtn").on("click", function(event) {
         
     });
 
-    $.get("/api/chef/" + id).then((data) => {
+    $.get("/api/chef/" + id).then( data => {
         console.log(data);
-        console.log(data[0].chefName)
         for (i = 0; i < data.length; i++) {
             var newOption = $("<option></option>");
-            newOption.text(data[i].chefName)
+            newOption.text(data[i].Chef.chefName)
             $(".add-chef").append(newOption)
         }
     });
@@ -121,7 +119,7 @@ $("#saveBtn").on("click", function(event) {
         recipeIngredients: recipeIngredients,
         recipeInstructions: recipeInstructions,
         mealChef: newChef,
-        TeamId: TeamId
+        TeamId: id
     }).then( () => {
         console.log("meal added")
     });

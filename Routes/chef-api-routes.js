@@ -13,9 +13,10 @@ module.exports = function(app) {
     })
 
     app.get("/api/chef/:id", function(req, res) {
-        db.Chef.findAll({
+        db.User.findAll({
+            include: [db.Chef],
             where: {
-                UserId: req.params.id
+                TeamId: req.params.id
             }
         }).then(function(chefGetResults) {
             res.json(chefGetResults)

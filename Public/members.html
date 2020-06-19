@@ -22,13 +22,13 @@
     <nav class="navbar">
       <ul class="nav justify-content-center mx-auto">
           <li class="nav-item">
-            <a class="nav-link active" href="index.html">Home</a>
+            <a class="nav-link active" href="/members">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="recipe.html">Recipes</a>
+            <a class="nav-link" href="/recipe">Recipes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="grocerylist.html">Grocery</a>
+            <a class="nav-link" href="/grocerylist">Grocery</a>
           </li>
           <li class="nav-item">
               <a class="nav-link" href="#" id="settings">Settings</a>
@@ -322,15 +322,9 @@
   <div class="row">
     <div class="col-12">
 
-        <div class="modal fade" id="noTeamModal" tabindex="-1" role="dialog" aria-labelledby="optionsModalLabel" aria-hidden="true">
+        <div class="modal fade" id="noTeamModal" tabindex="-1" role="dialog" data-backdrop = "static" data-keyboard = "false" aria-labelledby="optionsModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Please choose options for this meal!</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                         <span aria-hidden="true">&times;</span>
-                         </button>
-                    </div>
                     <div class="modal-body">
                         It looks like you don't have a Team! Let's make one so we can get started!
                         <p><a href = "/newTeam">Make a new Team!</a></p>

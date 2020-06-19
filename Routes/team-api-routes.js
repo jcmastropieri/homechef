@@ -4,7 +4,7 @@ module.exports = function(app) {
     app.get("/api/team", function(req, res) {
         db.Team.findAll({
             // include: [db.Team]
-        }).then( (getTeamResults) => {
+        }).then( getTeamResults => {
             res.json(getTeamResults)
         })
     });
@@ -26,6 +26,16 @@ module.exports = function(app) {
         });
         
       });
+
+    app.get("/api/team/:id", function(req, res) {
+      db.Team.findAll({
+        where: {
+          id = req.params.id
+        }
+      }).then( idTeamResults => {
+        res.json(idTeamResults)
+      });
+    })
 
     app.post("/api/team", function(req, res) {
         db.Team.create(req.body).then(function(teamCreateResult) {

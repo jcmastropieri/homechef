@@ -41,23 +41,31 @@
 <!-- Grocery Container -->
 
     <h1 style='text-align:center'>Grocery List</h1>
-        <div id="listContainer" class="container">
+        <div id="list" class="container">
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Add your ingredient(s) or needed groceries here!" id="groceryInput" aria-describedby="button-addon2">
                 <div class="input-group-append">
                 <button class="btn btn-outline-secondary" type="button" id="submitGrocery">Add My Item!</button>
+                <form>
+                    <input type="submit" value="Clear List"/>
+                </form>
+                <button type = "button" class = "btn btn-primary" id = "meal-list"> Get List From Meals!</button>
+
+                <div id = "listContainer">
+
+                </div>
             </div>
         </div>
 
 <!-- Clear List Button -->
 
-<form>
+<!-- <form>
 <input type="submit" value="Clear List"/>
-</form>
+</form> -->
 
 <!-- Create List Button -->
 
-<button type = "button" class = "btn btn-primary" id = "meal-list"> Get List From Meals!</button>
+<!-- <button type = "button" class = "btn btn-primary" id = "meal-list"> Get List From Meals!</button> -->
 
 <!-- script -->
 

@@ -5,11 +5,22 @@ module.exports = function(sequelize, DataTypes) {
         //This mealSearched is what giphy uses
         mealSearched: DataTypes.STRING,
         recipeTitle: DataTypes.STRING,
-        recipeIngredients: DataTypes.TEXT,
-        recipeInstructions: DataTypes.TEXT,
+        recipeIngredients: { 
+            type: DataTypes.STRING, 
+            validate: {
+                max: [6,000]
+            }
+        },
+    
+        recipeInstructions: {
+            type: DataTypes.STRING,
+            validate: {
+                max: [6,000]
+            }
+        },
         mealChef: DataTypes.STRING
 
-    })
+    });
 
     Meal.associate = function(models) {
         Meal.belongsTo(models.Team, {

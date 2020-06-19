@@ -9,6 +9,7 @@ $(document).ready(() => {
                 if (results[i].id === thisId)
                     if (results[i].TeamId === null) {
                         $("#noTeamModal").modal("show");
+                        $("#noTeamModal").modal({backdrop: "static", keyboard: false})
                     }
                     else {
                         console.log(results[i].TeamId)
