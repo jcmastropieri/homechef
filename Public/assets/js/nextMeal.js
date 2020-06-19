@@ -20,6 +20,7 @@ var time = parseFloat(hourString);
 //these lines define the variables necessary later
 var dish = ""
 var chef = ""
+var id;
 
 
 if (time <= 9) {
@@ -35,7 +36,18 @@ console.log(day)
 console.log(time)
 
 
-$.get("/api/meal/" + day + "/" + time, (data) => {
+$.get("/api/user_data").then((data) => {
+    let thisId = data.id
+    $.get("api/users").then((results) => {
+        for (i = 0; i < results.length; i ++) {
+            if (results[i].id === thisId)
+                id = results[i].TeamId
+        }
+    })
+});
+
+
+$.get("/api/meal/" + day + "/" + time + "/" + id, (data) => {
     console.log(data)
     for (i = 0; i < data.length; i++) {
         //will need to make delete button here

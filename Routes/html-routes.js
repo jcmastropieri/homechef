@@ -52,6 +52,13 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../Public/team.html"));
   })
 
+  app.get("/grocerylist", function(req, res) {
+    if (!req.user) {
+      res.redirect("/login");
+    }
+    res.sendFile(path.join(__dirname, "../Public/grocerylist.html"));
+  })
+
   app.get("/photo", function(req, res) {
     res.sendFile(path.join(__dirname, "../Public/addPhoto.html"));
   })

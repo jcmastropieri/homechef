@@ -9,25 +9,28 @@ module.exports = function(app) {
         })
     })
 
-    app.get("/api/meal/:day/:time", function(req, res) {
+    app.get("/api/meal/:id", function(req,res) {
+        db.Meal.findAll({
+            where: {
+                TeamId: req.params.id
+            }
+        }).then(function(teamIdResults) {
+            res.json(teamIdResults);
+        }) 
+    });
+
+    app.get("/api/meal/:day/:time/:id", function(req, res) {
         db.Meal.findAll({
             where: {
                 mealDay: req.params.day,
-                mealTime: req.params.time
+                mealTime: req.params.time,
+                TeamId: req.params.id
             }
-        }).then(function(dayTime) {
-            console.log("sending?")
-            res.json(dayTime)
+        }).then(function(dayTimeResults) {
+            res.json(dayTimeResults)
         })
-    })
+    });
 
-    // app.get("/api/chef/:id", function(req, res) {
-    //     db.User.findAll({
-    //         include: [db.Chef]
-    //     }).then(function(chefGetResults) {
-    //         res.json(chefGetResults)
-    //     })
-    // })
     
     app.post("/api/meal", function(req, res) {
         db.Meal.create(req.body).then(function(mealCreateResult) {
