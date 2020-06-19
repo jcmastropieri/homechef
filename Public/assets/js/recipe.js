@@ -55,7 +55,7 @@ $(".mealBtn").on("click", function(event) {
         }
     });
 
-
+    $(".inputURL").val("");
 
 });
 
@@ -87,6 +87,7 @@ $(".urlBtn").on("click", function(event) {
 
     $.get("/api/chef/" + id).then( data => {
         console.log(data);
+        $(".add-chef").html("");
         for (i = 0; i < data.length; i++) {
             var newOption = $("<option></option>");
             newOption.text(data[i].Chef.chefName)

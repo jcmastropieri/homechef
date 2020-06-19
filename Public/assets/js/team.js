@@ -20,7 +20,7 @@ $(document).ready(function () {
                     if (results[i].id === thisId)
                     console.log("hi?")
                     console.log(results[i].id + "break" + thisId);
-                        id = results[i].TeamId
+                        id = results[i].UserId
                         console.log(id);
                     }
             })

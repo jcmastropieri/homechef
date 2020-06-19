@@ -30,7 +30,7 @@ module.exports = function(app) {
     app.get("/api/team/:id", function(req, res) {
       db.Team.findAll({
         where: {
-          id = req.params.id
+          id: req.params.id
         }
       }).then( idTeamResults => {
         res.json(idTeamResults)

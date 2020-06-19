@@ -12,6 +12,11 @@ $(document).ready(function() {
     event.preventDefault();
     $("#selectavatar").attr("style", "display: block");
     rat.attr("style", "display: none");
+
+      $('html, body').animate({
+        scrollTop: $("nav").offset().top
+    }, 2000);
+    
   }); 
 
 

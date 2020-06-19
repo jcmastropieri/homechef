@@ -6,18 +6,13 @@ module.exports = function(sequelize, DataTypes) {
         mealSearched: DataTypes.STRING,
         recipeTitle: DataTypes.STRING,
         recipeIngredients: { 
-            type: DataTypes.STRING, 
-            validate: {
-                max: [6,000]
-            }
+            type: DataTypes.STRING(5012), 
+            // validate: {
+            //     max: 6000
+            // }
         },
     
-        recipeInstructions: {
-            type: DataTypes.STRING,
-            validate: {
-                max: [6,000]
-            }
-        },
+        recipeInstructions: DataTypes.STRING(5012),
         mealChef: DataTypes.STRING
 
     });
