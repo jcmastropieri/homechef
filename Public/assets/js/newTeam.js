@@ -83,22 +83,14 @@ console.log(teamInput.val().trim())
     })
    
  
-
-    $(".addEmailForm").on("click", function (event) {
-        event.preventDefault();
-        var newDiv = $("<div></div>")
-        newDiv.html(' <label for = "#team-email" id = "emailHelp"></label> <input type = "email" class="form-control inviteEmails" id="InputEmail1" aria-describedby="#emailHelp"> ');
-        $(".email-forms").append(newDiv);
-        console.log("party?")
-    });
-
-    //Need to do code
+  
     $("#send-btn").on("click", function (event) {
 
         event.preventDefault();
 
         console.log("save working?");
         var emailForm = $("#team-email").val().trim();
+        console.log(emailForm)
         var nodemail = {
             email: emailForm,
             key: teams[indexNum].key
@@ -110,9 +102,9 @@ console.log(teamInput.val().trim())
         });
 
   
+        $("#team-email").val("");
 
-
-        $("#saveBtn").attr("data-dimiss", "modal");
+        // $("#saveBtn").attr("data-dimiss", "modal");
         
     })
 

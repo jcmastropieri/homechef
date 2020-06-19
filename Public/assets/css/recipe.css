@@ -93,3 +93,7 @@ a {
 a:hover {
     color: hsla(0, 50%, 49%, 1);
 }
+
+.your-chefs {
+    border-color: solid 2px #28a745;
+}
