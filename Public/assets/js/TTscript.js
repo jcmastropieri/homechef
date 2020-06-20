@@ -13,8 +13,8 @@ $(document).ready(function() {
     $("#selectavatar").attr("style", "display: block");
     rat.attr("style", "display: none");
 
-      $('html, body').animate({
-        scrollTop: $("nav").offset().top
+    $('html, body').animate({
+      scrollTop: $("#fooddiv").offset().top
     }, 2000);
     
   }); 
