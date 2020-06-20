@@ -112,6 +112,10 @@ $("#saveBtn").on("click", function(event) {
     var newMeal = $("#mealSelector").val();
     newChef = $("#chefSelector").val();
 
+    if (mealInput === "") {
+        mealInput = "cooking";
+    }
+
     $.post("/api/meal", {
         mealDay: newDay,
         mealTime: newMeal,

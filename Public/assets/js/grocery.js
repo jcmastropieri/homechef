@@ -42,8 +42,10 @@ $(document).ready(function() {
             console.log(data.length);
             for (i = 0; i < data.length; i++) {
                 console.log("should run each time")
-                let ingredients = JSON.parse(data[i].recipeIngredients);
+                var ingredients = JSON.parse(data[i].recipeIngredients);
+                console.log(ingredients)
                 listIngredients(ingredients)
+                console.log(i);
             }
         })
     })
@@ -51,9 +53,9 @@ $(document).ready(function() {
     function listIngredients(takenList) {
         console.log("running");
 
-        for (i = 0; i < takenList.length; i++) {
+        for (j = 0; j < takenList.length; j++) {
             $("#listContainer").prepend(`<div class="row mt-1 mb-1"><input type="checkbox" class="ml-3 mr-3 checkbox">
-        <label for="vehicle3"><h3 class="grocery-list">${takenList[i]}</h3></label><button id="someString" class="btn btn-success ml-29 btn-sm complete">Complete</button>
+        <label for="vehicle3"><h3 class="grocery-list">${takenList[j]}</h3></label><button id="someString" class="btn btn-success ml-29 btn-sm complete">Complete</button>
         <button id="someString2" class="ml-3 btn btn-danger btn-sm delete">Delete</button></div>`)
         }
     };

@@ -4,14 +4,8 @@ module.exports = function(sequelize, DataTypes) {
         mealTime: DataTypes.STRING,
         //This mealSearched is what giphy uses
         mealSearched: DataTypes.STRING,
-        recipeTitle: DataTypes.STRING,
-        recipeIngredients: { 
-            type: DataTypes.STRING(5012), 
-            // validate: {
-            //     max: 6000
-            // }
-        },
-    
+        recipeTitle: DataTypes.STRING(5000),
+        recipeIngredients: DataTypes.STRING(5012), 
         recipeInstructions: DataTypes.STRING(5012),
         mealChef: DataTypes.STRING
 
@@ -29,4 +23,3 @@ module.exports = function(sequelize, DataTypes) {
 
 
 
-//Need a chef table somewhere. So that may be the second log-in, when you create it and all

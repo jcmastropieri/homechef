@@ -88,7 +88,6 @@ console.log(teamInput.val().trim())
 
         event.preventDefault();
 
-        console.log("save working?");
         var emailForm = $("#team-email").val().trim();
         console.log(emailForm)
         var nodemail = {

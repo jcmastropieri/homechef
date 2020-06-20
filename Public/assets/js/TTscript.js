@@ -15,7 +15,7 @@ $(document).ready(function() {
 
     $('html, body').animate({
       scrollTop: $("#fooddiv").offset().top
-    }, 2000);
+    }, 1000);
     
   }); 
 
