@@ -14,7 +14,7 @@ $(document).ready(function () {
         await $.get("/api/user_data").then( data => {
             console.log(data);
             let thisId = data.id
-            $.get("api/users").then( results => {
+            $.get("/api/users").then( results => {
                 console.log(results)
                 for (i = 0; i < results.length; i ++) {
                     if (results[i].id === thisId)

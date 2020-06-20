@@ -35,33 +35,62 @@ if (time > 15) {
 console.log(day)
 console.log(time)
 
+async function startMeal() {
+    console.log("running?");
+    await $.get("/api/user_data").then((data) => {
+        var thisId = data.id
+        console.log(thisId)
+        $.get("/api/users").then( results => {
+            console.log("this is apiusers results")
+            console.log(results)
+            for (i = 0; i < results.length; i ++) {
+                if (results[i].id === thisId) {
+                    console.log(results[i].id + "break" + thisId)
+                    id = results[i].TeamId
+                    console.log("this is id");
+                    console.log(id)
+                }
+            }
+            console.log("/api/meal/" + day + "/" + time + "/" + id)
+            $.get("/api/meal/" + day + "/" + time + "/" + id).then( data => {
+                console.log(data)
+                for (i = 0; i < data.length; i++) {
+                    //will need to make delete button here
+                    //maybe do an if statement in recipes where if no mealchoice, ask for meal choice name"
+                    var whichRecipe = $("<button></button>")
+                    whichRecipe.text(data[i].recipeTitle)
+                    $(".choose-recipe").append(whichRecipe);
+                }
+            
+        
+                renderMeal(0, data);
+        
+        
+            });
+        });
+    });
 
-$.get("/api/user_data").then((data) => {
-    let thisId = data.id
-    $.get("api/users").then((results) => {
-        for (i = 0; i < results.length; i ++) {
-            if (results[i].id === thisId)
-                id = results[i].TeamId
-        }
-    })
-});
+    console.log(id);
 
-
-$.get("/api/meal/" + day + "/" + time + "/" + id, (data) => {
-    console.log(data)
-    for (i = 0; i < data.length; i++) {
-        //will need to make delete button here
-        //maybe do an if statement in recipes where if no mealchoice, ask for meal choice name"
-        var whichRecipe = $("<button></button>")
-        whichRecipe.text(data[i].mealSearched)
-        $(".choose-recipe").append(whichRecipe);
-    }
+    // $.get("/api/meal/" + day + "/" + time + "/" + id).then( data => {
+    //     console.log(data)
+    //     for (i = 0; i < data.length; i++) {
+    //         //will need to make delete button here
+    //         //maybe do an if statement in recipes where if no mealchoice, ask for meal choice name"
+    //         var whichRecipe = $("<button></button>")
+    //         whichRecipe.text(data[i].mealSearched)
+    //         $(".choose-recipe").append(whichRecipe);
+    //     }
     
 
-    renderMeal(0, data);
+    //     renderMeal(0, data);
 
 
-});
+    // });
+
+}
+
+startMeal();
 
 
 var renderMeal = (indexNum, data) => {
@@ -80,8 +109,8 @@ var renderMeal = (indexNum, data) => {
     $(".instructionsList").html(instructP)
 
     // //This section determines the giphy image using the dish variable defined above. It makes it so that a new gif is picked everytime you click on the image
-var i = 0;
-function showGif(){
+    var i = 0;
+    function showGif(){
   var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=uvWJQHwlb6r71Lm84qIcFqwpq2o3xdKX&q=" + dish;
   $.ajax({
   url: queryURL,
@@ -97,6 +126,9 @@ function showGif(){
 }
 
 showGif();
+
+  
+}
 
 $("#images").on("click", function(event){
     event.preventDefault();
@@ -116,9 +148,6 @@ $("#images").on("click", function(event){
   });
 });
 
-  
-}
-
 //this takes the ingredients and puts them into list form
 function listIngredients(takenList) {
     let ingredsP = $("<p>");
@@ -131,6 +160,11 @@ function listIngredients(takenList) {
     ingredsP.append(newUL);
     $(".ingredientsList").html(ingredsP);
 };
+
+$("button").on("click", function(event) {
+    let party = this.val();
+    console.log(party);
+})
 
 // if (day === "Monday" && time <= 15 && time > 9) {
     //     dish = MondayLunchMealChoice; 
