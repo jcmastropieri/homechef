@@ -53,13 +53,13 @@ $(document).ready( () => {
         });
     }
 
-    $(".view-button").on("click", function(event) {
-        console.log("hi")
-        var test = this.val()
-        console.log("hi")
-        console.log(test)
-        console.log(this.value);
-    })
+    // $(".view-button").on("click", function(event) {
+    //     console.log("hi")
+    //     var test = this.val()
+    //     console.log("hi")
+    //     console.log(test)
+    //     console.log(this.value);
+    // })
 
 
 
@@ -72,18 +72,23 @@ $(document).ready( () => {
                 var viewButton = $("<button></button>");
                 deleteButton.text("delete");
 
-                deleteButton.addClass("delete-button");
+                deleteButton.addClass("delete-button btn btn-primary");
                 viewButton.text("View Recipe");
-                viewButton.addClass("view-button");
+                viewButton.addClass("view-button btn btn-primary");
 
                 viewButton.attr("value", data[i].id);
                 deleteButton.attr("value", data[i].id);   
 
+                // viewButton.attr("type", "button");
+                // deleteButton.attr("type", "button");  
+
                 pText.text(data[i].recipeTitle);
-                pText.append(viewButton);
-                pText.append(deleteButton);
+                // pText.append(viewButton);
+                // pText.append(deleteButton);
                 // $("Monday-Breakfast").append(whichRecipe)
                 $("." + day + "-" + time).append(pText);
+                $("." + day + "-" + time).append(viewButton);
+                $("." + day + "-" + time).append(deleteButton);
                     
             }
         });
@@ -113,5 +118,17 @@ $(document).ready( () => {
         ingredsP.append(newUL);
         $(".ingredients-list").html(ingredsP);
     };
+
+    $(document).on("click", ".view-button", function(event) {
+        console.log("hi")
+        var test = this.val()
+        console.log("hi")
+        console.log(test)
+        console.log(this.value);
+    });
+
+    (".delete-button").on("click", function(event) {
+        console.log("maybe")
+    });
 
 });
