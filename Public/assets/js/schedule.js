@@ -63,11 +63,19 @@ async function startMeal() {
             for (i = 0; i < data.length; i++) {
                     //will need to make delete button here
                     //maybe do an if statement in recipes where if no mealchoice, ask for meal choice name"
-                var whichRecipe = $("<button></button>")
-                whichRecipe.text(data[i].recipeTitle)
+                var pText = $("<p></p>")
+                var deleteButton = $("<button></button>");
+                var viewButton = $("<button></button>");
+                deleteButton.text("delete");
+                deleteButton.addClass("delete-button");
+                viewButton.text("View Recipe");
+                deleteButton.addClass("view-button");
+                pText.text(data[i].recipeTitle);
+                pText.append(viewButton);
+                pText.append(deleteButton);
                 console.log(day + "break" + time)
-                $("Monday-Breakfast").append(whichRecipe)
-                $("." + day + "-" + time).append(whichRecipe);
+                // $("Monday-Breakfast").append(whichRecipe)
+                $("." + day + "-" + time).append(pText);
                     
             }
         });

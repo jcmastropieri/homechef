@@ -26,6 +26,7 @@ $(".mealBtn").on("click", function(event) {
 
     event.preventDefault();
    
+    $(".recipes").html("");
 
     mealInput = $(".inputMeal").val()
 
