@@ -128,6 +128,7 @@ $("#saveBtn").on("click", function(event) {
         TeamId: id
     }).then( () => {
         console.log("meal added")
+        alert("Your meal was added!");
     });
 
 
