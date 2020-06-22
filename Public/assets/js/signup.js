@@ -1,34 +1,42 @@
 $(document).ready(function () {
+
+    //Here we grab our necessary input from newUser.html
     const signupForm = $(".signup");
     const emailInput = $("#email-input");
     const passwordInput = $("#password-input");
     const newChef = $("#name-input");
     const newFood = $("#food-input");
     const newChefImage = $("#customFile")
+
+    //necessary global variables
+    var users =[];
+    var indexNum;
    
+    //This checks to see if someone got to this page through the activation link
     var useTeamId;
     var activationTeamId = localStorage.getItem("TeamId");
-    console.log(activationTeamId)
+
+
+    //If they did get to here by the activation link, then we will run the function that assigns a TeamId
+    //Otherwise, we run the function that leaves the TeamId blank for now
     if (activationTeamId === null) {
         useTeamId = 0;
     }
     else {
         useTeamId = parseInt(activationTeamId);
     }
-    console.log(useTeamId)
+    
 
-    var users =[];
-    var indexNum;
-  
+    //This allows us to pick a file from our computer
     bsCustomFileInput.init()
 
 
-    //   $.get("/api/genre/" + genreSearched, function(data) {
-
+   
+    //When the form is submitted
     signupForm.on("submit", event => {
         event.preventDefault();
-        // let sidekickImage = $('input[name="Choice"]:checked').val();
-  
+        
+        //Create new objects to use in our parameters
         const newChefData = {
             chefName: newChef.val().trim(),
             chefImage: newChefImage.val().trim(),
@@ -41,6 +49,7 @@ $(document).ready(function () {
             TeamId: useTeamId
         };
   
+        //Section for checks to make sure all information was entered
         if (!userData.email || !userData.password) {
             alert("Please enter a valid username and password.")
             return;
@@ -62,6 +71,7 @@ $(document).ready(function () {
             return;
         }
         
+        //This is where we specify which predefined function to use, depending on whether or not an activation link was sent
         if (useTeamId === 0) {
             createUserandChef(userData.email, userData.password, newChefData.chefName, newChefData.chefImage, newChefData.chefFood);
         }
@@ -72,18 +82,22 @@ $(document).ready(function () {
     });
   
   
-    async function createUserandChef(email, password, name, image, food, teamId) {
+    async function createUserandChef(email, password, name, image, food) {
+        //creates a new user
         await $.post("/api/signup", {
             email: email,
             password: password
         }).then(function () {
                 console.log("new user added");
         });
-          
+        
+        //grabs the current user's index number
         await $.get("/api/users", function(data) {
             users = data;
             indexNum = (users.length - 1)
         });
+        //creates a new chef and assigns them the match userid
+        //then clears local storage and goes to the member page
         $.post("/api/chef", {
             chefName: name,
             chefImage: image,
@@ -97,6 +111,7 @@ $(document).ready(function () {
     }
 
     async function teamCreateUserandChef(email, password, name, image, food, teamId) {
+        //Creates a new user
         await $.post("/api/signup", {
             email: email,
             password: password
@@ -104,7 +119,7 @@ $(document).ready(function () {
             console.log("new user added");
         });
              
-            
+        //Grabs the current user's index number
         await $.get("/api/users", function(data) {
             users = data;
             console.log(users)
@@ -112,7 +127,8 @@ $(document).ready(function () {
 
         });
 
-
+        //Creates a new chef and assigns them the match userid
+        
         await $.post("/api/chef", {
             chefName: name,
             chefImage: image,
@@ -120,10 +136,12 @@ $(document).ready(function () {
             UserId: users[indexNum].id
         }).then(function () {
                     console.log("added chef");
-                    // window.location.replace("/index");
             });
 
          let id = users[indexNum].id
+
+        //Updates the TeamId to the created user to match the activation link TeamId
+        //then clears local storage and goes to the member page 
         await $.ajax({
             method: "PUT",
             url: "/api/users/" + id,

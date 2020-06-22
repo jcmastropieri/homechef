@@ -1,0 +1,33 @@
+h2 {
+    font-family: 'Henny Penny', cursive;
+    font-size: 35px;
+    margin-bottom: 20px;
+    padding-bottom: 30px;
+    padding-top: 10px;
+    border-bottom: 2px dashed hsla(9, 78%, 55%, 1);
+}
+
+h3 {
+    padding-top: 30px;
+}
+
+.btn-signup {
+    margin-bottom: 10px;
+    background-color: hsla(9, 78%, 55%, 1) !important;
+    border-color: hsla(9, 78%, 55%, 1) !important;
+    margin-bottom: 20px;
+    margin-top: 15px;
+}
+
+.btn-signup:hover {
+    background-color: hsla(9, 78%, 55%, 1);
+    border-color: hsla(9, 78%, 55%, 1);
+}
+
+a {
+    color: hsla(9, 78%, 55%, 1);
+}
+
+a:hover {
+    color: hsla(9, 78%, 55%, 1);
+}
