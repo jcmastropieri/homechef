@@ -19,6 +19,16 @@ module.exports = function(app) {
         }) 
     });
 
+    app.get("/api/meal/schedule/:user", function(req,res) {
+        db.Meal.findAll({
+            where: {
+                id: req.params.user
+            }
+        }).then(function(userIdResults) {
+            res.json(userIdResults);
+        })
+    });
+
     app.get("/api/meal/:day/:time/:id", function(req, res) {
         db.Meal.findAll({
             where: {
@@ -27,16 +37,25 @@ module.exports = function(app) {
                 TeamId: req.params.id
             }
         }).then(function(dayTimeResults) {
-            res.json(dayTimeResults)
+            res.json(dayTimeResults);
         })
     });
 
     
     app.post("/api/meal", function(req, res) {
         db.Meal.create(req.body).then(function(mealCreateResult) {
-            res.json(mealCreateResult)
+            res.json(mealCreateResult);
         })
     })
+
+    app.post("api/meal/schedule/:user", function(req, res) {
+        db.Meal.destroy({
+            where: {
+                id: req.params.user
+            }
+        });
+        
+    });
 
     
 }

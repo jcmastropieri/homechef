@@ -7,7 +7,6 @@ $(document).ready( () => {
         var id;
         await $.get("/api/user_data").then((data) => {
             var thisId = data.id
-            console.log(thisId)
             $.get("/api/users").then( results => {
                 console.log("this is apiusers results")
                 console.log(results)
@@ -65,7 +64,7 @@ $(document).ready( () => {
 
     const renderScheduleMeals = (day, time, id) => {
         $.get("/api/meal/" + day + "/" + time + "/" + id).then( data => {
-            console.log(data)
+
             for (i = 0; i < data.length; i++) {
                 var pText = $("<p></p>")
                 var deleteButton = $("<button></button>");
@@ -95,14 +94,14 @@ $(document).ready( () => {
 
     }
 
-    var renderMeal = (indexNum, data) => {
+    var renderMeal = (data) => {
         let instructP = $("<p>");
-        let ingredients = JSON.parse(data[indexNum].recipeIngredients);
-        let instructions = JSON.parse(data[indexNum].recipeInstructions);
+        let ingredients = JSON.parse(data[0].recipeIngredients);
+        let instructions = JSON.parse(data[0].recipeInstructions);
         listIngredients(ingredients);
         instructP.text(instructions[0].steps);
-        $(".meal-text").html("&nbsp;" + data[indexNum].recipeTitle);
-        $(".chef-name").text("Chef: " + data[indexNum].mealChef);
+        $(".meal-text").html("&nbsp;" + data[0].recipeTitle);
+        $(".chef-name").text("Chef: " + data[0].mealChef);
         $(".instructions-list").html(instructP)
     
     }
@@ -121,14 +120,30 @@ $(document).ready( () => {
 
     $(document).on("click", ".view-button", function(event) {
         console.log("hi")
-        var test = this.val()
-        console.log("hi")
-        console.log(test)
-        console.log(this.value);
+        var user = this.value
+        console.log(user)
+        $.get("/api/meal/schedule/" + user).then( data => {
+            console.log(data)
+            renderMeal(data);
+
+        })
     });
 
-    (".delete-button").on("click", function(event) {
-        console.log("maybe")
+    $(document).on("click", ".delete-button", function(event) {
+        console.log("bye")
+        var user = this.value
+        console.log("second run")
+        console.log(thisid)
+        $.ajax("/api/cats/schedule" + user, {
+            type: "DELETE"
+          }).then(function() {
+              console.log("deleted meal" + user);
+              location.reload();
+            }
+          );
+        
     });
+
+   
 
 });
