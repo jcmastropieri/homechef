@@ -5,6 +5,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
       <link rel="stylesheet" href="assets/css/index.css">
+      <link rel="stylesheet" type="text/css" href="assets/css/navbar.css" />
       <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css2?family=Arima+Madurai&display=swap" rel="stylesheet">
@@ -19,27 +20,31 @@
 <body>
 
     <!-- Navbar -->
+
     <nav class="navbar">
-      <ul class="nav justify-content-center mx-auto">
+      <div class="cooking-together">CookingTogether</div>
+      <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link active" href="/members">Home</a>
+            <a class="nav-link mx-auto" href="/members">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/recipe">Recipes</a>
+            <a class="nav-link active mx-auto" href="/recipe">Recipes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/grocerylist">Grocery</a>
+              <a class="nav-link active mx-auto" href="/team">Table</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="#" id="settings">Settings</a>
-            </li>
-        </ul>
-        <div class="col-md" id="navbarSupportedContent">
-          <a class="navbar-brand" href="/logout">
-              <button class="btn">Logout</button>
-          </a>
-      </div>
-      </nav>
+              <a class="nav-link active mx-auto" href="/schedule">Schedule</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mx-auto" href="/grocerylist">Grocery List</a>
+          </li>
+      </ul>
+     
+      
+      <a href="/logout">Logout</a>
+          
+  </nav>
 
   <div class="container">
     <article class="beige padding25">  

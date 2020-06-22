@@ -12,6 +12,10 @@
     color: hsla(9, 78%, 55%, 1);
 }
 
+.nav {
+    margin-right: 70px;
+}
+
 
 .nav-link:hover{
     color: hsla(0, 50%, 49%, 1);
@@ -20,6 +24,15 @@
 
 .nav-item.nav-link{
     text-align: center;
+    margin-right: 50px !important;
+
+}
+
+.cooking-together {
+    color: #28a745;
+    border-bottom: 2px dashed hsla(0, 50%, 49%, 1);
+    font-size: 30px;
+    margin-left: 10px;
 }
 
 .logout {
