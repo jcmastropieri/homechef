@@ -52,14 +52,6 @@ $(document).ready( () => {
         });
     }
 
-    // $(".view-button").on("click", function(event) {
-    //     console.log("hi")
-    //     var test = this.val()
-    //     console.log("hi")
-    //     console.log(test)
-    //     console.log(this.value);
-    // })
-
 
 
     const renderScheduleMeals = (day, time, id) => {
@@ -78,13 +70,9 @@ $(document).ready( () => {
                 viewButton.attr("value", data[i].id);
                 deleteButton.attr("value", data[i].id);   
 
-                // viewButton.attr("type", "button");
-                // deleteButton.attr("type", "button");  
 
                 pText.text(data[i].recipeTitle);
-                // pText.append(viewButton);
-                // pText.append(deleteButton);
-                // $("Monday-Breakfast").append(whichRecipe)
+                
                 $("." + day + "-" + time).append(pText);
                 $("." + day + "-" + time).append(viewButton);
                 $("." + day + "-" + time).append(deleteButton);
@@ -94,7 +82,7 @@ $(document).ready( () => {
 
     }
 
-    var renderMeal = (data) => {
+    var renderViewMeal = (data) => {
         let instructP = $("<p>");
         let ingredients = JSON.parse(data[0].recipeIngredients);
         let instructions = JSON.parse(data[0].recipeInstructions);
@@ -124,7 +112,7 @@ $(document).ready( () => {
         console.log(user)
         $.get("/api/meal/schedule/" + user).then( data => {
             console.log(data)
-            renderMeal(data);
+            renderViewMeal(data);
 
         })
     });
@@ -133,7 +121,7 @@ $(document).ready( () => {
         console.log("bye")
         var user = this.value
         console.log("second run")
-        console.log(thisid)
+        console.log(user)
         $.ajax("/api/cats/schedule" + user, {
             type: "DELETE"
           }).then(function() {
