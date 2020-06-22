@@ -31,7 +31,7 @@ body{
     padding-top:50px;
     margin-bottom: 50px;
 }
-
+/* 
 .navbar{
     background-color:hsla(60, 20%, 99%, 0.9);
     border-radius: 0px 0px 10px 10px;
@@ -54,7 +54,7 @@ body{
 
 .nav-item.nav-link{
     text-align: center;
-}
+} */
 
 h4 {
     color: hsla(9, 78%, 55%, 1);
