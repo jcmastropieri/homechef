@@ -36,5 +36,18 @@ $(document).ready(function() {
           console.log(err);
         });
     }
+
+    // This brings up log-in form on log-in page
+    $("#who").on("click", function(event){
+      event.preventDefault();
+      $("#login-page").attr("style", "display: block");
+  
+      $('html, body').animate({
+        scrollTop: $("#fooddiv").offset().top
+      }, 1000);
+      
+    }); 
+
+    
   });
   

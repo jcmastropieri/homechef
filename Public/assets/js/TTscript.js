@@ -7,17 +7,6 @@ $(document).ready(function() {
   var rat = $("#rat");
 
 // ----------------------------- settings ---------------------------------
-// This brings up log-in forms on log-in page
-  $("#who").on("click", function(event){
-    event.preventDefault();
-    $("#selectavatar").attr("style", "display: block");
-    rat.attr("style", "display: none");
-
-    $('html, body').animate({
-      scrollTop: $("#fooddiv").offset().top
-    }, 1000);
-    
-  }); 
 
 
   $("#selectmickey").on("click", function(event){
@@ -69,19 +58,19 @@ $(document).ready(function() {
 // ------------------ scroll up and down ---------------------
 
 
-  $("#collapse").on("click", function(event){
-    event.preventDefault();
-    $('html, body').animate({
-      scrollTop: $("nav").offset().top
-  }, 2000);
-  });
+  // $("#collapse").on("click", function(event){
+  //   event.preventDefault();
+  //   $('html, body').animate({
+  //     scrollTop: $("nav").offset().top
+  // }, 2000);
+  // });
 
-  $("#settings").on("click", function(event){
-    event.preventDefault();
-    $('html, body').animate({
-      scrollTop: $("#fooddiv").offset().top
-  }, 2000);
-  });
+  // $("#settings").on("click", function(event){
+  //   event.preventDefault();
+  //   $('html, body').animate({
+  //     scrollTop: $("#fooddiv").offset().top
+  // }, 2000);
+  // });
 
 // ---------------- Anna's local storage -------------------------
 

@@ -1,7 +1,4 @@
 
-/* #rat {
-    transform: rotate(45deg);
-} */
 
 @keyframes rotate {
     from {
@@ -21,26 +18,6 @@
     } 
 }
 
-/* For Log-in page */
-a {
-    color: hsla(9, 78%, 55%, 1);
-}
-
-a:hover {
-    color: hsla(9, 78%, 55%, 1);
-}
-
-.btn-login {
-    background-color: hsla(9, 78%, 55%, 1) !important;
-    border-color: hsla(9, 78%, 55%, 1) !important;;
-}
-
-.btn-login:hover {
-    background-color: hsla(9, 78%, 55%, 1);
-    border-color: hsla(9, 78%, 55%, 1);
-}
-
-/* *********** */
 
 body{
     background-color: rgb(252, 252, 252);
@@ -68,87 +45,10 @@ hr{
     margin-top: 10px;
 }
 
-#rat{
-    height: 70px;
-    position:fixed; 
-    /* animation: run 10s infinite; */
-    top:5px; 
-    left: 0px;
-    z-index:10;
-    display: none;
-}
 
-#fooddiv {
-    position:relative;
-}
 
-#who {
-    position: absolute; 
-    top:50%; 
-    right: 0; 
-    padding: 5px 10px 5px 10px;
-    text-align: center;
-}
 
-#selectavatar {
-    height: 1000px;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    display: none;
-}
 
-#selectmickey {
-    height: 120px;
-    position:absolute;
-    top:30%; 
-    left: 20%;
-}
-
-#selectmickey:hover {
-    height: 200px;
-    top: 25%;
-    left: 18%;
-}
-
-#selectrat {
-    height: 120px;
-    position:absolute;
-    top:31%; 
-    left: 34%;
-}
-
-#selectrat:hover {
-    height: 200px;
-    top: 26%;
-    left: 30%;
-}
-
-#selectbob {
-    height: 120px;
-    position:absolute;
-    top:30%; 
-    left: 53%;
-}
-
-#selectbob:hover {
-    height: 200px;
-    top: 25%;
-    left: 48%;
-}
-
-#selectgustav {
-    height: 120px;
-    position:absolute;
-    top:30%; 
-    left: 75%;
-}
-
-#selectgustav:hover {
-    height: 200px;
-    top: 25%;
-    left: 73%;
-}
 
 h2:hover {
     font-size: 33px;
@@ -324,3 +224,4 @@ input {
 h3.mealText{
     font-family: 'Caveat', cursive;
 }
+

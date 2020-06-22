@@ -1,0 +1,49 @@
+#fooddiv {
+    position:relative;
+}
+
+#who {
+    position: absolute; 
+    top:50%; 
+    right: 0; 
+    padding: 5px 10px 5px 10px;
+    text-align: center;
+}
+
+#login-page {
+    height: 1000px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    display: none;
+}
+
+h1.welcome{
+    font-family: 'Caveat', cursive !important;
+    color: black !important;
+}
+
+h1.welcome:hover {
+    font-size: 44px !important;
+    color: hsla(9, 78%, 55%, 1) !important;
+}
+
+.btn-login {
+    margin-bottom: 10px;
+    background-color: hsla(9, 78%, 55%, 1) !important;
+    border-color: hsla(9, 78%, 55%, 1) !important;
+}
+
+.btn-login:hover {
+    background-color: hsla(9, 78%, 55%, 1);
+    border-color: hsla(9, 78%, 55%, 1);
+}
+
+a {
+    color: hsla(9, 78%, 55%, 1);
+}
+
+a:hover {
+    color: hsla(9, 78%, 55%, 1);
+}
+
