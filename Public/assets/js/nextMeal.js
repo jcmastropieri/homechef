@@ -51,7 +51,7 @@ async function startMeal() {
                     console.log(id)
                 }
             }
-            console.log("/api/meal/" + day + "/" + time + "/" + id)
+            dropdownRender(id);
             $.get("/api/meal/" + day + "/" + time + "/" + id).then( data => {
                 console.log(data)
                 for (i = 0; i < data.length; i++) {
@@ -64,7 +64,7 @@ async function startMeal() {
                     $(".choose-recipe").append(whichRecipe);
                 }
             
-        
+                
                 renderMeal(data);
         
         
@@ -85,7 +85,7 @@ var renderMeal = data => {
     let instructP = $("<p>");
     let ingredients = JSON.parse(data[0].recipeIngredients);
     let instructions = JSON.parse(data[0].recipeInstructions);
-    dish = data[indexNum].mealSearched
+    dish = data[0].mealSearched
     $("#dishName").html("Click to Change the Gif");
     listIngredients(ingredients);
     instructP.text(instructions[0].steps);
@@ -160,6 +160,48 @@ $(document).on("click", ".which-recipe", function(event) {
 
     })
 });
+
+const renderScheduleMeals = (day, time, id) => {
+    $.get("/api/meal/" + day + "/" + time + "/" + id).then( data => {
+
+        for (i = 0; i < data.length; i++) {
+            var pText = $("<p></p>")
+            pText.text(data[i].recipeTitle);
+            $("." + day + "-" + time).append(pText);
+        }
+    });
+
+}
+
+const dropdownRender =  id => {
+renderScheduleMeals("Monday", "Breakfast", id);
+renderScheduleMeals("Monday", "Lunch", id);
+renderScheduleMeals("Monday", "Dinner", id);
+
+renderScheduleMeals("Tuesday", "Breakfast", id);
+renderScheduleMeals("Tuesday", "Lunch", id);
+renderScheduleMeals("Tuesday", "Dinner", id);
+
+renderScheduleMeals("Wednesday", "Breakfast", id);
+renderScheduleMeals("Wednesday", "Lunch", id);
+renderScheduleMeals("Wednesday", "Dinner", id);
+
+renderScheduleMeals("Thursday", "Breakfast", id);
+renderScheduleMeals("Thursday", "Lunch", id);
+renderScheduleMeals("Thursday", "Dinner", id);
+
+renderScheduleMeals("Friday", "Breakfast", id);
+renderScheduleMeals("Friday", "Lunch", id);
+renderScheduleMeals("Friday", "Dinner", id);
+
+renderScheduleMeals("Saturday", "Breakfast", id);
+renderScheduleMeals("Saturday", "Lunch", id);
+renderScheduleMeals("Saturday", "Dinner", id);
+
+renderScheduleMeals("Sunday", "Breakfast", id);
+renderScheduleMeals("Sunday", "Lunch", id);
+renderScheduleMeals("Sunday", "Dinner", id);
+}
 
 
 // if (day === "Monday" && time <= 15 && time > 9) {
