@@ -59,11 +59,13 @@ async function startMeal() {
                     //maybe do an if statement in recipes where if no mealchoice, ask for meal choice name"
                     var whichRecipe = $("<button></button>")
                     whichRecipe.text(data[i].recipeTitle)
+                    whichRecipe.attr("value", data[i].id)
+                    whichRecipe.addClass("btn btn-primary which-recipe")
                     $(".choose-recipe").append(whichRecipe);
                 }
             
         
-                renderMeal(0, data);
+                renderMeal(data);
         
         
             });
@@ -72,38 +74,24 @@ async function startMeal() {
 
     console.log(id);
 
-    // $.get("/api/meal/" + day + "/" + time + "/" + id).then( data => {
-    //     console.log(data)
-    //     for (i = 0; i < data.length; i++) {
-    //         //will need to make delete button here
-    //         //maybe do an if statement in recipes where if no mealchoice, ask for meal choice name"
-    //         var whichRecipe = $("<button></button>")
-    //         whichRecipe.text(data[i].mealSearched)
-    //         $(".choose-recipe").append(whichRecipe);
-    //     }
-    
-
-    //     renderMeal(0, data);
-
-
-    // });
-
 }
+
+
 
 startMeal();
 
 
-var renderMeal = (indexNum, data) => {
+var renderMeal = data => {
     let instructP = $("<p>");
-    let ingredients = JSON.parse(data[indexNum].recipeIngredients);
-    let instructions = JSON.parse(data[indexNum].recipeInstructions);
+    let ingredients = JSON.parse(data[0].recipeIngredients);
+    let instructions = JSON.parse(data[0].recipeInstructions);
     dish = data[indexNum].mealSearched
     $("#dishName").html("Click to Change the Gif");
     listIngredients(ingredients);
     instructP.text(instructions[0].steps);
     $("#dateEl").html(new Date().toLocaleDateString());
-    $(".mealText").html("&nbsp;" + data[indexNum].recipeTitle);
-    $("#chefName").text("Chef: " + data[indexNum].mealChef);
+    $(".mealText").html("&nbsp;" + data[0].recipeTitle);
+    $("#chefName").text("Chef: " + data[0].mealChef);
     $(".chef").attr("src", "assets/TT Images/joechef.png")
     //ajax call for getting image from name
     $(".instructionsList").html(instructP)
@@ -161,10 +149,18 @@ function listIngredients(takenList) {
     $(".ingredientsList").html(ingredsP);
 };
 
-$("button").on("click", function(event) {
-    let party = this.val();
-    console.log(party);
-})
+$(document).on("click", ".which-recipe", function(event) {
+    console.log("hi")
+    var user = this.value
+    console.log(user)
+    $.get("/api/meal/schedule/" + user).then( data => {
+        console.log(data)
+        renderMeal(data);
+        
+
+    })
+});
+
 
 // if (day === "Monday" && time <= 15 && time > 9) {
     //     dish = MondayLunchMealChoice; 
