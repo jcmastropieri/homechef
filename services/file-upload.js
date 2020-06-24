@@ -5,8 +5,8 @@ const multerS3 = require('multer-s3');
 
 aws.config.setPromisesDependency();
 aws.config.update({
-    secretAccessKey: "P103ug9OrgELvUJizdffhWUk2z9s7Ww9GIf9mN4/",
-    accessKeyId: "AKIAJTSHO5DG7FAMVMRQ",
+    secretAccessKey: "/",
+    accessKeyId: ManagedBlockchain,
     region: "ca-central-1"
 });
 
