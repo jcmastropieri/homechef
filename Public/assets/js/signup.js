@@ -98,6 +98,13 @@ $(document).ready(function () {
         });
         //creates a new chef and assigns them the match userid
         //then clears local storage and goes to the member page
+
+        $.post("/image-upload", {
+            file: image
+        }).then(function () {
+            console.log("added image?");
+        })
+
         $.post("/api/chef", {
             chefName: name,
             chefImage: image,
@@ -106,8 +113,9 @@ $(document).ready(function () {
         }).then(function () {
                     console.log("added chef");
                     localStorage.clear();
-                    window.location.replace("/members");
-            });
+                    // window.location.replace("/members");
+        });
+
     }
 
     async function teamCreateUserandChef(email, password, name, image, food, teamId) {
@@ -122,7 +130,6 @@ $(document).ready(function () {
         //Grabs the current user's index number
         await $.get("/api/users", function(data) {
             users = data;
-            console.log(users)
             indexNum = (users.length - 1)
 
         });

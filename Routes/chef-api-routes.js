@@ -1,5 +1,8 @@
 var db = require("../models");
+const upload = require("../services/file-upload")
 // const fileUpload = require('express-fileupload')
+
+const singleUpload = upload.single("image");
 
 module.exports = function(app) {
 
@@ -26,6 +29,14 @@ module.exports = function(app) {
     app.post("/api/chef", function(req, res) {
         db.Chef.create(req.body).then(function(chefCreateResult) {
             res.json(chefCreateResult)
+        })
+    })
+
+    app.post("/image-upload", function(req, res) {
+        singleUpload(req, res, function(err) {
+            console.log("****THIS IS REQ ****")
+            console.log(req.body.file)
+            return res.json({"imageUrl": req.body.file})
         })
     })
 

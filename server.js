@@ -3,6 +3,9 @@ const express = require("express");
 const session = require("express-session");
 // Requiring passport as we've configured it
 const passport = require("./config/passport");
+// const aws = require("aws-sdk");
+// const multer = require("multer");
+// const multerS3 = require("multer-s3");
 
 const fileUpload = require('express-fileupload');
 
@@ -19,7 +22,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("Public"));
 
-// git didn't track my changes!
+// const s3 = new aws.s3({});
+
+
 
 // We need to use sessions to keep track of our user's login status
 app.use(
@@ -29,21 +34,34 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(fileUpload())
 
-app.post('/upload', function(req, res) {
-  if (!req.files || Object.keys(req.files).length === 0) {
-      return res.status(400).send('No files were uploaded.');
-    }
-  console.log(req.files.chef); // the uploaded file object
-  let chefFile = req.files.chef
-  chefFile.mv("./Public/assets/TT Images/chefs/" + chefFile, function(err) {
-      if (err) {
-          return res.status(500).send(err);
-      }
-      else {
-          res.send("File uploaded!");
-      }
-  })
-});
+// var upload = multer({
+//   storage: multerS3({
+//     s3: s3,
+//     bucket: "cookingtogether",
+//     metadata: function (req, file, cb) {
+//       cb(null, {fieldName: file.fieldname});
+//     },
+//     key: function (req, file, cb) {
+//       cb(null, Date.now().toString())
+//     }
+//   })
+// })
+
+// app.post('/upload', function(req, res) {
+//   if (!req.files || Object.keys(req.files).length === 0) {
+//       return res.status(400).send('No files were uploaded.');
+//     }
+//   console.log(req.files.chef); // the uploaded file object
+//   let chefFile = req.files.chef
+//   chefFile.mv("./Public/assets/TT Images/chefs/" + chefFile, function(err) {
+//       if (err) {
+//           return res.status(500).send(err);
+//       }
+//       else {
+//           res.send("File uploaded!");
+//       }
+//   })
+// });
 
 // Requiring our routes
 require("./Routes/login-api-routes.js")(app);
