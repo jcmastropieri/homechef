@@ -15,11 +15,8 @@ module.exports = function(app) {
             key: req.params.key
           }
         }).then(function(results) {
-          console.log("***This is results from activation key")
-          console.log(results[0].id)
           res.send(`
           <script>
-          console.log("hi") 
           localStorage.setItem("TeamId", ${results[0].id})
           window.location.replace("/newUser");
           </script>`)    

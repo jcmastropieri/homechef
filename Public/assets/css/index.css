@@ -183,6 +183,29 @@ h2:hover {
     font-size: 17px;
 }
 
+a {
+    color: hsla(9, 78%, 55%, 1);
+}
+
+a:hover {
+    color: hsla(9, 78%, 55%, 1);
+}
+
+/* dynamic button rendered for meal */
+.which-recipe {
+    background-color: hsla(9, 78%, 55%, 1) !important;
+    border-color: hsla(9, 78%, 55%, 1);
+    color: black;
+    padding: 10px;
+    margin: 10px;
+}
+
+.which-recipe:hover {
+    background-color: hsla(9, 78%, 55%, 1);
+    border-color: hsla(9, 78%, 55%, 1);
+}
+
+
 
 /* Fonts */
 

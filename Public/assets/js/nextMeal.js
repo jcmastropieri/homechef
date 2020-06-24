@@ -55,8 +55,7 @@ async function startMeal() {
             $.get("/api/meal/" + day + "/" + time + "/" + id).then( data => {
                 console.log(data)
                 for (i = 0; i < data.length; i++) {
-                    //will need to make delete button here
-                    //maybe do an if statement in recipes where if no mealchoice, ask for meal choice name"
+                    
                     var whichRecipe = $("<button></button>")
                     whichRecipe.text(data[i].recipeTitle)
                     whichRecipe.attr("value", data[i].id)
@@ -72,7 +71,7 @@ async function startMeal() {
         });
     });
 
-    console.log(id);
+    
 
 }
 

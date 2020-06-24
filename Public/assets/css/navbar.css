@@ -10,6 +10,7 @@
     margin: auto 100px auto 100px;
     font-size: 24px;
     color: hsla(9, 78%, 55%, 1);
+    font-family: 'Arima Madurai', cursive !important;
 }
 
 .nav {
@@ -25,6 +26,7 @@
 .nav-item.nav-link{
     text-align: center;
     margin-right: 50px !important;
+    
 
 }
 
