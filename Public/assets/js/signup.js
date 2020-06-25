@@ -99,11 +99,11 @@ $(document).ready(function () {
         //creates a new chef and assigns them the match userid
         //then clears local storage and goes to the member page
 
-        $.post("/image-upload", {
-            file: image
-        }).then(function () {
-            console.log("added image?");
-        })
+        // $.post("/image-upload", {
+        //     file: image
+        // }).then(function () {
+        //     console.log("added image?");
+        // })
 
         $.post("/api/chef", {
             chefName: name,

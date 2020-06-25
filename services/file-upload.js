@@ -4,11 +4,7 @@ const multerS3 = require('multer-s3');
 
 
 aws.config.setPromisesDependency();
-aws.config.update({
-    secretAccessKey: "/",
-    accessKeyId: ManagedBlockchain,
-    region: "ca-central-1"
-});
+
 
 const s3 = new aws.S3();
 
@@ -30,7 +26,7 @@ var upload = multer({
     bucket: "cookingtogether",
     acl: "public-read",
     metadata: function (req, file, cb) {
-      cb(null, {fieldName: "TESTING_META_DATA"});
+      cb(null, {fieldName: file});
     },
     key: function (req, file, cb) {
       cb(null, Date.now().toString())
