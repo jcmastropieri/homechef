@@ -5,11 +5,7 @@ const path = require("path");
 const aws = require('aws-sdk');
 // const fileUpload = require('express-fileupload')
 
-aws.config.update({
-    secretAccessKey: "fQovO1MAB61qKGNBZCbEfZdx0nGf1Vqd41oM48du",
-    accessKeyId: "AKIAJOUTECZR6DRGAYIA",
-    region: "ca-central-1"
-});
+
 
 const s3 = new aws.S3();
 
