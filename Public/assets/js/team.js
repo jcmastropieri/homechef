@@ -36,10 +36,14 @@ $(document).ready(function () {
                 var chefDiv = $("<div></div>")
                 var chefP = $("<p></p>").text("Chef Name: " + data[i].Chef.chefName);
                 var imageP = $("<p></p>").html(data[i].Chef.chefImage);
+                //this need to be + chefImage, and chefImage needs to be the name of the file as well
+                var amazonImage = $("<img></img>").attr("src", "https://cookingtogether.s3.ca-central-1.amazonaws.com/" + data[i].Chef.chefName)
+                var amazonImage = $("<img></img>").attr("src", "https://cookingtogether.s3.ca-central-1.amazonaws.com/quiz+background2.png")
                 var foodP = $("<p></p>").text("Chef's Dietary Needs: " + data[i].Chef.chefFoodConsiderations)
                 chefDiv.append(chefP)
                 chefDiv.append(imageP)
                 chefDiv.append(foodP)
+                chefDiv.append(amazonImage);
                 newCol.append(chefDiv)
                 newRow.append(newCol)
                 $(".your-chefs").append(newRow)

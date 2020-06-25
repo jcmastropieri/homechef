@@ -113,7 +113,7 @@ $(document).ready(function () {
         }).then(function () {
                     console.log("added chef");
                     localStorage.clear();
-                    // window.location.replace("/members");
+                    window.location.replace("/members");
         });
 
     }

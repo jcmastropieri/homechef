@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
         },
         chefImage: {
-            type: DataTypes.STRING,
+            type: DataTypes.BLOB,
             allowNull: false
         },
         chefFoodConsiderations: {

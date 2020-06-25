@@ -37,8 +37,27 @@ module.exports = function(app) {
         db.Chef.create(req.body).then(function(chefCreateResult) {
             res.json(chefCreateResult)
             console.log(req.body);
-            uploadFile(path.join(__dirname, "../Public/assets/TT Images/alexchef.png"));
+            console.log(req.body.chefImage)
+            uploadFile(req.body.chefImage);
+            uploadFile(path.join(__dirname, req.body.chefImage));
             // uploadFile(req.body.chefImage)
+
+            // var bucketParams = {
+            //     Bucket : "cookingtogether",
+            // };
+
+            // s3.listObjects(bucketParams, function(err, data) {
+            //     if (err) {
+            //     console.log("Error", err);
+            // } else {
+            //     console.log("Success", data);
+            //     //this works
+            //     console.log(data.Contents)
+            //     console.log(data.Contents[0]);
+            //     // console.log(data.Contents[0].owner)
+            // }
+            // });
+            // console.log("do you stop?")
         })
     })
 
@@ -60,6 +79,20 @@ module.exports = function(app) {
             }
             console.log(`File uploaded successfully. ${data.Location}`);
         });
+
+        // Create the parameters for calling listObjects
+        // var bucketParams = {
+        //     Bucket : "cookingtogether",
+        // };
+  
+  // Call S3 to obtain a list of the objects in the bucket
+        // s3.listObjects(bucketParams, function(err, data) {
+        //     if (err) {
+        //     console.log("Error", err);
+        // } else {
+        //     console.log("Success", data);
+        // }
+        // });
     };
 
    

@@ -18,7 +18,7 @@ const s3 = new aws.S3();
     module.exports = response;
 })
 
-console.log("HELLO");
+
 
 var upload = multer({
   storage: multerS3({
