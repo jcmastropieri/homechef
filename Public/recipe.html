@@ -10,10 +10,13 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"/>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Arima+Madurai&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="assets/css/recipe.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/navbar.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Arima+Madurai&display=swap" rel="stylesheet">
+    
     <link rel="shortcut icon" type="image/png" href="assets/TT Images/food.jpeg">
 </head>
 
@@ -43,7 +46,7 @@
     </ul>
    
     
-    <a href="/logout">Logout</a>
+    <a class="logout" href="/logout">Logout</a>
         
 </nav>
  
@@ -52,34 +55,37 @@
 
         <div class="row">
             <div class="col-12">
-                <h1>ADD A NEW RECIPE:</h1>
+                <h1 class ="uppercase add-recipe">Add Recipes:</h1>
                 <h2>Here's how it works:</h2>
-                <h5>Think about what meal you want... meatloaf, spaghetti, etc. etc.? Input that into MEAL!</h5>
-                <h5>When you've chosen your meal from the provided URLs enter it into the form and hit SUBMIT</h5>
-                <h5 id = "borderSection">You'll be prompted to pick your options for when you want to have this recipe - your choices will be saved to the homepage!</h5>
-                
+                <div class="recipe-instructions">
+                    <p class="new-recipe-instructions">Think about what meal you want... meatloaf, spaghetti, etc. etc.? Input that into <span class="uppercase">meal</span>!</p>
+                    <p class="new-recipe-instructions">When you've chosen your meal from the provided URLs enter it into the form and hit <span class="uppercase">submit</span></p>
+                    <p class="new-recipe-instructions">You can also use a URL you found on your own.</p>
+                    <p class="new-recipe-instructions">You'll be prompted to pick your options for when you want to have this recipe - your choices will be saved to your table!</p>
+                </div>
             </div>
         </div>
 
         <div class="row inputGroup">
             <div class="col-md-5 col-sm-12 col-xs-12">
-                <form>
+
+                <form class="form-row">
                     <div class="form-group">
-                        <label for="inputMeal">MEAL:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+                        <label for="inputMeal" class="uppercase full-width">Meal:</label>
                         <input type="text" class = "inputMeal">
                         <button type = "submit" class="btn btn-primary mealBtn">Recipes!</button>
                     </div>
                 </form>
-                </br>
-                </br>
-                </br>
-                <form>
-                    <!-- put uppercase in css -->
-                    <label for="recipe URL">RECIPE URL:</label>
-                    <input type="text" class="inputURL">
-                    <button type = "button" class = "btn btn-primary urlBtn" data-toggle="modal" data-target ="optionsModal">Submit</button>
+                
+                <form class="form-row">
+                    <div class="form-group">
+                        <label for="recipe URL" class="uppercase full-width">Recipe Url:</label>
+                        <input type="text" class="inputURL">
+                        <button type = "button" class = "btn btn-primary urlBtn" data-toggle="modal" data-target ="optionsModal">Submit</button>
+                    </div>
                 </form>
             </div>
+
             <div class="col-md-7 col-xs-12 col-sm-12">
                 <div class= "row">
                     <div class = "col-12">
@@ -96,7 +102,7 @@
 
 
 
-        <!-- This is the modal, will not be seen without button click -->
+        <!-- This is the modal, will not be seen without urlBtn button click -->
         <div class="row">
             <div class="col-12">
   

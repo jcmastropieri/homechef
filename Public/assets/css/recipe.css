@@ -80,3 +80,27 @@ a:hover {
     border-color: solid 2px #28a745;
 }
 
+.new-recipe-instructions {
+    margin: 20px;
+    text-align: center;
+}
+
+.recipe-instructions {
+    border-bottom: solid 3px hsla(9, 78%, 55%, 1);
+}
+
+.add-recipe {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.full-width {
+    width: 100%;
+    margin-top: 10px;
+}
+
