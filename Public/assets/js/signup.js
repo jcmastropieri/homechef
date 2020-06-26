@@ -96,8 +96,7 @@ $(document).ready(function () {
             users = data;
             indexNum = (users.length - 1)
         });
-        //creates a new chef and assigns them the match userid
-        //then clears local storage and goes to the member page
+        
 
         // $.post("/image-upload", {
         //     file: image
@@ -105,6 +104,8 @@ $(document).ready(function () {
         //     console.log("added image?");
         // })
 
+        //creates a new chef and assigns them the match userid
+        //then clears local storage and goes to the member page
         $.post("/api/chef", {
             chefName: name,
             chefImage: image,
@@ -113,7 +114,7 @@ $(document).ready(function () {
         }).then(function () {
                     console.log("added chef");
                     localStorage.clear();
-                    window.location.replace("/members");
+                    // window.location.replace("/members");
         });
 
     }

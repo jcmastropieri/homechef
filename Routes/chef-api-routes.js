@@ -71,7 +71,7 @@ module.exports = function(app) {
         // Setting up S3 upload parameters
         const params = {
             Bucket: "cookingtogether",
-            Key: fileName , // File name you want to save as in S3
+            Key: fileName, // File name you want to save as in S3
             Body: fileContent
         };
     
