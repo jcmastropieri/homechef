@@ -16,6 +16,7 @@ $(document).ready(function () {
     var useTeamId;
     var activationTeamId = localStorage.getItem("TeamId");
 
+    console.log(newChefImage)
 
     //If they did get to here by the activation link, then we will run the function that assigns a TeamId
     //Otherwise, we run the function that leaves the TeamId blank for now
@@ -29,8 +30,7 @@ $(document).ready(function () {
 
     //This allows us to pick a file from our computer
     bsCustomFileInput.init()
-
-
+    
    
     //When the form is submitted
     signupForm.on("submit", event => {

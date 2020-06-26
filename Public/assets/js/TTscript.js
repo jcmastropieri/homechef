@@ -72,11 +72,6 @@ $(document).ready(function() {
   // }, 2000);
   // });
 
-// ---------------- Anna's local storage -------------------------
-
-
-
-  $("#dateEl").prepend(new Date().toLocaleDateString());
  
 
   // ------------------ chef's superpower --------------------

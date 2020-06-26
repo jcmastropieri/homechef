@@ -7,6 +7,7 @@ const aws = require('aws-sdk');
 
 
 
+
 const s3 = new aws.S3();
 
 const singleUpload = upload.single("image");
@@ -30,6 +31,7 @@ module.exports = function(app) {
             }
         }).then(function(chefGetResults) {
             res.json(chefGetResults)
+            
         })
     })
     
@@ -40,6 +42,7 @@ module.exports = function(app) {
             console.log(req.body.chefImage)
             uploadFile(req.body.chefImage);
             uploadFile(path.join(__dirname, req.body.chefImage));
+            
             // uploadFile(req.body.chefImage)
 
             // var bucketParams = {
