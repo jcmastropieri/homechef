@@ -39,4 +39,12 @@
 
 .logout {
     text-align: right;
+    color: #28a745;
+}
+
+h1.new-team {
+    text-align: center !important;
+    border-bottom: none;
+    height: 50px;
+    color: hsla(0, 50%, 49%, 1);
 }

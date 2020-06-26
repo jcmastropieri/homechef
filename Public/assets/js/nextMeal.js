@@ -57,7 +57,7 @@ $(document).ready(() => {
                         let whichRecipe = $("<button></button>")
                         whichRecipe.text(data[i].recipeTitle)
                         whichRecipe.attr("value", data[i].id)
-                        whichRecipe.addClass("btn btn-primary which-recipe")
+                        whichRecipe.addClass("btn btn-default which-recipe")
                         $(".choose-recipe").append(whichRecipe);
                     }
             

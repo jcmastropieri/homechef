@@ -104,6 +104,7 @@ console.log(teamInput.val().trim())
         $("#team-email").val("");
 
         alert("Your email has been sent!");
+        $("#later-btn").text("I'm done adding!")
 
         
     });

@@ -191,6 +191,10 @@ a:hover {
     color: hsla(9, 78%, 55%, 1);
 }
 
+.new-team-href {
+    margin-top: 10px;
+}
+
 /* dynamic button rendered for meal */
 .which-recipe {
     background-color: hsla(9, 78%, 55%, 1) !important;

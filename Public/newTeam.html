@@ -3,31 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <title>CookingTogether NewTeam Page</title>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" href="assets/css/recipe.css" />
+    
     <link href="https://fonts.googleapis.com/css2?family=Arima+Madurai&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" type="text/css" href="assets/css/recipe.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/navbar.css" />
     <link rel="shortcut icon" type="image/png" href="assets/TT Images/food.jpeg">
 </head>
 <body>
 
   <nav class="navbar">
-    <h1>Welcome!</h1>
+    <h1 class="new-team mx-auto">Welcome!</h1>
   </nav>
       
   <div class="container">
     <article class="beige padding25">  
       <div class="row justify-content-center">
-        <div class="col-md-6 col-md-offset-3">
-          <h3>New Chef</h3>
+        <div class="col-md-6 col-md-offset-3 inputGroup">
+          <h3 class="new-table">New Table</h3>
             <form class="signup">
               <div class="form-group">
-                <label for="teamName">Team Name</label>
-                <input type="text" class="form-control" id="teamname-input" placeholder="What would you like your new team's name to be?">
+                <label for="teamName">Table Name</label>
+                <input type="text" class="form-control" id="teamname-input" placeholder="What would you like your new table's name to be?">
               </div>
-              <button type="submit" class="btn btn-default" data-toggle="modal" data-target ="#inviteMembersModal">Make your Team!</button>
+              <button type="submit" class="btn btn-primary ingredBtn" data-toggle="modal" data-target ="#inviteMembersModal">Make your Table!</button>
             </form>
         </div>
       </div>
@@ -49,7 +55,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Invite Chefs to your team!</h5> 
+                        <h5 class="modal-title" id="exampleModalLabel">Invite Chefs to your table!</h5> 
                     </div>
                     <div class="modal-body">
                       <div class="form-group">
@@ -62,7 +68,7 @@
                       </div>
                     </div>
                     <button type="submit" class="btn btn-default" id = "send-btn">Send</button>
-                    <button type="button" class="btn btn-default" id = "later-btn">I'll add later - let's get started!</button>
+                    <button type="button" class="btn btn-primary btn-save" id = "later-btn">I'll add later - let's get started!</button>
 
                 </div>
              </div>
