@@ -1,17 +1,15 @@
 $(document).ready(() =>  {  
 
-const teamInput = $("#teamname-input");
+    //Grab our input from our table/team name form
+    const teamInput = $("#teamname-input");
 
-var thisId;
-var thisTeamId;
-var indexNum
+    //define necessary global variables
+    let thisId;
+    let indexNum;
 
-var teams = [];
+    let teams = [];
 
-console.log("name?")
-console.log(teamInput)
-console.log(teamInput.val().trim())
-
+    //grabs the id of the current user
     $.get("/api/user_data", function(data) {
 
         thisId = data.id
@@ -20,12 +18,12 @@ console.log(teamInput.val().trim())
 
     
    
-
+    //when the table form button is click on
     $(".signup").on("submit", function(event) {
         event.preventDefault();
 
+        //Creates a random key for the team, that will be used for our activation link
         const arrayKey = []
-
         for (i = 0; i < 5; i ++) {
             let randomKey = Math.floor(Math.random() * 10);
             arrayKey.push(randomKey)
@@ -38,36 +36,25 @@ console.log(teamInput.val().trim())
             key: finalKey
         }
 
+        makeNewTeam();
+
         async function makeNewTeam () {
+            
+            //API call to create a new team
             await $.post("/api/team", {
                 username: newTeam.newUsername,
                 key: newTeam.key,
-            // userId: thisId
             }).then( () => {
                 console.log("new team added");
             });
 
+            //then puts the data in an array, and grabs the team just created
             await $.get("/api/team", function(data) {
-                console.log("this is all teams data")
-                console.log(data)
                 teams = data;
                 indexNum = (teams.length -1 )
             })
 
-            console.log("this is the team id number")
-            console.log(teams[indexNum].id)
-
-            // $.ajax({
-            //     method: "PUT",
-            //     url: "/api/user_data",
-            //     data: {
-            //         TeamId: teams[indexNum].id,
-            //         id: thisId
-            //     }
-            // }).then( () => {
-            //     console.log("id updated")
-            // })
-
+            //Then updates the current user's teamId to the teamId just created
             $.ajax({
                 method: "PUT",
                 url: "/api/users/" + thisId,
@@ -79,36 +66,40 @@ console.log(teamInput.val().trim())
             })
 
         }
-        makeNewTeam();
+        
     })
    
  
-  
+    //When the send button in the modal is clicked
     $("#send-btn").on("click", function (event) {
 
         event.preventDefault();
 
-        var emailForm = $("#team-email").val().trim();
-        console.log(emailForm)
-        var nodemail = {
+        const emailForm = $("#team-email").val().trim();
+        
+        //Grabs the email inputted and the key of our current team
+        //and send it to our nodemail email
+        const nodemail = {
             email: emailForm,
             key: teams[indexNum].key
         }
-        console.log(nodemail)
-
+        
         $.post("/email", nodemail, function() {
             console.log("Server received our data");
         });
 
-  
+        //clears the email value so another email can be sent
+        //gives an alert to let the user know it worked
+        //Changes the text on the button that redirects to the home page
         $("#team-email").val("");
-
         alert("Your email has been sent!");
         $("#later-btn").text("I'm done adding!")
 
         
     });
 
+    //If the "I'll add later" or "I'm done adding" button is clicked
+    //Redirect to members
     $("#later-btn").on("click", function() {
         window.location.replace("/members");
     })
