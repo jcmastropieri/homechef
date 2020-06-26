@@ -39,7 +39,7 @@
 
 .logout {
     text-align: right;
-    color: #28a745;
+    color: #28a745 !important;
 }
 
 h1.new-team {
