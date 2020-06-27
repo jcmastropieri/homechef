@@ -37,4 +37,40 @@ background-size: cover;
 font-family: 'Arima Madurai', cursive;
 }
 
+/* Buttons */
+.ingredBtn {
+    background-color: hsla(9, 78%, 55%, 1) !important;
+    border: none;
+}
+
+.btn-save {
+    border-color: #28a745;
+    background-color: #28a745;
+    border: none;
+}
+
+.btn-save:hover {
+    background-color: #28a745 !important;
+}
+.btn:hover{
+    background-color: hsla(0, 50%, 49%, 1);
+    font-size: 17px;
+}
+
+.btn:focus,.btn:active {
+    outline: none !important;
+    box-shadow: none;
+ }
+
+ h1 {
+    height: 100px;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.space{
+    margin-bottom: 20px;
+}
+
+
 

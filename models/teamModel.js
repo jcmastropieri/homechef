@@ -24,7 +24,11 @@ module.exports = function(sequelize, DataTypes) {
 
       Team.hasMany(models.Meal, {
         onDelete: "cascade"
-    })
+      })
+
+      Team.hasMany(models.Grocery, {
+        onDelete: "cascade"
+      })
   }
 
 

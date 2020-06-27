@@ -75,7 +75,13 @@ $(document).ready(() => {
             "data": submittedURL
         }
     
-        $.ajax(settings).done( response => {
+        //Put our ajax call in an async function to ensure variables populate
+        itemsLoad(settings);
+
+    });
+
+    async function itemsLoad(settings){
+        await $.ajax(settings).done( response => {
 
             recipeTitle = response[0].name
             recipeIngredients = JSON.stringify(response[0].ingredients)
@@ -99,8 +105,7 @@ $(document).ready(() => {
             show: true
         });
 
-    });
-
+    }
 
 
 

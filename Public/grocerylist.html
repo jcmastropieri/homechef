@@ -52,20 +52,37 @@
     <div class="container">
     <h1 style='text-align:center'>Grocery List</h1>
         <div id="list">
-            
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Add your ingredient(s) or needed groceries here!" id="groceryInput" aria-describedby="button-addon2">
-                <div class="input-group-append">
-                <button class="btn btn-primary" type="button" id="submitGrocery">Add My Item!</button>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="space">
+                        <button type = "button" class = "btn btn-primary btn-save" id = "meal-list"> Get List From Meals!</button>
+                    </div>
+                </div>
+            </div>   
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Add your ingredient(s) or needed groceries here!" id="groceryInput" aria-describedby="button-addon2">
+                    
+                        <div class="input-group-append">
+                            <button class="btn btn-primary ingredBtn" type="button" id="submitGrocery">Add My Item!</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-                <form>
-                    <input type="submit" value="Clear List"/>
-                </form>
-                <button type = "button" class = "btn btn-primary" id = "meal-list"> Get List From Meals!</button>
 
-                <!-- <div id = "listContainer">
+            <div class="row">
 
-                </div> -->
+                <div class="col-12 space">
+                    <form>
+                        <input type="submit" class="btn btn-primary ingredBtn" value="Clear List"/>
+                    </form>
+                </div>
+
+            </div>
+               
             <div id = "listContainer">
 
             </div>

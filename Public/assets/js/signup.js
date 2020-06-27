@@ -7,7 +7,6 @@ $(document).ready(function () {
     const newChef = $("#name-input");
     const newFood = $("#food-input");
     const newChefImage = $("#customFile");
-    // const fileData = $("#data");
     var form = document.forms.namedItem("fileinfo")
 
     //necessary global variables
@@ -19,7 +18,6 @@ $(document).ready(function () {
     var useTeamId;
     var activationTeamId = localStorage.getItem("TeamId");
 
-    console.log(newChefImage)
 
     //If they did get to here by the activation link, then we will run the function that assigns a TeamId
     //Otherwise, we run the function that leaves the TeamId blank for now

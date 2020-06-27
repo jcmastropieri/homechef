@@ -40,27 +40,33 @@ module.exports = function(app) {
   })
 
   app.get("/recipe", function(req, res) {
-    
+    if (!req.user) {
+      res.redirect("/login");
+    }
     
     res.sendFile(path.join(__dirname, "../Public/recipe.html"))
   })
 
   app.get("/team", function(req, res) {
-    
+    if (!req.user) {
+      res.redirect("/login");
+    }
     
     res.sendFile(path.join(__dirname, "../Public/team.html"));
   })
 
   app.get("/grocerylist", function(req, res) {
-    
+    if (!req.user) {
+      res.redirect("/login");
+    }
     
     res.sendFile(path.join(__dirname, "../Public/grocerylist.html"));
   })
 
   app.get("/schedule", function(req, res) {
-    // if (!req.user) {
-    //   res.redirect("/login")
-    // }
+    if (!req.user) {
+      res.redirect("/login")
+    }
     res.sendFile(path.join(__dirname, "../Public/schedule.html"))
   })
 
