@@ -33,8 +33,8 @@ const sendMail = (email, key, cb) => {
     var mailOptions = {
         from: 'anna.grace.conover@gmail.com',
         to: email,
-        subject: "A friend is inviting you to their team!",
-        html: "Cooking Together makes Meal Planning easy! <img src='image url here'/> <h1>Click here to sign-up!</h1><p><a href = 'http://localhost:8080/activation/" + key + "'>Join here!</a></p>",
+        subject: "A friend is inviting you to their table!",
+        html: "<h1>Cooking Together makes Meal Planning easy!<h2><img src='image url here'/><h2>A member of your household has invited you to their table! Get signed up so you can start cooking.</h2><p><a href = 'http://localhost:8080/activation/" + key + "'>Join here!</a></p><p>Looking forward to the meals you make,</p><p>The CookingTogether Team</p>",
     };
     
     transporter.sendMail(mailOptions, function(error, data) {

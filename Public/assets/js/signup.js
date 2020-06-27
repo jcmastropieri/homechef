@@ -60,6 +60,23 @@ $(document).ready(function () {
         };
   
         //Section for checks to make sure all information was entered
+
+        if (userData.email) {
+            $.get("/api/users", {
+            }).then(result => {
+              console.log(result)
+              for (i = 0; i < result.length; i++ ) {
+                console.log(userData.email)
+                console.log(result[i].email)
+                if (userData.email === result[i].email) {
+                alert("This email already has an account! Please log-in.")
+                window.location.replace("/login");
+                return;
+                }
+              }
+            });
+          };
+
         if (!userData.email || !userData.password) {
             alert("Please enter a valid username and password.")
             return;
@@ -119,6 +136,8 @@ $(document).ready(function () {
                     localStorage.clear();
         });
         
+        //Sends the file data to upload to s3
+        //Then goes to members page
         await $.ajax({
             url: "/upload/file",
             type: "POST",
@@ -161,12 +180,12 @@ $(document).ready(function () {
             UserId: users[indexNum].id
         }).then(function () {
                     console.log("added chef");
-            });
+        });
 
-         let id = users[indexNum].id
+        let id = users[indexNum].id
 
         //Updates the TeamId to the created user to match the activation link TeamId
-        //then clears local storage and goes to the member page 
+        //then clears local storage
         await $.ajax({
             method: "PUT",
             url: "/api/users/" + id,
@@ -176,8 +195,24 @@ $(document).ready(function () {
             }).then( () => {
             console.log("id updated")
             localStorage.clear();
-            window.location.replace("/members");
+            
             })
+
+            //Sends the file data to upload to s3
+            //Then goes to members page
+            await $.ajax({
+                url: "/upload/file",
+                type: "POST",
+                data:formData,
+                cache: false,
+                contentType: false,
+                processData: false
+            }).done( () => {
+                
+                window.location.replace("/members");
+            });
     }
+
+   
   
 });
