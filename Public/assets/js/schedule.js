@@ -134,18 +134,17 @@ $(document).ready( () => {
         })
     });
 
+    //When a specific delete button is clicked, delete that Id
     $(document).on("click", ".delete-button", function(event) {
-        console.log("bye")
+        
         let user = this.value
-        console.log("second run")
-        console.log(user)
+        
         $.ajax({
             type: "DELETE",
             url: "/api/meal/" + user
           }).then(function() {
               console.log("deleted meal" + user);
               startMeal()
-            //   location.reload();
             }
           );
         

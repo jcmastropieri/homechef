@@ -5,7 +5,6 @@ $(document).ready(() => {
     let recipeIngredients;
     let recipeInstructions;
     let mealInput;
-    // let newChef;
     let id;
 
     //this gets the current user data and then uses it store the teamId in our id variable
@@ -20,7 +19,7 @@ $(document).ready(() => {
     $(".mealBtn").on("click", function(event) {
         event.preventDefault();
    
-        // $(".recipes").val("");
+        
 
         mealInput = $(".inputMeal").val()
 
@@ -76,14 +75,12 @@ $(document).ready(() => {
             "data": submittedURL
         }
     
-        $.ajax(settings).done(function (response) {
+        $.ajax(settings).done( response => {
 
             recipeTitle = response[0].name
             recipeIngredients = JSON.stringify(response[0].ingredients)
             recipeInstructions = JSON.stringify(response[0].instructions)
-            console.log(recipeTitle)
-            console.log(recipeIngredients)
-            console.log(recipeInstructions)
+            
         });
 
         //This grabs all of the chefs in this team and makes them options
