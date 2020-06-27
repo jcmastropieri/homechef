@@ -13,6 +13,7 @@ $(document).ready(() =>  {
     $.get("/api/user_data", function(data) {
 
         thisId = data.id
+        console.log(thisId)
         
     });
 
@@ -24,11 +25,12 @@ $(document).ready(() =>  {
 
         //Creates a random key for the team, that will be used for our activation link
         const arrayKey = []
-        for (i = 0; i < 5; i ++) {
+        for (i = 0; i < 15; i ++) {
             let randomKey = Math.floor(Math.random() * 10);
             arrayKey.push(randomKey)
         }
         const finalKey = arrayKey.join("");
+        console.log(finalKey)
     
 
         const newTeam = {
@@ -36,6 +38,7 @@ $(document).ready(() =>  {
             key: finalKey
         }
 
+        console.log(newTeam)
         makeNewTeam();
 
         async function makeNewTeam () {

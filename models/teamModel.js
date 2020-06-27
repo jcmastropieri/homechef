@@ -6,11 +6,9 @@ module.exports = function(sequelize, DataTypes) {
     username: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
     },
     key: {
-      type: DataTypes.INTEGER,
-      max: 15,
+      type: DataTypes.INTEGER(20),
       allowNull: false,
       unique: true
     }
