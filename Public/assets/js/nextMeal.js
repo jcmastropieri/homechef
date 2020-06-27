@@ -15,6 +15,7 @@ $(document).ready(() => {
     let dish;
     let id;
     var num = 0;
+    thisId;
     
 
     //Displays local time
@@ -38,7 +39,7 @@ $(document).ready(() => {
     
         //this gets the current user data and then stores the id in a variable
         await $.get("/api/user_data").then( data => {
-            let thisId = data.id
+            thisId = data.id
         
             //Then we use the variable to get the teamid from the user
             //And then stores the teamid in id
@@ -77,23 +78,32 @@ $(document).ready(() => {
     //Hands our rending to the page using selected meal
     const renderMeal = data => {
 
-        let ingredients = JSON.parse(data[0].recipeIngredients);
-        let instructions = JSON.parse(data[0].recipeInstructions);
+        //calls our api to get our image path to grab from our amazon S3
+        $.get("/api/chef/image/" + thisId + "/" + data[0].mealChef).then( response => {
+            console.log(response.chefImage)
+
+            let noOutsideSpace = (response.chefImage).trim()
+            let spacePlus = noOutsideSpace.split(" ").join("+");
+
+            let ingredients = JSON.parse(data[0].recipeIngredients);
+            let instructions = JSON.parse(data[0].recipeInstructions);
 
         
-        dish = data[0].mealSearched
-        $("#dishName").html("Click to Change the Gif");
-        listIngredients(ingredients);
-        listInstructions(instructions[0].steps);
+            dish = data[0].mealSearched
+            $("#dishName").html("Click to Change the Gif");
+            listIngredients(ingredients);
+            listInstructions(instructions[0].steps);
     
-        $(".mealText").html("&nbsp;" + data[0].recipeTitle);
-        $("#chefName").text("Chef: " + data[0].mealChef);
-        $(".chef").attr("src", "assets/TT Images/joechef.png")
-        //ajax call for getting image from name
+            $(".mealText").html("&nbsp;" + data[0].recipeTitle);
+            $("#chefName").text("Chef: " + data[0].mealChef);
+            $(".chef").attr("src", "https://cookingtogether.s3.ca-central-1.amazonaws.com/" + spacePlus)
+        
     
         
         //call our function to render our random gif
         showGif(num);
+
+        });
         
     };
 

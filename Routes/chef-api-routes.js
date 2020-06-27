@@ -22,7 +22,7 @@ module.exports = function(app) {
     app.get("/api/chef", function(req, res) {
         db.User.findAll({
             include: [db.Chef]
-        }).then(function(chefGetResults) {
+        }).then( chefGetResults => {
             res.json(chefGetResults)
         })
     })
@@ -33,38 +33,27 @@ module.exports = function(app) {
             where: {
                 TeamId: req.params.id
             }
-        }).then(function(chefGetResults) {
-            res.json(chefGetResults)
+        }).then( chefGetTeamResults => {
+            res.json(chefGetTeamResults)
             
         })
+    });
+
+    app.get("/api/chef/image/:id/:name", function(req, res) {
+        db.Chef.findAll({
+            where: {
+                UserId: id,
+                chefName: name
+            }
+        }).then( nameResults => {
+            res.json(nameResults)
+        })
     })
+
     
     app.post("/api/chef", function(req, res) {
-        db.Chef.create(req.body).then(function(chefCreateResult) {
-            res.json(chefCreateResult)
-            // console.log(req.body);
-            // console.log(req.body.data)
-            // uploadFile(req.body.data);
-            // uploadFile(path.join(__dirname, req.body.chefImage));
-            
-            // uploadFile(req.body.chefImage)
-
-            // var bucketParams = {
-            //     Bucket : "cookingtogether",
-            // };
-
-            // s3.listObjects(bucketParams, function(err, data) {
-            //     if (err) {
-            //     console.log("Error", err);
-            // } else {
-            //     console.log("Success", data);
-            //     //this works
-            //     console.log(data.Contents)
-            //     console.log(data.Contents[0]);
-            //     // console.log(data.Contents[0].owner)
-            // }
-            // });
-            // console.log("do you stop?")
+        db.Chef.create(req.body).then( chefCreateResult => {
+            res.json(chefCreateResult) 
         })
     });
 
