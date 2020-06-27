@@ -32,51 +32,46 @@ module.exports = function(app) {
   // });
 
   app.get("/newTeam", function(req, res) {
-    if (!req.user) {
-      res.redirect("/login");
-    }
+    
+    // if (req.user) {
+    //   res.redirect("/members");
+    // }
     res.sendFile(path.join(__dirname, "../Public/newTeam.html"))
   })
 
   app.get("/recipe", function(req, res) {
-    if (!req.user) {
-      res.redirect("/login");
-    }
+    
+    
     res.sendFile(path.join(__dirname, "../Public/recipe.html"))
   })
 
   app.get("/team", function(req, res) {
-    if (!req.user) {
-      res.redirect("/login");
-    }
+    
+    
     res.sendFile(path.join(__dirname, "../Public/team.html"));
   })
 
   app.get("/grocerylist", function(req, res) {
-    if (!req.user) {
-      res.redirect("/login");
-    }
+    
+    
     res.sendFile(path.join(__dirname, "../Public/grocerylist.html"));
   })
 
   app.get("/schedule", function(req, res) {
-    if (!req.user) {
-      res.redirect("/login")
-    }
+    // if (!req.user) {
+    //   res.redirect("/login")
+    // }
     res.sendFile(path.join(__dirname, "../Public/schedule.html"))
   })
 
-  app.get("/photo", function(req, res) {
-    res.sendFile(path.join(__dirname, "../Public/addPhoto.html"));
-  })
 
 
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/members", isAuthenticated, function(req, res) {
-    if (!req.user) {
-      res.redirect("/login");
-    }
+    // if (!req.user) {
+    //   res.redirect("/login");
+    // }
     res.sendFile(path.join(__dirname, "../Public/members.html"));
   });
 
