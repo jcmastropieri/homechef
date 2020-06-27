@@ -1,20 +1,21 @@
 var db = require("../models");
-const upload = require("../services/file-upload")
+// const upload = require("../services/file-upload")
 const fs = require('fs');
 const path = require("path");
 const aws = require('aws-sdk');
+require('dotenv').config();
 // const fileUpload = require('express-fileupload')
 
 aws.config.update({
-    secretAccessKey: "",
-    accessKeyId: "",
+    secretAccessKey: process.env.AWS_SECRET_KEY,
+    accessKeyId: process.env.AWS_ACCESS_KEY,
     region: "ca-central-1"
 });
 
 
 const s3 = new aws.S3();
 
-const singleUpload = upload.single("image");
+// const singleUpload = upload.single("image");
 
 module.exports = function(app) {
 
@@ -42,8 +43,8 @@ module.exports = function(app) {
     app.get("/api/chef/image/:id/:name", function(req, res) {
         db.Chef.findAll({
             where: {
-                UserId: id,
-                chefName: name
+                UserId: req.params.id,
+                chefName: req.params.name
             }
         }).then( nameResults => {
             res.json(nameResults)
@@ -58,8 +59,8 @@ module.exports = function(app) {
     });
 
     app.post("/upload/file", function(req,res) {
-        
         uploadFile(req.files.chef.name, req.files.chef.data)
+        res.json(req.body)
     })
 
     const uploadFile = (fileName, fileContent) => {

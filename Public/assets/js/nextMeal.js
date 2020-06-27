@@ -14,8 +14,8 @@ $(document).ready(() => {
     //these lines define the global variables necessary later
     let dish;
     let id;
-    var num = 0;
-    thisId;
+    let num = 0;
+    let thisId;
     
 
     //Displays local time
@@ -80,9 +80,9 @@ $(document).ready(() => {
 
         //calls our api to get our image path to grab from our amazon S3
         $.get("/api/chef/image/" + thisId + "/" + data[0].mealChef).then( response => {
-            console.log(response.chefImage)
+            console.log(response[0].chefImage);
 
-            let noOutsideSpace = (response.chefImage).trim()
+            let noOutsideSpace = (response[0].chefImage).trim()
             let spacePlus = noOutsideSpace.split(" ").join("+");
 
             let ingredients = JSON.parse(data[0].recipeIngredients);

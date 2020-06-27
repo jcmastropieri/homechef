@@ -38,10 +38,10 @@ $(document).ready(function () {
                 var imageP = $("<p></p>").html(data[i].Chef.chefImage);
 
                 console.log(data[i].Chef.chefImage)
+                
                 let noOutsideSpace = (data[i].Chef.chefImage).trim()
-                console.log(noOutsideSpace);
                 let spacePlus = noOutsideSpace.split(" ").join("+");
-                console.log(spacePlus)
+                
 
                 //this need to be + chefImage, and chefImage needs to be the name of the file as well
                 var amazonImage = $("<img></img>").attr("src", "https://cookingtogether.s3.ca-central-1.amazonaws.com/" + spacePlus)

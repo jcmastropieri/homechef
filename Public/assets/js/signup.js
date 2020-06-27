@@ -142,11 +142,12 @@ $(document).ready(function () {
             contentType: false,
             processData: false
         }).done( () => {
+            
             window.location.replace("/members");
         });
 
        
-
+        window.location.replace("/members");
         
 
     }
