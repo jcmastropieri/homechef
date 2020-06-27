@@ -38,26 +38,3 @@ font-family: 'Arima Madurai', cursive;
 }
 
 
-/* Nav Bar */
-
-.navbar{
-    background-color:hsla(60, 20%, 99%, 0.9);
-    border-radius: 0px 0px 10px 10px;
-   }
-
-.nav-link{
-    padding: 10px;
-    text-align: center;
-    width: 166px;
-    margin: auto 100px auto 100px;
-    font-size: 24px;
-    color: hsla(9, 78%, 55%, 1);
-}
-.nav-link:hover{
-    color: hsla(0, 50%, 49%, 1);
-    font-size: 25px;
-}
-.nav-item.nav-link{
-    text-align: center;
-}
-

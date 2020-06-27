@@ -1,16 +1,12 @@
 $(document).ready(function() {
      
-    var id;
+    let id;
 
-    $.get("/api/user_data").then((data) => {
+    $.get("/api/user_data").then( data => {
         let thisId = data.id
-        $.get("api/users").then((results) => {
-            for (i = 0; i < results.length; i ++) {
-                if (results[i].id === thisId)
-                    id = results[i].TeamId
-                    console.log(id);
-            }
-        })
+        $.get("/api/users/id/" + thisId).then( results => {
+            id = results[0].TeamId
+        });
     });
 
     $("#submitGrocery").on('click', function(){

@@ -108,17 +108,9 @@ $(document).ready(function () {
             users = data;
             indexNum = (users.length - 1)
         });
-        
-
-        // $.post("/image-upload", {
-        //     file: image
-        // }).then(function () {
-        //     console.log("added image?");
-        // })
 
         //creates a new chef and assigns them the match userid
         //then clears local storage and goes to the member page
-        
         await $.post("/api/chef", {
             chefName: name,
             chefImage: image,
@@ -127,17 +119,12 @@ $(document).ready(function () {
         }).then(function () {
                     console.log("added chef");
                     localStorage.clear();
-                    // window.location.replace("/members");
         });
         
         await $.ajax({
             url: "/upload/file",
             type: "POST",
             data:formData,
-            // success: function (data) {
-            //     console.log(data)
-            //     window.location.replace("/members");
-            // },
             cache: false,
             contentType: false,
             processData: false
@@ -147,7 +134,6 @@ $(document).ready(function () {
         });
 
        
-        window.location.replace("/members");
         
 
     }

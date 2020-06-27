@@ -59,6 +59,8 @@ module.exports = function(app) {
     });
 
     app.post("/upload/file", function(req,res) {
+        console.log(req)
+        // console.log(req.files);
         uploadFile(req.files.chef.name, req.files.chef.data)
         res.json(req.body)
     })
