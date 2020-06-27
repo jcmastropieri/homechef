@@ -6,7 +6,7 @@ h1 {
     border-bottom: solid 3px hsla(9, 78%, 55%, 1);
 }
 
-h5, h2 {
+h5 {
     text-align: center;
 }
 
@@ -125,8 +125,30 @@ a:hover {
     border: solid 3px hsla(9, 78%, 55%, 1);
 }
 
-/* .add-chefs {
-    margin: ;
-} */
 /* ************* */
 
+/* schedule.html */
+
+.move-left {
+    text-align: left;
+}
+
+.h5-titles.h5 {
+    text-align: left;
+    color: pink;
+}
+ 
+h2 {
+    text-align: left;
+}
+
+.more-space {
+    padding-bottom: 20px;
+    margin-left: 20px;
+}
+
+.get-together {
+    margin-bottom: 0px;
+}
+
+/* ****** */

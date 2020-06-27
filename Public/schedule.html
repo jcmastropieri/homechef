@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>CookingTogether Schedule</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Arima+Madurai&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="assets/css/recipe.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/navbar.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Arima+Madurai&display=swap" rel="stylesheet">
+    
     <link rel="shortcut icon" type="image/png" href="assets/TT Images/food.jpeg">
 </head>
 <body>
@@ -18,117 +21,102 @@
     <!-- Navbar -->
     <nav class="navbar">
         <div class="cooking-together">CookingTogether</div>
-        <ul class="nav">
-            <li class="nav-item">
-              <a class="nav-link mx-auto" href="/members">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active mx-auto" href="/recipe">Recipes</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active mx-auto" href="/team">Table</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active mx-auto" href="/schedule">Schedule</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link mx-auto" href="/grocerylist">Grocery List</a>
-            </li>
-        </ul>
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link active mx-auto" href="/members">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active mx-auto" href="/recipe">Recipes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active mx-auto" href="/team">Table</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-auto" href="/schedule">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active mx-auto" href="/grocerylist">Grocery List</a>
+                </li>
+            </ul>
        
         
-                <a href="/logout">Logout</a>
+        <a class="logout" href="/logout">Logout</a>
             
     </nav>
 
     <div class="container">
 
+        <h1 class="add-recipe">Weekly Schedule</h1>
+
         <div class="row">
-            <div class="col-6">
-                <h5>Monday Breakfast</h5>
+
+            <div class="col-6 align-left h5-titles">
+
+                <h2 class="move-left">Monday Breakfast</h2>
                 <div class="Monday-Breakfast"></div>
-                <h5>Monday Lunch</h5>
+                <h2>Monday Lunch</h2>
                 <div class="Monday-Lunch"></div>
-                <h5>Monday Dinner</h5>
+                <h2>Monday Dinner</h2>
                 <div class="Monday-Dinner"></div>
-            </div>
-
-            <div class="col-6">
-                <div class="recipe-viewed">
-                    <p class="meal-text"></p>
-                    <p class="chef-name"></p>
-                    <p class="ingredients-list"></p>
-                    <p class="instructions-list"></p>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-6">
-                <h5>Tuesday Breakfast</h5>
+           
+                <h2>Tuesday Breakfast</h2>
                 <div class="Tuesday-Breakfast"></div>
-                <h5>Tuesday Lunch</h5>
+                <h2>Tuesday Lunch</h2>
                 <div class="Tuesday-Lunch"></div>
-                <h5>Tuesday Dinner</h5>
+                <h2>Tuesday Dinner</h2>
                 <div class="Tuesday-Dinner"></div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-6">
-                <h5>Wednesday Breakfast</h5>
+            
+                <h2>Wednesday Breakfast</h2>
                 <div class="Wednesday-Breakfast"></div>
-                <h5>Wednesday Lunch</h5>
+                <h2>Wednesday Lunch</h2>
                 <div class="Wednesday-Lunch"></div>
-                <h5>Wednesday Dinner</h5>
+                <h2>Wednesday Dinner</h2>
                 <div class="Wednesday-Dinner"></div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-6">
-                <h5>Thursday Breakfast</h5>
+ 
+                <h2>Thursday Breakfast</h2>
                 <div class="Thursday-Breakfast"></div>
-                <h5>Thursday Lunch</h5>
+                <h2>Thursday Lunch</h2>
                 <div class="Thursday-Lunch"></div>
-                <h5>Thursday Dinner</h5>
+                <h2>Thursday Dinner</h2>
                 <div class="Thursday-Dinner"></div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-6">
-                <h5>Friday Breakfast</h5>
+                <h2>Friday Breakfast</h2>
                 <div class="Friday-Breakfast"></div>
-                <h5>Friday Lunch</h5>
+                <h2>Friday Lunch</h2>
                 <div class="Friday-Lunch"></div>
-                <h5>Friday Dinner</h5>
+                <h2>Friday Dinner</h2>
                 <div class="Friday-Dinner"></div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-6">
-                <h5>Saturday Breakfast</h5>
+            
+                <h2>Saturday Breakfast</h2>
                 <div class="Saturday-Breakfast"></div>
-                <h5>Saturday Lunch</h5>
+                <h2>Saturday Lunch</h2>
                 <div class="Saturday-Lunch"></div>
-                <h5>Saturday Dinner</h5>
+                <h2>Saturday Dinner</h2>
                 <div class="Saturday-Dinner"></div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-6">
-                <h5>Sunday Breakfast</h5>
+         
+                <h2>Sunday Breakfast</h2>
                 <div class="Sunday-Breakfast"></div>
-                <h5>Sunday Lunch</h5>
+                <h2>Sunday Lunch</h2>
                 <div class="Sunday-Lunch"></div>
-                <h5>Sunday Dinner</h5>
+                <h2>Sunday Dinner</h2>
                 <div class="Sunday-Dinner"></div>
             </div>
-        </div>
+
+            
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="recipe-viewed">
+                            <p class="meal-text"></p>
+                            <p class="chef-name"></p>
+                            <p class="ingredients-list"></p>
+                            <p class="instructions-list"></p>
+                        </div>
+                     </div>   
+                </div>
+            </div>
+
+
 
 
 

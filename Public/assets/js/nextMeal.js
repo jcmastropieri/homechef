@@ -57,7 +57,7 @@ $(document).ready(() => {
                     
                         let whichRecipe = $("<button></button>")
                         whichRecipe.text(data[i].recipeTitle)
-                        whichRecipe.attr("value", data[i].id)
+                        whichRecipe.attr("data-value", data[i].id)
                         whichRecipe.addClass("btn btn-default which-recipe")
                         $(".choose-recipe").append(whichRecipe);
                     }
@@ -78,6 +78,7 @@ $(document).ready(() => {
     //Hands our rending to the page using selected meal
     const renderMeal = data => {
 
+        console.log(data)
         //calls our api to get our image path to grab from our amazon S3
         $.get("/api/chef/image/" + thisId + "/" + data[0].mealChef).then( response => {
             
@@ -162,9 +163,9 @@ $(document).ready(() => {
     };
 
     //Meal button is clicked on, then that meal is rendered
-    $(document).on("click", ".which-recipe", () => {
-    
-        let user = this.value
+    $(document).on("click", ".which-recipe", function() {
+        
+        let user = $(this).data("value")
         $.get("/api/meal/schedule/" + user).then( data => {
             renderMeal(data);
         });

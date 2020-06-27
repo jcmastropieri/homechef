@@ -56,26 +56,34 @@ $(document).ready( () => {
 
     const renderScheduleMeals = (day, time, id) => {
         $.get("/api/meal/" + day + "/" + time + "/" + id).then( data => {
+            console.log(data)
 
             for (i = 0; i < data.length; i++) {
-                var pText = $("<p></p>")
-                var deleteButton = $("<button></button>");
-                var viewButton = $("<button></button>");
-                deleteButton.text("delete");
 
-                deleteButton.addClass("delete-button btn btn-primary");
+                let newDiv = $("<div></div>").addClass("more-space")
+                let pText = $("<p></p>").text(data[i].recipeTitle)
+                pText.addClass("get-together")
+                console.log(pText)
+                
+                let deleteButton = $("<button></button>");
+                let viewButton = $("<button></button>");
+                
+                deleteButton.text("delete");
+                deleteButton.addClass("delete-button btn btn-primary ingredBtn");
+
                 viewButton.text("View Recipe");
-                viewButton.addClass("view-button btn btn-primary");
+                viewButton.addClass("view-button btn btn-primary ingredBtn");
 
                 viewButton.attr("value", data[i].id);
                 deleteButton.attr("value", data[i].id);   
 
-
-                pText.text(data[i].recipeTitle);
-                
-                $("." + day + "-" + time).append(pText);
-                $("." + day + "-" + time).append(viewButton);
-                $("." + day + "-" + time).append(deleteButton);
+                newDiv.append(pText);
+                newDiv.append(viewButton);
+                newDiv.append(deleteButton);
+            
+                $("." + day + "-" + time).append(newDiv);
+                // $("." + day + "-" + time).append(viewButton);
+                // $("." + day + "-" + time).append(deleteButton);
                     
             }
         });

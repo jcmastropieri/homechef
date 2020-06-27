@@ -20,7 +20,7 @@ $(document).ready(() => {
     $(".mealBtn").on("click", function(event) {
         event.preventDefault();
    
-        $(".recipes").val("");
+        // $(".recipes").val("");
 
         mealInput = $(".inputMeal").val()
 
@@ -81,7 +81,9 @@ $(document).ready(() => {
             recipeTitle = response[0].name
             recipeIngredients = JSON.stringify(response[0].ingredients)
             recipeInstructions = JSON.stringify(response[0].instructions)
-        
+            console.log(recipeTitle)
+            console.log(recipeIngredients)
+            console.log(recipeInstructions)
         });
 
         //This grabs all of the chefs in this team and makes them options
@@ -131,7 +133,7 @@ $(document).ready(() => {
         }).then( () => {
             console.log("meal added")
             $(".inputURL").val("");
-            $(".recipes").val("");
+            $(".recipes").html("");
             $(".inputMeal").val("");
             alert("Your meal was added!");
         });
