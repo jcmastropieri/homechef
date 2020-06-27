@@ -1,141 +1,85 @@
 $(document).ready(function () {
-    // const fs = require("fs");
     
     var TeamId;
     var userId
-    var id;
+    let id;
+    let teamKey;
 
-    // file.slice(-3)
-
+    //Call our function that renders all our team members
     renderTeamMembers();
 
     async function renderTeamMembers() {
 
+        //Get the teamId
         await $.get("/api/user_data").then( data => {
-            console.log(data);
+            
             let thisId = data.id
-            $.get("/api/users").then( results => {
-                console.log(results)
-                for (i = 0; i < results.length; i ++) {
-                    if (results[i].id === thisId)
-                    console.log("hi?")
-                    console.log(results[i].id + "break" + thisId);
-                        id = results[i].TeamId
-                        console.log(id);
+            $.get("/api/users/id/" + thisId).then( results => {
+                id = results[0].TeamId
+
+                //Use the teamId to grab all chefs in a team
+                $.get("/api/chef/" + id).then( data => {
+            
+                    for (i = 0; i < data.length; i++ ) {
+
+                        //Renders all of our html
+                        let newRow = $("<div></div>").addClass("row")
+                        let newCol = $("<div></div>").addClass("col-6")
+                        let chefDiv = $("<div></div>").addClass("each-chef")
+                        let chefP = $("<h2></h2>").text("Chef Name: " + data[i].Chef.chefName);
+                
+                        //matches our chefImage name to our s3 link
+                        let noOutsideSpace = (data[i].Chef.chefImage).trim()
+                        let spacePlus = noOutsideSpace.split(" ").join("+");
+    
+                        let amazonImage = $("<img></img>").attr("src", "https://cookingtogether.s3.ca-central-1.amazonaws.com/" + spacePlus)
+                        amazonImage.addClass("picture-size")
+                        
+                        let foodP = $("<p></p>").text("Chef's Dietary Needs: " + data[i].Chef.chefFoodConsiderations)
+
+                        chefDiv.append(chefP)
+                        chefDiv.append(amazonImage);
+                        chefDiv.append(foodP)
+            
+                        newCol.append(chefDiv)
+                        newRow.append(newCol)
+
+                        $(".your-chefs").append(newRow)
+                
                     }
-            
-        
-
-
-            $.get("/api/chef/" + id).then( data => {
-            
-            console.log(data);
-                for (i = 0; i < data.length; i++ ) {
-                var newRow = $("<div></div>").addClass("row")
-                var newCol = $("<div></div>").addClass("col-6")
-                var chefDiv = $("<div></div>")
-                var chefP = $("<p></p>").text("Chef Name: " + data[i].Chef.chefName);
-                var imageP = $("<p></p>").html(data[i].Chef.chefImage);
-
-                console.log(data[i].Chef.chefImage)
-                
-                let noOutsideSpace = (data[i].Chef.chefImage).trim()
-                let spacePlus = noOutsideSpace.split(" ").join("+");
-                
-
-                //this need to be + chefImage, and chefImage needs to be the name of the file as well
-                var amazonImage = $("<img></img>").attr("src", "https://cookingtogether.s3.ca-central-1.amazonaws.com/" + spacePlus)
-                // var amazonImage = $("<img></img>").attr("src", "https://cookingtogether.s3.ca-central-1.amazonaws.com/quiz+background2.png")
-                var foodP = $("<p></p>").text("Chef's Dietary Needs: " + data[i].Chef.chefFoodConsiderations)
-                chefDiv.append(chefP)
-                chefDiv.append(imageP)
-                chefDiv.append(foodP)
-                chefDiv.append(amazonImage);
-                newCol.append(chefDiv)
-                newRow.append(newCol)
-                $(".your-chefs").append(newRow)
-                
-                }
            
+                });
+            });
         });
-        });
-
-    });
-
-
-
     }
 
+    //When our send button in our modal is clicked
     $("#send-btn").on("click", function (event) {
-
         event.preventDefault();
 
-        console.log("save working?");
-        var emailForm = $("#team-email").val().trim();
-        console.log(emailForm)
-        var nodemail = {
-            email: emailForm,
-            key: teams[indexNum].key
-        }
-        console.log(nodemail)
-
-        $.post("/email", nodemail, function() {
-            console.log("Server received our data");
-        });
+        //Uses an API call to get the key of our current team to send an activation link
+        $.get("/api/team/" + id).then( results => {
+            
+            teamKey = results[0].key
+            const emailForm = $("#team-email").val().trim();
+            
+            //creates our object needed to send our email
+            const nodemail = {
+                email: emailForm,
+                key: teamKey
+            }
+            
+            //Sends our email
+            $.post("/email", nodemail, function() {
+                console.log("Server received our data");
+            });
 
   
-        $("#team-email").val("");
+            $("#team-email").val("");
 
-        alert("Your email has been sent!");
-
+            alert("Your email has been sent!");
+        });
         
     });
-
-    // $.get("/api/user_data").then((data) => {
-    //     console.log(data);
-    //     id = data.id
-    //     console.log(id)
-        // $.get("api/users").then((results) => {
-        //     console.log(results)
-        //     for (i = 0; i < results.length; i ++) {
-        //         console.log(results[i].id)
-        //         if (results[i].id === userId)
-        //             console.log(results[i].id + " break " + thisId)
-        //                 console.log(results[i].TeamId)
-        //                 id = results[i].TeamId
-
-        //         }
-        // })
-    // });
-
-    // C:\\fakepath\\IMG_3663.jpg",
-    
-    // $.get("/api/chef/" + id, function(data) {
-    //     console.log(data);
-    //     for (i = 0; i < data.length; i++ ) {
-           
-    //         // let image = chefImage.slice(14)
-    //         // console.log(image);
-
-    //         // fs.writeFile("../TT Images/userImages" + image, image, function(err) {
-    //         //     if (err) throw err;
-    //         // });
-    //         var newRow = $("<div></div>").class("row")
-    //         var newCol = $("<div></div>").class("col-6")
-    //         var chefDiv = $("<div></div>")
-    //         var chefP = $("<p></p>").text(data[i].Chef.chefName);
-    //         var imageP = $("<p></p>").html(data[i].Chef.chefImage);
-    //         var foodP = $("<p></p>").text(data[i].Chef.chefFoodConsiderations)
-    //         chefDiv.append(chefP)
-    //         chefDiv.append(imageP)
-    //         chefDiv.append(foodP)
-    //         newCol.append(chefDiv)
-    //         newRow.append(newCol)
-    //         $(".container").append(newRow)
-    //         // console.log(data[i].Chef.chefImage)
-    //         console.log(data[i].Chef.chefName)
-    //         console.log(data[i].Chef.chefFoodConsiderations)
-    //     }
-    // });
 
 });

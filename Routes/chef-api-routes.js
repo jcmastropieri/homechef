@@ -64,8 +64,7 @@ module.exports = function(app) {
     })
 
     const uploadFile = (fileName, fileContent) => {
-        // Read content from the file
-        // const fileContent = fs.readFileSync(fileName);
+        
     
         // Setting up S3 upload parameters
         const params = {
@@ -82,45 +81,6 @@ module.exports = function(app) {
             console.log(`File uploaded successfully. ${data.Location}`);
         });
 
-        // Create the parameters for calling listObjects
-        // var bucketParams = {
-        //     Bucket : "cookingtogether",
-        // };
-  
-  // Call S3 to obtain a list of the objects in the bucket
-        // s3.listObjects(bucketParams, function(err, data) {
-        //     if (err) {
-        //     console.log("Error", err);
-        // } else {
-        //     console.log("Success", data);
-        // }
-        // });
     };
-
-   
-    // app.post("/image-upload", function(req, res) {
-    //     singleUpload(req, res, function(err) {
-    //         console.log("****THIS IS REQ ****")
-    //         console.log(req.body.file)
-    //         return res.json({"imageUrl": req.body.file})
-    //     })
-    // })
-
-    // app.post('/upload', function(req, res) {
-    //     if (!req.files || Object.keys(req.files).length === 0) {
-    //         return res.status(400).send('No files were uploaded.');
-    //       }
-    //     console.log(req.files.chef); // the uploaded file object
-    //     let chefFile = req.files.chef
-    //     chefFile.mv("./Public/assets/TT Images/chefs/" + chefFile, function(err) {
-    //         if (err) {
-    //             return res.status(500).send(err);
-    //         }
-    //         else {
-    //             res.send("File uploaded!");
-    //         }
-    //     })
-    // });
-
     
 }

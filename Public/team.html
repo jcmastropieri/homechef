@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Team Page</title>
+    <title>CookingTogether Table Page</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"/>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Arima+Madurai&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/css/recipe.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/navbar.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Arima+Madurai&display=swap" rel="stylesheet">
+   
     <link rel="shortcut icon" type="image/png" href="assets/TT Images/food.jpeg">
 </head>
 <body>
         <!-- Navbar -->
 
-      <nav class="navbar">
-      <div class="cooking-together">CookingTogether</div>
+  <nav class="navbar">
+    <div class="cooking-together">CookingTogether</div>
       <ul class="nav">
           <li class="nav-item">
             <a class="nav-link mx-auto" href="/members">Home</a>
@@ -34,51 +35,54 @@
             <a class="nav-link mx-auto" href="/grocerylist">Grocery List</a>
           </li>
       </ul>
-     
+    </div> 
       
-      <a href="/logout">Logout</a>
+      <a class="logout" href="/logout">Logout</a>
           
   </nav>
  
-    
-        <div class= "container">
-            <h1 class = "justify-content-center">Who's at Your Table?</h1>
-            <div class = "your-chefs">
-                
-            </div>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#inviteMembersModal">
-              Invite more chefs to your team!
-            </button>
-        </div>
+  <div class="container">
+    <h1 class="justify-content-center add-recipe">Who's at Your Table?</h1>
 
-        <div class="row">
-          <div class="col-12">
       
-              <div class="modal fade" id="inviteMembersModal" tabindex="-1" role="dialog" aria-labelledby="optionsModalLabel" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                          <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">Invite Chefs to your team!</h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                               <span aria-hidden="true">&times;</span>
-                               </button>
-                          </div>
-                          <div class="modal-body">
-                            <div class="form-group">
-                              <label for="send-email">
-                                  <p>Send them an invite by email</p>
-                              </label>
-                              <div class = "email-forms">
-                                <input type="text" class="form-control team-email" id="team-email" placeholder="email">
-                              </div>
-                            </div>
-                          </div>
-                          <button type="submit" class="btn btn-default" id = "send-btn">Send</button>      
-                      </div>
-                   </div>
-              </div>
+    <div class = "your-chefs">
+                
+    </div>
+    
+    <div class="row">
+      <div class="col-12">
+        <button type="button" class="btn btn-primary ingredBtn add-recipe" data-toggle="modal" data-target="#inviteMembersModal">
+          Invite more chefs to your team!
+        </button>
+      </div>
+    </div>
+           
+      
+    <div class="modal fade" id="inviteMembersModal" tabindex="-1" role="dialog" aria-labelledby="optionsModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Invite Chefs to your team!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
           </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="send-email">
+                <p>Send them an invite by email</p>
+              </label>
+              <div class = "email-forms">
+                <input type="text" class="form-control team-email" id="team-email" placeholder="email">
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-default urlBtn" id = "send-btn">Send</button>      
         </div>
+      </div>
+    </div>
+          <!-- </div> -->
+  </div>
     
            
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

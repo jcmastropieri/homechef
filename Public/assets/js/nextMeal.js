@@ -80,8 +80,8 @@ $(document).ready(() => {
 
         //calls our api to get our image path to grab from our amazon S3
         $.get("/api/chef/image/" + thisId + "/" + data[0].mealChef).then( response => {
-            console.log(response[0].chefImage);
-
+            
+            //this matches our picture image name to how it's saved in S3
             let noOutsideSpace = (response[0].chefImage).trim()
             let spacePlus = noOutsideSpace.split(" ").join("+");
 

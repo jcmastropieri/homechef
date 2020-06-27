@@ -104,3 +104,24 @@ a:hover {
     margin-top: 10px;
 }
 
+/* team.html */
+
+.each-chef {
+    border: dashed 3px hsla(9, 78%, 55%, 1);
+    text-align: center;
+}
+
+.picture-size:hover {
+    height: 220px;
+}
+
+.picture-size {
+    height:200px;
+    border: solid 3px hsla(9, 78%, 55%, 1);
+}
+
+/* .add-chefs {
+    margin: ;
+} */
+/* ************* */
+
