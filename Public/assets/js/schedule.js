@@ -1,25 +1,19 @@
 $(document).ready( () => {
 
 
+    //Calls our function that runs our initial necessary buttons and meals
     startMeal();
 
     async function startMeal() {
-        var id;
-        await $.get("/api/user_data").then((data) => {
-            var thisId = data.id
-            $.get("/api/users").then( results => {
-                console.log("this is apiusers results")
-                console.log(results)
-                for (i = 0; i < results.length; i ++) {
-                    if (results[i].id === thisId) {
-                        console.log(results[i].id + "break" + thisId)
-                        id = results[i].TeamId
-                        console.log("this is id");
-                        console.log(id)
-                    }
-                }
+        let id;
 
-           
+        //get user's teamId
+        await $.get("/api/user_data").then((data) => {
+            const thisId = data.id
+            $.get("/api/users/id/" + thisId).then( results => {
+                id = results[0].TeamId
+
+                //Calls our functions to render our meals with necessary parameters
                 renderScheduleMeals("Monday", "Breakfast", id);
                 renderScheduleMeals("Monday", "Lunch", id);
                 renderScheduleMeals("Monday", "Dinner", id);
@@ -55,15 +49,18 @@ $(document).ready( () => {
 
 
     const renderScheduleMeals = (day, time, id) => {
+        $("." + day + "-" + time).empty();
+        //Gets all meals for this day and time in this team
         $.get("/api/meal/" + day + "/" + time + "/" + id).then( data => {
-            console.log(data)
 
             for (i = 0; i < data.length; i++) {
+
+                //Creates our divs and buttons and then appends them to the page
 
                 let newDiv = $("<div></div>").addClass("more-space")
                 let pText = $("<p></p>").text(data[i].recipeTitle)
                 pText.addClass("get-together")
-                console.log(pText)
+                
                 
                 let deleteButton = $("<button></button>");
                 let viewButton = $("<button></button>");
@@ -82,59 +79,73 @@ $(document).ready( () => {
                 newDiv.append(deleteButton);
             
                 $("." + day + "-" + time).append(newDiv);
-                // $("." + day + "-" + time).append(viewButton);
-                // $("." + day + "-" + time).append(deleteButton);
                     
             }
         });
 
     }
 
-    var renderViewMeal = (data) => {
-        let instructP = $("<p>");
+    //This renders our meal to our view meal column
+    const  renderViewMeal = data => {
+        
         let ingredients = JSON.parse(data[0].recipeIngredients);
         let instructions = JSON.parse(data[0].recipeInstructions);
         listIngredients(ingredients);
-        instructP.text(instructions[0].steps);
+        listInstructions(instructions[0].steps);
         $(".meal-text").html("&nbsp;" + data[0].recipeTitle);
         $(".chef-name").text("Chef: " + data[0].mealChef);
-        $(".instructions-list").html(instructP)
     
     }
     
-    function listIngredients(takenList) {
+    //This puts our list of ingredients in an unordered list
+    const listIngredients = takenList => {
         let ingredsP = $("<p>");
-        // var useArray = takenList.split(",");
-        var newUL = $("<ul>");
+        
+        let newUL = $("<ul>");
         for (i = 0; i < takenList.length; i++) {
-            var newListItem = $("<li>").text(takenList[i]);
+            let newListItem = $("<li>").text(takenList[i]);
             newUL.append(newListItem);
         }
         ingredsP.append(newUL);
         $(".ingredients-list").html(ingredsP);
     };
 
-    $(document).on("click", ".view-button", function(event) {
-        console.log("hi")
-        var user = this.value
-        console.log(user)
-        $.get("/api/meal/schedule/" + user).then( data => {
-            console.log(data)
-            renderViewMeal(data);
+    //This puts our list of instructions in an ordered list
+    const listInstructions = takenList => {
 
+        let instructP = $("<p>");
+        let newOL = $("<ol>");
+
+        for (i = 0; i < takenList.length; i++) {
+            let newListItem = $("<li>").text(takenList[i]);
+            newOL.append(newListItem);
+        }
+        instructP.append(newOL);
+        $("instructions-list").html(instructP)
+    };
+
+    //When a specific view button is clicked on, render that meal's information
+    $(document).on("click", ".view-button", function(event) {
+        
+        let user = this.value
+        
+        $.get("/api/meal/schedule/" + user).then( data => {
+            renderViewMeal(data);
         })
     });
 
     $(document).on("click", ".delete-button", function(event) {
         console.log("bye")
-        var user = this.value
+        let user = this.value
         console.log("second run")
         console.log(user)
-        $.ajax("/api/cats/schedule" + user, {
-            type: "DELETE"
+        $.ajax({
+            type: "DELETE",
+            url: "/api/meal/" + user
           }).then(function() {
               console.log("deleted meal" + user);
-              location.reload();
+              startMeal()
+            //   location.reload();
             }
           );
         

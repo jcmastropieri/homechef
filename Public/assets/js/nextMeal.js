@@ -138,10 +138,10 @@ $(document).ready(() => {
     const listIngredients = takenList => {
     
         let ingredsP = $("<p>");
-        var newUL = $("<ul>");
+        let newUL = $("<ul>");
 
         for (i = 0; i < takenList.length; i++) {
-            var newListItem = $("<li>").text(takenList[i]);
+            let newListItem = $("<li>").text(takenList[i]);
             newUL.append(newListItem);
         }
         ingredsP.append(newUL);
@@ -152,10 +152,10 @@ $(document).ready(() => {
     const listInstructions = takenList => {
 
         let instructP = $("<p>");
-        var newOL = $("<ol>");
+        let newOL = $("<ol>");
 
         for (i = 0; i < takenList.length; i++) {
-            var newListItem = $("<li>").text(takenList[i]);
+            let newListItem = $("<li>").text(takenList[i]);
             newOL.append(newListItem);
         }
         instructP.append(newOL);

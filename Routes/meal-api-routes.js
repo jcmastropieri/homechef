@@ -4,7 +4,7 @@ module.exports = function(app) {
     app.get("/api/meal", function(req, res) {
         db.Team.findAll({
             include: [db.Meal]
-        }).then(function(MealGetResults) {
+        }).then( MealGetResults => {
             res.json(MealGetResults)
         })
     })
@@ -14,7 +14,7 @@ module.exports = function(app) {
             where: {
                 TeamId: req.params.id
             }
-        }).then(function(teamIdResults) {
+        }).then( teamIdResults => {
             res.json(teamIdResults);
         }) 
     });
@@ -24,7 +24,7 @@ module.exports = function(app) {
             where: {
                 id: req.params.user
             }
-        }).then(function(userIdResults) {
+        }).then( userIdResults => {
             res.json(userIdResults);
         })
     });
@@ -36,23 +36,25 @@ module.exports = function(app) {
                 mealTime: req.params.time,
                 TeamId: req.params.id
             }
-        }).then(function(dayTimeResults) {
+        }).then( dayTimeResults => {
             res.json(dayTimeResults);
         })
     });
 
     
     app.post("/api/meal", function(req, res) {
-        db.Meal.create(req.body).then(function(mealCreateResult) {
+        db.Meal.create(req.body).then( mealCreateResult => {
             res.json(mealCreateResult);
         })
     })
 
-    app.post("api/meal/schedule/:user", function(req, res) {
+    app.delete("/api/meal/:user", function(req, res) {
         db.Meal.destroy({
             where: {
                 id: req.params.user
             }
+        }).then( deleteResults => {
+            res.json(deleteResults)
         });
         
     });
