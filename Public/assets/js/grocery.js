@@ -5,6 +5,7 @@ $(document).ready(function() {
     renderList();
 
     async function renderList() {
+        console.log("broken here?")
         await $.get("/api/user_data").then( data => {
             let thisId = data.id
             $.get("/api/users/id/" + thisId).then( results => {
@@ -12,10 +13,11 @@ $(document).ready(function() {
 
                 $.get("/api/grocery/" + id).then( data => {
                     console.log(data);
+                    $("#listContainer").html("");
                     for (i = 0; i < data.length; i++) {
                         $("#listContainer").prepend(`<div class="row mt-1 mb-1"><input type="checkbox" class="ml-3 mr-3 checkbox">
                     <label for="vehicle3"><h3 class="grocery-list">${data[i].listItem}</h3></label><button id="someString" class="btn btn-success ml-29 btn-sm complete">Complete</button>
-                    <button id="someString2" class="ml-3 btn btn-danger btn-sm delete">Delete</button></div>`)
+                    <button id="someString2" value="${data[i].id}" class="ml-3 btn btn-danger btn-sm delete">Delete</button></div>`)
                     
                     }
                 });
@@ -23,67 +25,44 @@ $(document).ready(function() {
             });
         });
     
-        // await $.get("/api/grocery/" + id).then( data => {
-        //     console.log(data);
-        //     for (i = 0; i < data.length; i++) {
-        //         $("#listContainer").prepend(`<div class="row mt-1 mb-1"><input type="checkbox" class="ml-3 mr-3 checkbox">
-        //     <label for="vehicle3"><h3 class="grocery-list">${data[i].listItem}</h3></label><button id="someString" class="btn btn-success ml-29 btn-sm complete">Complete</button>
-        //     <button id="someString2" class="ml-3 btn btn-danger btn-sm delete">Delete</button></div>`)
-            
-        //     }
-        // });
+       
 
     }
-    // $.get("/api/user_data").then( data => {
-    //     let thisId = data.id
-    //     $.get("/api/users/id/" + thisId).then( results => {
-    //         id = results[0].TeamId
-    //     });
-    // });
 
-    // $.get("/api/grocery/" + id).then( data => {
-    //     console.log(data);
-    //     for (i = 0; i < data.length; i++) {
-    //         $("#listContainer").prepend(`<div class="row mt-1 mb-1"><input type="checkbox" class="ml-3 mr-3 checkbox">
-    //     <label for="vehicle3"><h3 class="grocery-list">${data[i].listItem}</h3></label><button id="someString" class="btn btn-success ml-29 btn-sm complete">Complete</button>
-    //     <button id="someString2" class="ml-3 btn btn-danger btn-sm delete">Delete</button></div>`)
-        
-    //     }
-    // })
+
+    $(".clear").on("click", function(){
+        $.ajax({
+            type: "DELETE",
+            url: "/api/grocery/clear/" + id
+          }).then(function() {
+              console.log("deleted all");
+              renderList();
+            }
+          );
+    })
+  
 
     $("#submitGrocery").on('click', function(){
         let grocery = $("#groceryInput").val().trim();
         if(grocery){
-             $("#listContainer").prepend(`<div class="row mt-1 mb-1"><input type="checkbox" class="ml-3 mr-3 checkbox">
-        <label for="vehicle3"><h3 class="grocery-list">${grocery}</h3></label><button id="someString" class="btn btn-success ml-29 btn-sm complete">Complete</button>
-        <button id="someString2" class="ml-3 btn btn-danger btn-sm delete">Delete</button></div>`)
+        //      $("#listContainer").prepend(`<div class="row mt-1 mb-1"><input type="checkbox" class="ml-3 mr-3 checkbox">
+        // <label for="vehicle3"><h3 class="grocery-list">${grocery}</h3></label><button id="someString" class="btn btn-success ml-29 btn-sm complete">Complete</button>
+        // <button id="someString2" class="ml-3 btn btn-danger btn-sm delete">Delete</button></div>`)
         
         createAndGet(grocery);
         } 
       
     });
 
-    async function createAndGet(newItem) {
+    const createAndGet = newItem => {
         
-        await $.post("/api/grocery", {
+        $.post("/api/grocery", {
             listItem: newItem,
             TeamId: id,
         }).then( () => {
             console.log("new item added");
+            renderList();
         });
-
-        $.get("/api/grocery").then( data => {
-            console.log(data);
-        })
-        // $.ajax({
-        //     method: "PUT",
-        //     url: "/api/grocery/" + thisId,
-        //     data: {
-        //         TeamId: teams[indexNum].id
-        //     }
-        // }).then( () => {
-        //     console.log("id updated")
-        // })
     }
     
     $(document).on("click", ".complete", function() {
@@ -94,33 +73,34 @@ $(document).ready(function() {
     $(document).on("click", ".delete", function() {
         var $grocerylist = $(this).siblings().children()    
          $grocerylist.parent().parent().remove();
+         
+
+         let user = this.value
+
+         $.ajax({
+            type: "DELETE",
+            url: "/api/grocery/" + user
+          }).then(function() {
+              console.log("deleted itm" + user);
+            }
+          );
              
     })
 
     $("#meal-list").on("click", function() {
-        console.log("button works")
-        $.get("/api/meal/" + id, (data) => {
-            console.log(data)
-            console.log(data.length);
+        
+        $.get("/api/meal/" + id, (data) => { 
             for (i = 0; i < data.length; i++) {
-                console.log("should run each time")
-                var ingredients = JSON.parse(data[i].recipeIngredients);
-                console.log(ingredients)
+                let ingredients = JSON.parse(data[i].recipeIngredients); 
                 listIngredients(ingredients)
-                console.log(i);
             }
         })
     })
 
     function listIngredients(takenList) {
-        console.log("running");
-
+        
         for (j = 0; j < takenList.length; j++) {
-            $("#listContainer").prepend(`<div class="row mt-1 mb-1"><input type="checkbox" class="ml-3 mr-3 checkbox">
-        <label for="vehicle3"><h3 class="grocery-list">${takenList[j]}</h3></label><button id="someString" class="btn btn-success ml-29 btn-sm complete">Complete</button>
-        <button id="someString2" class="ml-3 btn btn-danger btn-sm delete">Delete</button></div>`)
-
-        createAndGet(takenList[j]);
+            createAndGet(takenList[j]);
         }
     };
     

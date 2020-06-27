@@ -36,5 +36,16 @@ module.exports = function(app) {
         
     });
 
+    app.delete("/api/grocery/clear/:teamId", function(req, res) {
+        db.Grocery.destroy({
+            where: {
+                TeamId: req.params.teamId
+            }
+        }).then( deleteAllResults => {
+            res.json(deleteAllResults)
+        });
+        
+    });
+
     
 }
