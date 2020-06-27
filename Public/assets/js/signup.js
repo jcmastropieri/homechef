@@ -6,11 +6,14 @@ $(document).ready(function () {
     const passwordInput = $("#password-input");
     const newChef = $("#name-input");
     const newFood = $("#food-input");
-    const newChefImage = $("#customFile")
+    const newChefImage = $("#customFile");
+    // const fileData = $("#data");
+    var form = document.forms.namedItem("fileinfo")
 
     //necessary global variables
     var users =[];
     var indexNum;
+    var formData;
    
     //This checks to see if someone got to this page through the activation link
     var useTeamId;
@@ -35,11 +38,20 @@ $(document).ready(function () {
     //When the form is submitted
     signupForm.on("submit", event => {
         event.preventDefault();
+
+        formData = new FormData(form)
+        
+
+        //these lines removed the added fakepath from our image name
+        let imageName = newChefImage.val().trim()
+        var cleanChefImageName = imageName.replace('C:\\fakepath\\', " ");
+        
+
         
         //Create new objects to use in our parameters
         const newChefData = {
             chefName: newChef.val().trim(),
-            chefImage: newChefImage.val().trim(),
+            chefImage: cleanChefImageName,
             chefFood: newFood.val().trim()
         }   
   
@@ -106,7 +118,8 @@ $(document).ready(function () {
 
         //creates a new chef and assigns them the match userid
         //then clears local storage and goes to the member page
-        $.post("/api/chef", {
+        
+        await $.post("/api/chef", {
             chefName: name,
             chefImage: image,
             chefFoodConsiderations: food,
@@ -116,6 +129,25 @@ $(document).ready(function () {
                     localStorage.clear();
                     // window.location.replace("/members");
         });
+        
+        await $.ajax({
+            url: "/upload/file",
+            type: "POST",
+            data:formData,
+            // success: function (data) {
+            //     console.log(data)
+            //     window.location.replace("/members");
+            // },
+            cache: false,
+            contentType: false,
+            processData: false
+        }).done( () => {
+            window.location.replace("/members");
+        });
+
+       
+
+        
 
     }
 

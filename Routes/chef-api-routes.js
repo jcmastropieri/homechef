@@ -5,7 +5,11 @@ const path = require("path");
 const aws = require('aws-sdk');
 // const fileUpload = require('express-fileupload')
 
-
+aws.config.update({
+    secretAccessKey: "",
+    accessKeyId: "",
+    region: "ca-central-1"
+});
 
 
 const s3 = new aws.S3();
@@ -38,10 +42,10 @@ module.exports = function(app) {
     app.post("/api/chef", function(req, res) {
         db.Chef.create(req.body).then(function(chefCreateResult) {
             res.json(chefCreateResult)
-            console.log(req.body);
-            console.log(req.body.chefImage)
-            uploadFile(req.body.chefImage);
-            uploadFile(path.join(__dirname, req.body.chefImage));
+            // console.log(req.body);
+            // console.log(req.body.data)
+            // uploadFile(req.body.data);
+            // uploadFile(path.join(__dirname, req.body.chefImage));
             
             // uploadFile(req.body.chefImage)
 
@@ -62,11 +66,16 @@ module.exports = function(app) {
             // });
             // console.log("do you stop?")
         })
+    });
+
+    app.post("/upload/file", function(req,res) {
+        
+        uploadFile(req.files.chef.name, req.files.chef.data)
     })
 
-    const uploadFile = (fileName) => {
+    const uploadFile = (fileName, fileContent) => {
         // Read content from the file
-        const fileContent = fs.readFileSync(fileName);
+        // const fileContent = fs.readFileSync(fileName);
     
         // Setting up S3 upload parameters
         const params = {
