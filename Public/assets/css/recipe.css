@@ -162,8 +162,18 @@ h2 {
     
     }
     
-    .line-over {
-        text-decoration: line-through;
-    }
+.line-over {
+    text-decoration: line-through;
+}
+
+.full {
+    width: 100%;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.grocery-list {
+    padding-left: 30px;
+}
 
 /* ***** */

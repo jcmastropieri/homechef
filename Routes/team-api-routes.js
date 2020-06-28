@@ -38,6 +38,9 @@ module.exports = function(app) {
         db.Team.create(req.body).then(function(teamCreateResult) {
             res.json(teamCreateResult)
         })
+        .catch(function(err) {
+          console.log(err);
+        })
     })
 
   

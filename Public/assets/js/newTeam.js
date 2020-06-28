@@ -25,7 +25,7 @@ $(document).ready(() =>  {
 
         //Creates a random key for the team, that will be used for our activation link
         const arrayKey = []
-        for (i = 0; i < 15; i ++) {
+        for (i = 0; i < 10; i ++) {
             let randomKey = Math.floor(Math.random() * 10);
             arrayKey.push(randomKey)
         }
