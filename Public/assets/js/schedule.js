@@ -66,7 +66,7 @@ $(document).ready( () => {
                 let viewButton = $("<button></button>");
                 
                 deleteButton.text("delete");
-                deleteButton.addClass("delete-button btn btn-primary ingredBtn");
+                deleteButton.addClass("delete-button btn btn-primary ingredBtn button-space");
 
                 viewButton.text("View Recipe");
                 viewButton.addClass("view-button btn btn-primary ingredBtn");

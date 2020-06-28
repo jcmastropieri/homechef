@@ -2,6 +2,7 @@ $(document).ready(() =>  {
 
     //Grab our input from our table/team name form
     const teamInput = $("#teamname-input");
+    const sent = $("#sent-message");
 
     //define necessary global variables
     let thisId;
@@ -78,6 +79,7 @@ $(document).ready(() =>  {
 
         event.preventDefault();
 
+        
         const emailForm = $("#team-email").val().trim();
         
         //Grabs the email inputted and the key of our current team
@@ -92,10 +94,10 @@ $(document).ready(() =>  {
         });
 
         //clears the email value so another email can be sent
-        //gives an alert to let the user know it worked
+        //gives text to let the user know it worked
         //Changes the text on the button that redirects to the home page
         $("#team-email").val("");
-        alert("Your email has been sent!");
+        showMessage(sent);
         $("#later-btn").text("I'm done adding!")
 
         
@@ -107,5 +109,12 @@ $(document).ready(() =>  {
         window.location.replace("/members");
     })
 
+    //Function that shows a message that your message has sent
+    const showMessage = (sent) => {
+        sent.attr("style", "color: black");
+        setTimeout(function(){
+            sent.attr("style", "color: white");
+        }, 3000);
+    }
 
 });

@@ -110,6 +110,12 @@ a:hover {
     margin-top: 10px;
 }
 
+#sent-message, #your-message-sent {
+    color: white;
+}
+
+
+
 /* team.html */
 
 .each-chef {
@@ -145,6 +151,11 @@ h2 {
 
 .get-together {
     margin-bottom: 0px;
+}
+
+.button-space {
+    margin-left: 10px;
+    /* margin-top: 5px; */
 }
 
 /* ****** */

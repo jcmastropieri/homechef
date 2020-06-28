@@ -61,21 +61,22 @@ $(document).ready(function () {
   
         //Section for checks to make sure all information was entered
 
-        if (userData.email) {
-            $.get("/api/users", {
-            }).then(result => {
-              console.log(result)
-              for (i = 0; i < result.length; i++ ) {
-                console.log(userData.email)
-                console.log(result[i].email)
-                if (userData.email === result[i].email) {
-                alert("This email already has an account! Please log-in.")
-                window.location.replace("/login");
-                return;
-                }
-              }
-            });
-          };
+        // if (userData.email) {
+        //     $.get("/api/users", {
+        //     }).then(result => {
+        //       console.log(result)
+        //       for (i = 0; i < result.length; i++ ) {
+        //         console.log(userData.email)
+        //         console.log(result[i].email)
+        //         if (userData.email === result[i].email) {
+        //         alert("This email already has an account! Please log-in.")
+        //         window.location.replace("/login");
+        //         return;
+        //         }
+        //       }
+        //     });
+        // };
+    
 
         if (!userData.email || !userData.password) {
             alert("Please enter a valid username and password.")
@@ -105,11 +106,28 @@ $(document).ready(function () {
         else {
             teamCreateUserandChef(userData.email, userData.password, newChefData.chefName, newChefData.chefImage, newChefData.chefFood, userData.TeamId,);
         }
-        alert("Welcome Chef " + newChefData.chefName + "!")
+        
     });
   
   
     async function createUserandChef(email, password, name, image, food) {
+
+        if (email) {
+            await $.get("/api/users", {
+            }).then(result => {
+              console.log(result)
+              for (i = 0; i < result.length; i++ ) {
+                console.log(email)
+                console.log(result[i].email)
+                if (email === result[i].email) {
+                alert("This email already has an account! Please log-in.")
+                window.location.replace("/login");
+                return;
+                }
+              }
+            });
+        };
+
         //creates a new user
         await $.post("/api/signup", {
             email: email,

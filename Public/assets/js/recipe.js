@@ -19,7 +19,7 @@ $(document).ready(() => {
     $(".mealBtn").on("click", function(event) {
         event.preventDefault();
    
-        
+        $(".recipes").html("");
 
         mealInput = $(".inputMeal").val()
 
@@ -137,7 +137,9 @@ $(document).ready(() => {
             $(".inputURL").val("");
             $(".recipes").html("");
             $(".inputMeal").val("");
-            alert("Your meal was added!");
+
+            //Clicking save also closes the modal
+            // $("#saveBtn").attr("data-dismiss", "modal")
         });
 
         //Clicking save also closes the modal

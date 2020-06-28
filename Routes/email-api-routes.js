@@ -35,8 +35,8 @@ const sendMail = (email, key, cb) => {
     var mailOptions = {
         from: 'anna.grace.conover@gmail.com',
         to: email,
-        subject: "A friend is inviting you to their table!",
-        html: "<h1>Cooking Together makes Meal Planning easy!<h2><img src='image url here'/><h2>Someone has invited you to their table! Get signed up so you can start cooking.</h2><p><a href = 'https://cooking-together.herokuapp.com/activation/" + key + "'>Join here!</a></p><p>Looking forward to the meals you make,</p><p>The CookingTogether Team</p>",
+        subject: "A Chef is inviting you to their table!",
+        html: "<h1>Cooking Together makes Meal Planning easy!<h2>Someone has invited you to their table! Get signed up so you can start cooking.</h2><p><a href = 'https://cooking-together.herokuapp.com/activation/" + key + "'>Join here!</a></p><p>Looking forward to the meals you make,</p><p>The CookingTogether Team</p>",
     };
     
     transporter.sendMail(mailOptions, function(error, data) {

@@ -1,7 +1,7 @@
 $(document).ready(function () {
     
-    var TeamId;
-    var userId
+    const sent = $("#your-message-sent");
+
     let id;
     let teamKey;
 
@@ -56,6 +56,7 @@ $(document).ready(function () {
     //When our send button in our modal is clicked
     $("#send-btn").on("click", function (event) {
         event.preventDefault();
+        $("#sent-message").attr("style", "color: white");
 
         //Uses an API call to get the key of our current team to send an activation link
         $.get("/api/team/" + id).then( results => {
@@ -77,9 +78,20 @@ $(document).ready(function () {
   
             $("#team-email").val("");
 
-            alert("Your email has been sent!");
+            //Render text to let the user know the email has been sent
+            showMessage(sent);
+
+            
         });
         
     });
+
+     //Function that shows a message that your message has sent
+    const showMessage = (sent) => {
+        sent.attr("style", "color: black");
+        setTimeout(function(){
+            sent.attr("style", "color: white");
+        }, 3000);
+    }
 
 });
