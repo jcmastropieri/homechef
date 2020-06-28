@@ -4,6 +4,7 @@ module.exports = function(sequelize, DataTypes) {
         mealTime: DataTypes.STRING,
         //This mealSearched is what giphy uses
         mealSearched: DataTypes.STRING,
+        //Makes strings bigger
         recipeTitle: DataTypes.STRING(5000),
         recipeIngredients: DataTypes.STRING(5012), 
         recipeInstructions: DataTypes.STRING(5012),
@@ -11,6 +12,7 @@ module.exports = function(sequelize, DataTypes) {
 
     });
 
+    //Associates Meal to Team
     Meal.associate = function(models) {
         Meal.belongsTo(models.Team, {
             foreignKey: {

@@ -1,6 +1,8 @@
 var db = require("../models");
 
 module.exports = function(app) {
+
+    //Get all from our grocery model
     app.get("/api/grocery", function(req, res) {
         db.Team.findAll({
             include: [db.Grocery]
@@ -9,6 +11,7 @@ module.exports = function(app) {
         })
     })
 
+    //Get all from our grocery model where the team Id is the given id
     app.get("/api/grocery/:id", function(req, res) {
         db.Grocery.findAll({
             where: {
@@ -19,12 +22,14 @@ module.exports = function(app) {
         })
     })
 
+    //Creates a new grocery Item
     app.post("/api/grocery", function(req, res) {
         db.Grocery.create(req.body).then( groceryCreateResult => {
             res.json(groceryCreateResult);
         })
     })
 
+    //Deletes a grocery item where the id is the given id
     app.delete("/api/grocery/:user", function(req, res) {
         db.Grocery.destroy({
             where: {
@@ -32,10 +37,10 @@ module.exports = function(app) {
             }
         }).then( deleteResults => {
             res.json(deleteResults)
-        });
-        
+        });   
     });
 
+    //Deletes all the grocery items where the team id is the given id
     app.delete("/api/grocery/clear/:teamId", function(req, res) {
         db.Grocery.destroy({
             where: {

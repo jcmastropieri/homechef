@@ -7,6 +7,8 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    //Allows for a bigger number
+    //The key must be unique
     key: {
       type: DataTypes.BIGINT(20),
       allowNull: false,
@@ -15,6 +17,7 @@ module.exports = function(sequelize, DataTypes) {
     
   });
 
+  // Team associates with User, Meal, and Grocery
   Team.associate = function(models) {
       Team.hasMany(models.User, {
           onDelete: "cascade"

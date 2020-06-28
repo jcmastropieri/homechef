@@ -20,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-
+  //Associates user with team and chef
   User.associate = function(models) {
 
     User.belongsTo(models.Team, {

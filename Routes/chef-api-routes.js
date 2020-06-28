@@ -1,11 +1,10 @@
-var db = require("../models");
-// const upload = require("../services/file-upload")
+const db = require("../models");
 const fs = require('fs');
 const path = require("path");
 const aws = require('aws-sdk');
 require('dotenv').config();
-// const fileUpload = require('express-fileupload')
 
+//Requires our keys from our .env file to protect our AWS
 aws.config.update({
     secretAccessKey: process.env.AWS_SECRET_KEY,
     accessKeyId: process.env.AWS_ACCESS_KEY,
@@ -15,11 +14,9 @@ aws.config.update({
 
 const s3 = new aws.S3();
 
-// const singleUpload = upload.single("image");
-
 module.exports = function(app) {
 
-
+    //Return all chefs
     app.get("/api/chef", function(req, res) {
         db.User.findAll({
             include: [db.Chef]
@@ -28,6 +25,7 @@ module.exports = function(app) {
         })
     })
 
+    //Return all chefs in a team
     app.get("/api/chef/:id", function(req, res) {
         db.User.findAll({
             include: [db.Chef],
@@ -40,6 +38,7 @@ module.exports = function(app) {
         })
     });
 
+    //Returns the chef with the give name and id
     app.get("/api/chef/image/:id/:name", function(req, res) {
         db.Chef.findAll({
             where: {
@@ -51,20 +50,20 @@ module.exports = function(app) {
         })
     })
 
-    
+    //Creates a new chef
     app.post("/api/chef", function(req, res) {
         db.Chef.create(req.body).then( chefCreateResult => {
             res.json(chefCreateResult) 
         })
     });
 
+    //Route that grabs the file from our log in page, and calls the upload file function
     app.post("/upload/file", function(req,res) {
-        console.log(req)
-        // console.log(req.files);
         uploadFile(req.files.chef.name, req.files.chef.data)
         res.json(req.body)
     })
 
+    //function to upload the image to our bucket
     const uploadFile = (fileName, fileContent) => {
         
     

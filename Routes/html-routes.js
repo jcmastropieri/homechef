@@ -8,14 +8,13 @@ const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
 
+  //our paths to each of our pages
+  
   app.get("/", function(req, res) {
     // If the user already has an account send them to the members page
     if (req.user) {
       res.redirect("/members");
     }
-    // if (!req.user) {
-    //   res.redirect("/login");
-    // }
     res.sendFile(path.join(__dirname, "../Public/login-page.html"));
   });
 
@@ -33,13 +32,12 @@ module.exports = function(app) {
 
   app.get("/newTeam", function(req, res) {
     
-    // if (req.user) {
-    //   res.redirect("/members");
-    // }
     res.sendFile(path.join(__dirname, "../Public/newTeam.html"))
   })
 
   app.get("/recipe", function(req, res) {
+    
+    //If you're not logged in, redirect to the login page
     if (!req.user) {
       res.redirect("/login");
     }
@@ -48,6 +46,8 @@ module.exports = function(app) {
   })
 
   app.get("/team", function(req, res) {
+    
+    //If you're not logged in, redirect to the login page
     if (!req.user) {
       res.redirect("/login");
     }
@@ -56,6 +56,8 @@ module.exports = function(app) {
   })
 
   app.get("/grocerylist", function(req, res) {
+      
+    //If you're not logged in, redirect to the login page
     if (!req.user) {
       res.redirect("/login");
     }
@@ -64,6 +66,8 @@ module.exports = function(app) {
   })
 
   app.get("/schedule", function(req, res) {
+    
+    //If you're not logged in, redirect to the login page
     if (!req.user) {
       res.redirect("/login")
     }

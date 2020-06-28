@@ -1,5 +1,6 @@
 const nodemailer = require("nodemailer")
 
+//creates our transporter with our email information
 var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -7,16 +8,16 @@ var transporter = nodemailer.createTransport({
         pass: 'HomeChef2020'
     }
 });
+
 module.exports = function(app) {
+
+    //Populate our necessary parameters from our email call
     app.post("/email", (req,res) => {   
-        console.log("Data ", req.body);
+        
         let sendEmail = req.body.email
         let sendKey = req.body.key
-        
-        // console.log(sendKey);
-        console.log(sendEmail);
 
-
+        //Send our email
         sendMail(sendEmail, sendKey, function(err, data) {
             if (err) {
             res.status(500).json({message: "Internal error"});
@@ -29,6 +30,7 @@ module.exports = function(app) {
     });
 }
 
+//Creates our function that will send our email, with our message
 const sendMail = (email, key, cb) => {
     var mailOptions = {
         from: 'anna.grace.conover@gmail.com',

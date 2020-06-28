@@ -13,6 +13,7 @@ module.exports = function(app) {
     });
   });
 
+  //Returns all of our users
   app.get("/api/users", function(req, res) {
     db.User.findAll({}).then( result => {
       return res.json(result);

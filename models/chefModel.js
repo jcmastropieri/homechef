@@ -16,6 +16,7 @@ module.exports = function(sequelize, DataTypes) {
 
     });
 
+    //Associates chef to user
     Chef.associate = function(models) {
         Chef.belongsTo(models.User, {
             foreignKey: {
