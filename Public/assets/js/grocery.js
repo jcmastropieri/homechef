@@ -16,7 +16,7 @@ $(document).ready(function() {
                     $("#listContainer").html("");
                     for (i = 0; i < data.length; i++) {
                         $("#listContainer").prepend(`<div class="row mt-1 mb-1"><input type="checkbox" class="ml-3 mr-3 checkbox">
-                    <label for="vehicle3"><h3 class="grocery-list">${data[i].listItem}</h3></label><div class="row full"> <div class="col-12"><button id="someString" class="btn btn-success ml-29 btn-sm complete">Complete</button>
+                    <label for="vehicle3"><h3 class="grocery-list">${data[i].listItem}</h3></label><div class="row full"> <div class="col-12">
                     <button id="someString2" value="${data[i].id}" class="ml-3 btn btn-danger btn-sm delete">Delete</button></div></div></div>`)
                     
                     }
@@ -45,11 +45,8 @@ $(document).ready(function() {
     $("#submitGrocery").on('click', function(){
         let grocery = $("#groceryInput").val().trim();
         if(grocery){
-        //      $("#listContainer").prepend(`<div class="row mt-1 mb-1"><input type="checkbox" class="ml-3 mr-3 checkbox">
-        // <label for="vehicle3"><h3 class="grocery-list">${grocery}</h3></label><button id="someString" class="btn btn-success ml-29 btn-sm complete">Complete</button>
-        // <button id="someString2" class="ml-3 btn btn-danger btn-sm delete">Delete</button></div>`)
         
-        createAndGet(grocery);
+            createAndGet(grocery);
         } 
       
     });
@@ -65,16 +62,9 @@ $(document).ready(function() {
         });
     }
     
-    $(document).on("click", ".complete", function() {
-        var $grocerylist = $(this).siblings().children()
-        $grocerylist.addClass("line-over")
-    })
     
     $(document).on("click", ".delete", function() {
-        // var $grocerylist = $(this).siblings().children()    
-        //  $grocerylist.parent().parent().remove();
-         
-
+        
          let user = this.value
 
          $.ajax({
